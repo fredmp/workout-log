@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   resources :routines do
     resources :routine_exercises
   end
+
+  resources :workouts do
+    resources :workout_exercises
+  end
 end

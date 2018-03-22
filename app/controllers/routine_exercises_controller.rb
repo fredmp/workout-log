@@ -6,7 +6,7 @@ class RoutineExercisesController < ApplicationController
   def create
     @routine_exercise = @routine.routine_exercises.build(routine_exercise_params)
     @routine_exercise.save
-    redirect_to @routine, notice: 'Routine created successfully'
+    redirect_to @routine, notice: 'Exercise created successfully'
   end
   
   def destroy

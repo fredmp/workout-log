@@ -1,0 +1,10 @@
+h1 = @workout.date
+p = @workout.duration
+p = @workout.comments
+br
+= render 'workout_exercises/form'
+= render @workout.workout_exercises
+br
+= link_to 'Back', workouts_path
+= link_to 'Edit', edit_workout_path(@workout)
+= link_to 'Delete', workout_path(@workout), method: :delete, data: { confirm: 'Are you sure?' }

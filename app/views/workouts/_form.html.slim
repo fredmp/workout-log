@@ -1,0 +1,6 @@
+= simple_form_for @workout, html: { class: 'form-horizontal' } do |f|
+  = f.error_notification
+  = f.input :date
+  = f.input :duration
+  = f.input :comments
+  = f.button :submit

@@ -1,0 +1,8 @@
+= simple_form_for [@workout, @workout.workout_exercises.build], html: { class: 'form-horizontal' } do |f|
+  = f.error_notification
+  = f.collection_select :exercise_id, @exercises, :id, :name, { prompt: 'Choose an exercise' }, class: 'dropdown-toggle'
+  = f.input :sets
+  = f.input :reps
+  = f.input :weight
+  = f.input :duration
+  = f.button :submit
