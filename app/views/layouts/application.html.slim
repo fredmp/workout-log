@@ -8,5 +8,7 @@ html
   body
     - flash.each do |key, message|
       = content_tag(:div, message, class: 'alert')
+    = link_to 'Routines', routines_path
+    = link_to 'Exercises', exercises_path
     .container
       == yield

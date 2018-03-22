@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exercise: one
+  sets: 1
+  reps: 1
+  weight: 9.99
+  duration: 1
+
+two:
+  exercise: two
+  sets: 1
+  reps: 1
+  weight: 9.99
+  duration: 1

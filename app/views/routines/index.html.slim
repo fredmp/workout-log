@@ -1,0 +1,16 @@
+table
+  thead
+    tr
+      th Name
+      th Description
+      th Edit
+      th Delete
+  tbody
+    - @routines.each do |routine|
+      tr
+        td = link_to routine.name, routine_path(routine)
+        td = routine.description
+        td = link_to 'Edit', edit_routine_path(routine)
+        td = link_to 'Delete', routine_path(routine), method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'New', new_routine_path

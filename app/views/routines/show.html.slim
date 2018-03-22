@@ -1,0 +1,9 @@
+h1 = @routine.name
+p = @routine.description
+br
+= render 'routine_exercises/form'
+= render @routine.routine_exercises
+br
+= link_to 'Back', routines_path
+= link_to 'Edit', edit_routine_path(@routine)
+= link_to 'Delete', routine_path(@routine), method: :delete, data: { confirm: 'Are you sure?' }
