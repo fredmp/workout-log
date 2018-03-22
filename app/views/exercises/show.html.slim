@@ -1,0 +1,6 @@
+h1 = @exercise.name
+p = @exercise.description
+br
+= link_to 'Back', exercises_path
+= link_to 'Edit', edit_exercise_path(@exercise)
+= link_to 'Delete', exercise_path(@exercise), method: :delete, data: { confirm: 'Are you sure?' }
