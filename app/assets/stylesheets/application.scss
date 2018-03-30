@@ -21,7 +21,7 @@ footer {
   bottom: 0;
   height: 80px;
   width: 100%;
-  background-color: #0B4F6C;
+  background-color: $bg-dark;
   color: $light;
   a {
     text-decoration: none;
@@ -61,8 +61,19 @@ th.action, td.action {
   text-align: center;
 }
 
+.alert {
+  margin-bottom: 0;
+  color: $success;
+}
+
 .bg-dark {
-  background-color: #0B4F6C !important;
+  background-color: $bg-dark !important;
+}
+
+.has-error {
+  label, span {
+    color: $danger;
+  }
 }
 
 .action-links {
@@ -92,6 +103,9 @@ th.action, td.action {
 
 .col-md-auto {
   margin: 10px auto;
+  p {
+    text-align: center;
+  }
 }
 
 .feedback-message {
