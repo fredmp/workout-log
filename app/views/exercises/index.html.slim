@@ -1,16 +1,20 @@
-table
+h1.title Exercises
+
+= link_to 'New Exercise', new_exercise_path, class: 'btn btn-primary btn-main-action'
+
+table.table.table-hover
   thead
     tr
       th Name
-      th Description
-      th Edit
-      th Delete
+      th.large Description
+      th.action Edit
+      th.action Delete
   tbody
     - @exercises.each do |exercise|
       tr
-        td = link_to exercise.name, exercise_path(exercise)
-        td = exercise.description
-        td = link_to 'Edit', edit_exercise_path(exercise)
-        td = link_to 'Delete', exercise_path(exercise), method: :delete, data: { confirm: 'Are you sure?' }
-
-= link_to 'New', new_exercise_path
+        td.main = link_to exercise.name, exercise_path(exercise)
+        td.large = exercise.description
+        td.action = link_to edit_exercise_path(exercise) do
+          = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
+        td.action = link_to exercise_path(exercise), method: :delete, data: { confirm: 'Are you sure?' } do
+          = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

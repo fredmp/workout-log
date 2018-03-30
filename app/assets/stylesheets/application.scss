@@ -1,1 +1,145 @@
+@import "custom";
 @import "bootstrap";
+
+html {
+  height: 100%;
+}
+
+body {
+  padding-top: 54px;
+  height: 100%;
+  background-color: $light;
+  color: $dark;
+}
+
+table {
+  width: 80%;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  background-color: #0B4F6C;
+  color: $light;
+  a {
+    text-decoration: none;
+    color: inherit;
+    :visited {
+      color: inherit;
+    }
+  }
+  div.main-area {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    display: block;
+    text-align: center;
+    div {
+      margin: 0;
+      padding: 0;
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+td.main {
+  a {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    color: inherit;
+    :visited {
+      color: inherit;
+    }
+  }
+}
+
+th.action, td.action {
+  text-align: center;
+}
+
+.bg-dark {
+  background-color: #0B4F6C !important;
+}
+
+.action-links {
+  text-align: center;
+  a {
+    margin: auto 20px;
+  }
+}
+
+.btn-main-action {
+  float: right;
+  margin: auto;
+  display: block;
+  max-width: 50%;
+  margin-bottom: 20px;
+}
+
+.row {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  width: 100%;
+}
+
+.col-md-auto {
+  margin: 10px auto;
+}
+
+.feedback-message {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.main-content {
+  text-align: justify;
+  display: block;
+  margin: auto;
+  min-width: 350px;
+}
+
+@media (max-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+  table {
+    width: 100%;
+  }
+  th.large, td.large {
+    display: none;
+  }
+  th.action, td.action {
+    text-align: center;
+    min-width: 15px;
+    max-width: 20px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  footer {
+    height: 50px;
+    div {
+      font-size: 0.6rem;
+    }
+  }
+  .row {
+    margin-top: 5px;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+  }
+  .btn-main-action {
+    float: none;
+  }
+}

@@ -2,14 +2,32 @@ doctype html
 html
   head
     title Workout Log
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    - flash.each do |key, message|
-      = content_tag(:div, message, class: 'alert')
-    = link_to 'Workouts', workouts_path
-    = link_to 'Routines', routines_path
-    = link_to 'Exercises', exercises_path
-    .container
-      == yield
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+      div.container
+        a.navbar-brand href="/" Workout App
+        button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+          span.navbar-toggler-icon
+        div.collapse.navbar-collapse id="navbarResponsive"
+          ul.navbar-nav.ml-auto
+            li.nav-item.active
+              a.nav-link href="#" Workouts
+            li.nav-item
+              a.nav-link href="#" Routines
+            li.nav-item
+              a.nav-link href="#" Exercises
+            li.nav-item
+              a.nav-link href="#" Stats
+    div.content
+      div.row.feedback-message style=('display: none' if flash.empty?)
+        div.col-md-auto
+          - flash.each do |key, message|
+            = content_tag(:div, message, class: 'alert')
+      div.row.container
+        div.col-md-auto
+          == yield
+    = render 'layouts/footer'

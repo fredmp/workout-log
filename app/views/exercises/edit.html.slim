@@ -1,4 +1,5 @@
-h1 Edit Exercise
+h1.title Edit Exercise
 = render 'form'
-br
-= link_to 'Back', exercises_path
+div.action-links
+  = link_to exercises_path do
+    = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))
