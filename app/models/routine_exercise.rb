@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: routine_exercises
+#
+#  id          :integer          not null, primary key
+#  exercise_id :integer
+#  routine_id  :integer
+#  sets        :integer
+#  reps        :integer
+#  weight      :decimal(, )
+#  duration    :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_routine_exercises_on_exercise_id  (exercise_id)
+#  index_routine_exercises_on_routine_id   (routine_id)
+#
+
 class RoutineExercise < ApplicationRecord
   belongs_to :routine
   belongs_to :exercise
