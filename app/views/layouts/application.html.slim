@@ -15,11 +15,11 @@ html
             span.navbar-toggler-icon
           div.collapse.navbar-collapse id="navbarResponsive"
             ul.navbar-nav.ml-auto
-              li.nav-item.active
+              li class=('nav-item' + (controller_name == 'workouts' ? ' active' : ''))
                 = link_to 'Workouts', workouts_path, class: 'nav-link'
-              li.nav-item
+              li class=('nav-item' + (controller_name == 'routines' ? ' active' : ''))
                 = link_to 'Routines', routines_path, class: 'nav-link'
-              li.nav-item
+              li class=('nav-item' + (controller_name == 'exercises' ? ' active' : ''))
                 = link_to 'Exercises', exercises_path, class: 'nav-link'
               li.nav-item
                 a.nav-link href="#" Stats
