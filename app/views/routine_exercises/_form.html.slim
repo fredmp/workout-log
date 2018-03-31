@@ -1,8 +1,9 @@
-= simple_form_for [@routine, @routine.routine_exercises.build], html: { class: 'form-horizontal' } do |f|
+= simple_form_for [@routine, @routine_exercise], html: { class: 'form-horizontal' } do |f|
   = f.error_notification
   = f.collection_select :exercise_id, @exercises, :id, :name, { prompt: 'Choose an exercise' }, class: 'dropdown-toggle'
   = f.input :sets
   = f.input :reps
   = f.input :weight
   = f.input :duration
-  = f.button :submit
+  = f.button :submit, "#{@routine_exercise.persisted? ? 'Update' : 'Add'} Exercise", class: 'btn btn-primary btn-main-action'
+  = link_to 'Remove', routine_routine_exercise_path(@routine, @routine_exercise), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-main-action btn-remove-routine-exercise' if @routine_exercise.persisted?

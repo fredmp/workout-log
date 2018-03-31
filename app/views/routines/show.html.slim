@@ -1,8 +1,34 @@
 h1.title = @routine.name
 p = @routine.description
-br
-= render 'routine_exercises/form'
-= render @routine.routine_exercises
+= link_to 'Add Exercise', new_routine_routine_exercise_path(@routine), class: 'btn btn-primary btn-main-action'
+table.table.table-hover.table-bordered
+  thead
+    tr.web-view
+      th.main Name
+      th Sets
+      th Reps
+      th Weight
+      th Duration
+      th.action Edit
+      th.action Delete
+    tr.mobile-view
+      th.main Name
+      th.sets S
+      th.reps R
+      th.weight W
+      th.duration D
+  tbody
+    - @routine.routine_exercises.each do |routine_exercise|
+      tr
+        td.main = link_to routine_exercise.exercise.name, edit_routine_routine_exercise_path(@routine, routine_exercise)
+        td.sets = routine_exercise.sets
+        td.reps = routine_exercise.reps
+        td.weight = routine_exercise.weight
+        td.duration = routine_exercise.duration
+        td.action.web-view = link_to edit_routine_routine_exercise_path(@routine, routine_exercise) do
+          = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
+        td.action.web-view = link_to routine_routine_exercise_path(@routine, routine_exercise), method: :delete, data: { confirm: 'Are you sure?' } do
+          = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
 br
 div.action-links
   = link_to routines_path do

@@ -14,6 +14,15 @@ table {
   width: 80%;
 }
 
+form {
+  select {
+    border: 1px solid $secondary;
+    width: 100%;
+    padding: 3px 0 3px 0;
+    margin-bottom: 15px;
+  }
+}
+
 footer {
   padding-top: 25px;
   padding-bottom: 25px;
@@ -73,6 +82,14 @@ th.action, td.action {
   }
 }
 
+tr.mobile-view {
+  display: none !important;
+}
+
+tr.web-view {
+  display: table-row !important;
+}
+
 .action-links {
   text-align: center;
   a {
@@ -125,6 +142,9 @@ th.action, td.action {
 @media (max-width: 992px) {
   table {
     width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+    font-size: 0.85rem;
   }
   th.large, td.large {
     display: none;
@@ -136,12 +156,43 @@ th.action, td.action {
     padding-left: 0;
     padding-right: 0;
   }
+  td, th {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .sets, .reps, .weight, .duration {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .sets, .reps {
+    width: 40px;
+    min-width: 40px;
+  }
+  .weight, .duration {
+    width: 55px;
+    min-width: 55px;
+  }
+  th.main, td.main {
+    text-align: left;
+  }
   footer {
     padding-top: 15px;
     padding-bottom: 20px;
     div {
       font-size: 0.7rem;
     }
+  }
+  tr.mobile-view {
+    display: table-row !important;
+  }
+  tr.web-view, td.action.web-view {
+    display: none !important;
+  }
+  .feedback-message > div, .feedback-message > div > .alert {
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
   .content {
     margin-bottom: 100px;
@@ -154,5 +205,8 @@ th.action, td.action {
   }
   .btn-main-action {
     float: none;
+  }
+  .btn-remove-routine-exercise {
+    width: 144px;
   }
 }

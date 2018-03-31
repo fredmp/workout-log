@@ -1,0 +1,5 @@
+h1.title New Exercise (Routine)
+= render 'form'
+div.action-links
+  = link_to routine_path(@routine) do
+    = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))

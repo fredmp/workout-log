@@ -1,20 +1,43 @@
 class RoutineExercisesController < ApplicationController
 
   before_action :set_routine
-  before_action :set_routine_exercise, only: [:destroy]
+  before_action :set_routine_exercise, only: [:edit, :update, :destroy]
+  before_action :set_exercises, only: [:new, :edit]
+
+  def new
+    @routine_exercise = @routine.routine_exercises.build
+  end
+
+  def edit
+  end
 
   def create
     @routine_exercise = @routine.routine_exercises.build(routine_exercise_params)
-    @routine_exercise.save
-    redirect_to @routine, notice: 'Exercise created successfully'
+    if @routine_exercise.save
+      redirect_to @routine, notice: 'Exercise created successfully'
+    else
+      render :new
+    end
   end
-  
+
+  def update
+    if @routine_exercise.update(routine_exercise_params)
+      redirect_to @routine, notice: 'Exercise updated successfully'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @routine_exercise.destroy
     redirect_to @routine, notice: 'Exercise removed successfully'
   end
 
   private
+
+  def set_exercises
+    @exercises = Exercise.all.order(:name)
+  end
 
   def set_routine
     @routine = Routine.find(params[:routine_id])
