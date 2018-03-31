@@ -1,5 +1,14 @@
-@import "custom";
-@import "bootstrap";
+@import 'custom';
+@import 'fonts';
+@import 'bootstrap';
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+  text-rendering: optimizeLegibility;
+}
 
 table {
   width: 80%;
@@ -131,7 +140,7 @@ th.action, td.action {
     padding-top: 15px;
     padding-bottom: 20px;
     div {
-      font-size: 0.6rem;
+      font-size: 0.7rem;
     }
   }
   .content {
