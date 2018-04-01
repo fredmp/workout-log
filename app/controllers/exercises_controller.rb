@@ -20,7 +20,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     if @exercise.save
-      redirect_to @exercise, notice: 'Exercise created successfully'
+      redirect_to exercises_path, notice: 'Exercise created successfully'
     else
       render :new
     end
@@ -28,7 +28,7 @@ class ExercisesController < ApplicationController
 
   def update
     if @exercise.update(exercise_params)
-      redirect_to @exercise, notice: 'Exercise updated successfully'
+      redirect_to exercises_path, notice: 'Exercise updated successfully'
     else
       render :edit
     end

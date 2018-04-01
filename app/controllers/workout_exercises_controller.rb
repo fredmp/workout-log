@@ -1,20 +1,43 @@
 class WorkoutExercisesController < ApplicationController
 
   before_action :set_workout
-  before_action :set_workout_exercise, only: [:destroy]
+  before_action :set_workout_exercise, only: [:edit, :update, :destroy]
+  before_action :set_exercises, only: [:new, :edit]
+
+  def new
+    @workout_exercise = @workout.workout_exercises.build
+  end
+
+  def edit
+  end
 
   def create
     @workout_exercise = @workout.workout_exercises.build(workout_exercise_params)
-    @workout_exercise.save
-    redirect_to @workout, notice: 'Exercise created successfully'
+    if @workout_exercise.save
+      redirect_to @workout, notice: 'Exercise created successfully'
+    else
+      render :new
+    end
   end
-  
+
+  def update
+    if @workout_exercise.update(workout_exercise_params)
+      redirect_to @workout, notice: 'Exercise updated successfully'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @workout_exercise.destroy
     redirect_to @workout, notice: 'Exercise removed successfully'
   end
 
   private
+
+  def set_exercises
+    @exercises = Exercise.all.order(:name)
+  end
 
   def set_workout
     @workout = Workout.find(params[:workout_id])
