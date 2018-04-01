@@ -12,4 +12,22 @@
 
 class Workout < ApplicationRecord
   has_many :workout_exercises, dependent: :destroy
+
+  def build_from_routine(routine)
+    return unless routine
+    routine.routine_exercises.each do |routine_exercise|
+      self.workout_exercises.build(
+        exercise: routine_exercise.exercise,
+        sets: routine_exercise.sets,
+        reps: routine_exercise.reps,
+        weight: routine_exercise.weight,
+        duration: routine_exercise.duration,
+      )
+    end
+  end
+
+  def to_s
+    # date.strftime('%F - %H:%M')
+    date.strftime('%a - %b %d, %Y - %H:%M')
+  end
 end

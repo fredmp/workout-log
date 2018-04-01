@@ -161,8 +161,6 @@ tr.web-view {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  .sets, .reps, .weight, .duration {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
@@ -171,11 +169,26 @@ tr.web-view {
     min-width: 40px;
   }
   .weight, .duration {
-    width: 55px;
-    min-width: 55px;
+    width: 60px;
+    min-width: 60px;
+  }
+  .comments {
+    padding-left: 8px !important;
+    text-align: left;
+  }
+  .title.date {
+    font-size: 1.5rem;
+  }
+  td.main.center {
+    text-align: center;
+  }
+  td.date, th.date {
+    width: 175px;
+    min-width: 175px;
   }
   th.main, td.main {
     text-align: left;
+    padding-left: 4px !important;
   }
   footer {
     padding-top: 15px;

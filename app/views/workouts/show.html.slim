@@ -1,10 +1,42 @@
-h1 = @workout.date
-p = @workout.duration
+h1.title.date = @workout
+p
+  ' Duration:
+  = @workout.duration
 p = @workout.comments
+= link_to 'Add Exercise', new_workout_workout_exercise_path(@workout), class: 'btn btn-primary btn-main-action'
+table.table.table-hover.table-bordered
+  thead
+    tr.web-view
+      th.main Name
+      th Sets
+      th Reps
+      th Weight
+      th Duration
+      th.action Edit
+      th.action Delete
+    tr.mobile-view
+      th.main Name
+      th.sets S
+      th.reps R
+      th.weight W
+      th.duration D
+  tbody
+    - @workout.workout_exercises.each do |workout_exercise|
+      tr
+        td.main = link_to workout_exercise.exercise.name, edit_workout_workout_exercise_path(@workout, workout_exercise)
+        td.sets = workout_exercise.sets
+        td.reps = workout_exercise.reps
+        td.weight = workout_exercise.weight
+        td.duration = workout_exercise.duration
+        td.action.web-view = link_to edit_workout_workout_exercise_path(@workout, workout_exercise) do
+          = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
+        td.action.web-view = link_to workout_workout_exercise_path(@workout, workout_exercise), method: :delete, data: { confirm: 'Are you sure?' } do
+          = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
 br
-= render 'workout_exercises/form'
-= render @workout.workout_exercises
-br
-= link_to 'Back', workouts_path
-= link_to 'Edit', edit_workout_path(@workout)
-= link_to 'Delete', workout_path(@workout), method: :delete, data: { confirm: 'Are you sure?' }
+div.action-links
+  = link_to workouts_path do
+    = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))
+  = link_to edit_workout_path(@workout) do
+    = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
+  = link_to workout_path(@workout), method: :delete, data: { confirm: 'Are you sure?' } do
+    = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
