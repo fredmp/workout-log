@@ -1,14 +1,14 @@
 h1.title = @routine.name
 p = @routine.description
-= link_to 'Add Exercise', new_routine_routine_exercise_path(@routine), class: 'btn btn-primary btn-main-action'
+= link_to 'Add Exercise', new_routine_routine_exercise_path(@routine), class: 'btn btn-primary btn-main-action new-resource'
 table.table.table-hover.table-bordered
   thead
     tr.web-view
       th.main Name
-      th Sets
-      th Reps
-      th Weight
-      th Duration
+      th.sets Sets
+      th.reps Reps
+      th.weight Weight
+      th.duration Duration
       th.action Edit
       th.action Delete
     tr.mobile-view

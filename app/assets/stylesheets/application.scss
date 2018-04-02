@@ -9,11 +9,9 @@ body {
   line-height: 20px;
   text-rendering: optimizeLegibility;
 }
-
 table {
   width: 80%;
 }
-
 form {
   select {
     border: 1px solid $secondary;
@@ -22,7 +20,6 @@ form {
     margin-bottom: 15px;
   }
 }
-
 footer {
   padding-top: 25px;
   padding-bottom: 25px;
@@ -50,7 +47,6 @@ footer {
     }
   }
 }
-
 td.main {
   a {
     text-decoration: none;
@@ -62,11 +58,9 @@ td.main {
     }
   }
 }
-
 th.action, td.action {
   text-align: center;
 }
-
 .alert, .notice {
   margin-bottom: 0;
 }
@@ -87,14 +81,6 @@ th.action, td.action {
   label, span {
     color: $danger;
   }
-}
-
-tr.mobile-view {
-  display: none !important;
-}
-
-tr.web-view {
-  display: table-row !important;
 }
 
 .action-links {
@@ -170,7 +156,80 @@ tr.web-view {
   }
 }
 
+.sets, .reps, .weight, .duration {
+  text-align: center;
+}
+
+.index {
+  padding: 0;
+  margin: 0;
+}
+
+// Web view
+@media (min-width: 992px) {
+  .web-view {
+    display: inherit !important;
+  }
+  .mobile-view {
+    display: none !important;
+  }
+  .col-md-auto {
+    margin-top: 50px;
+    width: 90%;
+  }
+  .btn-main-action {
+    margin-top: 30px;
+    float: none;
+  }
+  .btn-main-action.new-resource {
+    float: right;
+  }
+  nav {
+    height: 56px;
+  }
+  tr.web-view {
+    display: table-row !important;
+  }
+  td.web-view {
+    display: table-cell !important;
+  }
+  table {
+    min-width: 60%;
+    max-width: 80%;
+  }
+  input.numeric {
+    max-width: 100px;
+  }
+  input.string, input.password, select {
+    max-width: 50%;
+  }
+  h1, h2 {
+    text-align: center;
+  }
+  form.simple_form.new_user {
+    max-width: 50%;
+    margin: auto;
+    input {
+      max-width: 100%;
+    }
+  }
+  select#routine_id {
+    height: 32px;
+    margin-bottom: 20px;
+  }
+}
+
+// Mobile view
 @media (max-width: 992px) {
+  .web-view {
+    display: none !important;
+  }
+  .mobile-view {
+    display: inherit !important;
+  }
+  nav {
+    min-height: 56px;
+  }
   table {
     width: 100%;
     table-layout: fixed;
@@ -203,22 +262,7 @@ tr.web-view {
   }
   div.home-images > img {
     width: 100%;
-    padding-bottom: 10px;
-  }
-  .sets, .reps {
-    width: 40px;
-    min-width: 40px;
-  }
-  .weight, .duration {
-    width: 60px;
-    min-width: 60px;
-  }
-  .comments {
-    padding-left: 8px !important;
-    text-align: left;
-  }
-  .title.date {
-    font-size: 1.5rem;
+    // padding-bottom: 10px;
   }
   td.main.center {
     text-align: center;
@@ -241,8 +285,24 @@ tr.web-view {
   tr.mobile-view {
     display: table-row !important;
   }
-  tr.web-view, td.web-view {
-    display: none !important;
+  div.dashboard {
+    display: block;
+    margin-top: 100px;
+  }
+  .sets, .reps {
+    width: 40px;
+    min-width: 40px;
+  }
+  .weight, .duration {
+    width: 60px;
+    min-width: 60px;
+  }
+  .comments {
+    padding-left: 8px !important;
+    text-align: left;
+  }
+  .title.date {
+    font-size: 1.5rem;
   }
   .feedback-message > div, .feedback-message > div > .alert {
     margin-bottom: 0;

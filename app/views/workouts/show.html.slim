@@ -3,15 +3,15 @@ p
   ' Duration:
   = @workout.duration
 p = @workout.comments
-= link_to 'Add Exercise', new_workout_workout_exercise_path(@workout), class: 'btn btn-primary btn-main-action'
+= link_to 'Add Exercise', new_workout_workout_exercise_path(@workout), class: 'btn btn-primary btn-main-action new-resource'
 table.table.table-hover.table-bordered
   thead
     tr.web-view
-      th.main Name
-      th Sets
-      th Reps
-      th Weight
-      th Duration
+      th.main.left Name
+      th.sets Sets
+      th.reps Reps
+      th.weight Weight
+      th.duration Duration
       th.action Edit
       th.action Delete
     tr.mobile-view
@@ -23,7 +23,7 @@ table.table.table-hover.table-bordered
   tbody
     - @workout.workout_exercises.each do |workout_exercise|
       tr
-        td.main = link_to workout_exercise.exercise.name, edit_workout_workout_exercise_path(@workout, workout_exercise)
+        td.main.left = link_to workout_exercise.exercise.name, edit_workout_workout_exercise_path(@workout, workout_exercise)
         td.sets = workout_exercise.sets
         td.reps = workout_exercise.reps
         td.weight = workout_exercise.weight
