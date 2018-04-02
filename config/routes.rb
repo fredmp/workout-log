@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  # root 'home#index'
-  root 'exercises#index'
+  devise_for :users
+
+  authenticated :user do
+    root 'home#dashboard', as: :authenticated_root
+  end
+
+  root 'home#index'
+
+  get 'home/index'
+  get 'home/dashboard'
 
   resources :exercises
 

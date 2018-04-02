@@ -139,6 +139,30 @@ tr.web-view {
   min-width: 350px;
 }
 
+.signup-link {
+  margin-left: 15px;
+}
+
+.signup-link, .login-link {
+  text-decoration: none;
+  color: $light;
+  :visited {
+    color: $light;
+  }
+}
+
+.navbar-brand {
+  color: $light;
+}
+
+.devise-links {
+  text-align: center;
+  a {
+    margin-top: 10px;
+    display: inline-block;
+  }
+}
+
 @media (max-width: 992px) {
   table {
     width: 100%;
