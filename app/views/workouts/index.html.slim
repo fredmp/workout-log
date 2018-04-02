@@ -11,16 +11,16 @@ table.table.table-hover
       th.action Edit
       th.action Delete
     tr.mobile-view
-      th.date Date
-      th.duration Duration
-      th.comments Comments
+      th.main.date Date
+      th.action
+      th.action
   tbody
     - @workouts.each do |workout|
       tr
-        td.main.center.date = link_to workout, workout_path(workout)
-        td.duration = workout.duration
-        td.comments = workout.comments
-        td.action.web-view = link_to edit_workout_path(workout) do
+        td.main.date = link_to workout, workout_path(workout)
+        td.duration.web-view = workout.duration
+        td.comments.web-view = workout.comments
+        td.action = link_to edit_workout_path(workout) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-        td.action.web-view = link_to workout_path(workout), method: :delete, data: { confirm: 'Are you sure?' } do
+        td.action = link_to workout_path(workout), method: :delete, data: { confirm: 'Are you sure?' } do
           = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

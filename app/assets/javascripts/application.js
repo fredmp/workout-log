@@ -16,3 +16,12 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function () {
+  $('td').click(function (e) {
+    var target = $(e.target);
+    if ($('tr.mobile-view:visible').length > 0) {
+      Turbolinks.visit($(e.target).siblings('td.main').find('a').attr('href'));
+    }
+  });
+});

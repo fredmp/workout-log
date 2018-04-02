@@ -4,16 +4,20 @@ h1.title Exercises
 
 table.table.table-hover
   thead
-    tr
+    tr.web-view
       th Name
       th.large Description
       th.action Edit
       th.action Delete
+    tr.mobile-view
+      th.main Name
+      th.action
+      th.action
   tbody
     - @exercises.each do |exercise|
       tr
         td.main = link_to exercise.name, exercise_path(exercise)
-        td.large = exercise.description
+        td.large.web-view = exercise.description
         td.action = link_to edit_exercise_path(exercise) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
         td.action = link_to exercise_path(exercise), method: :delete, data: { confirm: 'Are you sure?' } do

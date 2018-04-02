@@ -4,16 +4,20 @@ h1.title Routines
 
 table.table.table-hover
   thead
-    tr
+    tr.web-view
       th Name
       th.large Description
       th.action Edit
       th.action Delete
+    tr.mobile-view
+      th.main Name
+      th.action
+      th.action
   tbody
     - @routines.each do |routine|
       tr
         td.main = link_to routine.name, routine_path(routine)
-        td.large = routine.description
+        td.large.web-view = routine.description
         td.action = link_to edit_routine_path(routine) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
         td.action = link_to routine_path(routine), method: :delete, data: { confirm: 'Are you sure?' } do

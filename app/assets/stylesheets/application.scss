@@ -151,10 +151,16 @@ tr.web-view {
   }
   th.action, td.action {
     text-align: center;
-    min-width: 15px;
-    max-width: 20px;
-    padding-left: 0;
-    padding-right: 0;
+    width: 35px;
+    min-width: 35px;
+    max-width: 40px;
+  }
+  td {
+    display: table-cell;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    margin: auto;
+    vertical-align: middle;
   }
   td, th {
     text-align: center;
@@ -200,7 +206,7 @@ tr.web-view {
   tr.mobile-view {
     display: table-row !important;
   }
-  tr.web-view, td.action.web-view {
+  tr.web-view, td.web-view {
     display: none !important;
   }
   .feedback-message > div, .feedback-message > div > .alert {
