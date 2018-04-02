@@ -4,9 +4,9 @@ class ExercisesController < ApplicationController
 
   def index
     @exercises = if params[:category_id]
-      Exercise.where(category_id: params[:category_id])
+      current_user.exercises.where(category_id: params[:category_id])
     else
-      Exercise.all
+      current_user.exercises.all
     end.order(:name)
   end
 
@@ -14,11 +14,11 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    @exercise = Exercise.new
+    @exercise = current_user.exercises.build
   end
 
   def create
-    @exercise = Exercise.new(exercise_params)
+    @exercise = current_user.exercises.build(exercise_params)
     if @exercise.save
       redirect_to exercises_path, notice: 'Exercise created successfully'
     else
@@ -42,7 +42,7 @@ class ExercisesController < ApplicationController
   private
 
   def set_exercise
-    @exercise = Exercise.find(params[:id])
+    @exercise = current_user.exercises.find(params[:id])
   end
 
   def exercise_params

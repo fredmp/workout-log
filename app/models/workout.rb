@@ -8,9 +8,15 @@
 #  comments   :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
+#
+# Indexes
+#
+#  index_workouts_on_user_id  (user_id)
 #
 
 class Workout < ApplicationRecord
+  belongs_to :user
   has_many :workout_exercises, dependent: :destroy
 
   def build_from_routine(routine)

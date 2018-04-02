@@ -36,11 +36,11 @@ class RoutineExercisesController < ApplicationController
   private
 
   def set_exercises
-    @exercises = Exercise.all.order(:name)
+    @exercises = current_user.exercises.order(:name)
   end
 
   def set_routine
-    @routine = Routine.find(params[:routine_id])
+    @routine = current_user.routines.find(params[:routine_id])
   end
 
   def set_routine_exercise

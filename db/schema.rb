@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402190914) do
+ActiveRecord::Schema.define(version: 20180402195129) do
 
   create_table "exercise_categories", force: :cascade do |t|
     t.string "name"
@@ -25,7 +25,9 @@ ActiveRecord::Schema.define(version: 20180402190914) do
     t.integer "exercise_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["exercise_category_id"], name: "index_exercises_on_exercise_category_id"
+    t.index ["user_id"], name: "index_exercises_on_user_id"
   end
 
   create_table "routine_exercises", force: :cascade do |t|
@@ -46,6 +48,8 @@ ActiveRecord::Schema.define(version: 20180402190914) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,6 +89,8 @@ ActiveRecord::Schema.define(version: 20180402190914) do
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
 end

@@ -34,7 +34,7 @@ html
         div.row.feedback-message style=('display: none' if flash.empty?)
           div.col-md-auto
             - flash.each do |key, message|
-              = content_tag(:div, message, class: 'alert')
+              = content_tag(:div, message, class: key)
         div.row.container
           div.col-md-auto
             == yield

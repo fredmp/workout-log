@@ -36,11 +36,11 @@ class WorkoutExercisesController < ApplicationController
   private
 
   def set_exercises
-    @exercises = Exercise.all.order(:name)
+    @exercises = current_user.exercises.order(:name)
   end
 
   def set_workout
-    @workout = Workout.find(params[:workout_id])
+    @workout = current_user.workouts.find(params[:workout_id])
   end
 
   def set_workout_exercise

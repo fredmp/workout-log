@@ -4,20 +4,20 @@ class WorkoutsController < ApplicationController
   before_action :set_exercises, only: [:show]
 
   def index
-    @workouts = Workout.all.order(date: :desc)
+    @workouts = current_user.workouts.order(date: :desc)
   end
 
   def show
   end
 
   def new
-    @routines = Routine.all.order(:name)
-    @workout = Workout.new(date: DateTime.current.change(sec: 0))
+    @routines = current_user.routines.order(:name)
+    @workout = current_user.workouts.build(date: DateTime.current.change(sec: 0))
   end
 
   def create
-    @workout = Workout.new(workout_params)
-    @workout.build_from_routine(Routine.find_by_id(params[:routine][:id])) if params[:routine]
+    @workout = current_user.workouts.build(workout_params)
+    @workout.build_from_routine(current_user.routines.find_by_id(params[:routine][:id])) if params[:routine]
     if @workout.save
       redirect_to workouts_path, notice: 'Workout created successfully'
     else
@@ -41,11 +41,11 @@ class WorkoutsController < ApplicationController
   private
 
   def set_workout
-    @workout = Workout.find(params[:id])
+    @workout = current_user.workouts.find(params[:id])
   end
 
   def set_exercises
-    @exercises = Exercise.all
+    @exercises = current_user.exercises.order(:name)
   end
 
   def workout_params

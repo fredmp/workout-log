@@ -4,18 +4,18 @@ class RoutinesController < ApplicationController
   before_action :set_exercises, only: [:show]
 
   def index
-    @routines = Routine.all.order(:name)
+    @routines = current_user.routines.order(:name)
   end
 
   def show
   end
 
   def new
-    @routine = Routine.new
+    @routine = current_user.routines.build
   end
 
   def create
-    @routine = Routine.new(routine_params)
+    @routine = current_user.routines.build(routine_params)
     if @routine.save
       redirect_to @routine, notice: 'Routine created successfully'
     else
@@ -39,11 +39,11 @@ class RoutinesController < ApplicationController
   private
 
   def set_routine
-    @routine = Routine.find(params[:id])
+    @routine = current_user.routines.find(params[:id])
   end
 
   def set_exercises
-    @exercises = Exercise.all
+    @exercises = current_user.exercises.order(:name)
   end
 
   def routine_params

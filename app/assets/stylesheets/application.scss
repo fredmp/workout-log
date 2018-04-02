@@ -67,8 +67,15 @@ th.action, td.action {
   text-align: center;
 }
 
-.alert {
+.alert, .notice {
   margin-bottom: 0;
+}
+
+.alert {
+  color: $danger;
+}
+
+.notice {
   color: $success;
 }
 
