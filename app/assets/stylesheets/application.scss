@@ -23,7 +23,6 @@ form {
     border: 1px solid $secondary;
     width: 100%;
     padding: 3px 0 3px 0;
-    margin-bottom: 15px;
   }
   .alert {
     margin-bottom: 15px;
@@ -89,32 +88,26 @@ th.action, td.action {
 .alert, .notice {
   margin-bottom: 0;
 }
-
 .alert {
   color: $danger;
 }
-
 .notice {
   color: $success;
 }
-
 .bg-dark {
   background-color: $bg-dark !important;
 }
-
 .has-error {
   label, span {
     color: $danger;
   }
 }
-
 .action-links {
   text-align: center;
   a {
     margin: auto 20px;
   }
 }
-
 .btn-main-action {
   float: right;
   margin: auto;
@@ -122,40 +115,33 @@ th.action, td.action {
   max-width: 50%;
   margin-bottom: 20px;
 }
-
 .row {
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
 }
-
 .col-md-auto {
   margin: 10px auto;
   p {
     text-align: center;
   }
 }
-
 .feedback-message {
   text-align: center;
 }
-
 .title {
   margin-bottom: 20px;
   text-align: center;
 }
-
 .main-content {
   text-align: justify;
   display: block;
   margin: auto;
   min-width: 350px;
 }
-
 .signup-link {
   margin-left: 15px;
 }
-
 .signup-link, .login-link {
   text-decoration: none;
   color: $light;
@@ -163,11 +149,9 @@ th.action, td.action {
     color: $light;
   }
 }
-
 .navbar-brand {
   color: $light;
 }
-
 .devise-links {
   text-align: center;
   a {
@@ -175,14 +159,18 @@ th.action, td.action {
     display: inline-block;
   }
 }
-
 .sets, .reps, .weight, .duration {
   text-align: center;
 }
-
 .index {
   padding: 0 !important;
   margin: 0 !important;
+}
+.btn-remove-exercise {
+  width: 144px;
+}
+.help-block {
+  margin-left: 10px;
 }
 
 // Web view
@@ -342,9 +330,6 @@ th.action, td.action {
   }
   .btn-main-action {
     float: none;
-  }
-  .btn-remove-exercise {
-    width: 144px;
   }
   div#wrap.index {
     background-color: $bg-dark;
