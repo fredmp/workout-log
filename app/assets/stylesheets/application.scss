@@ -82,9 +82,6 @@ td.main {
     }
   }
 }
-th.action, td.action {
-  text-align: center;
-}
 .alert, .notice {
   margin-bottom: 0;
 }
@@ -152,6 +149,22 @@ th.action, td.action {
 .navbar-brand {
   color: $light;
 }
+.nav-item {
+  a {
+    color: $color8 !important;
+  }
+  a:hover {
+    color: $color3 !important;
+  }
+}
+.navbar-nav > .active {
+  a {
+    color: $color3 !important;
+  }
+  a:hover {
+    color: $color8 !important;
+  }
+}
 .devise-links {
   text-align: center;
   a {
@@ -200,6 +213,12 @@ th.action, td.action {
   }
   td.web-view {
     display: table-cell !important;
+  }
+  th.action, td.action {
+    text-align: center;
+    width: 70px;
+    min-width: 70px;
+    max-width: 70px;
   }
   table {
     min-width: 60%;
