@@ -2,7 +2,7 @@ class RoutineExercisesController < ApplicationController
 
   before_action :set_routine
   before_action :set_routine_exercise, only: [:edit, :update, :destroy]
-  before_action :set_exercises, only: [:new, :edit]
+  before_action :set_exercises, only: [:new, :edit, :create, :update]
 
   def new
     @routine_exercise = @routine.routine_exercises.build

@@ -17,4 +17,6 @@
 class Routine < ApplicationRecord
   belongs_to :user
   has_many :routine_exercises, dependent: :destroy
+
+  validates :name, presence: true
 end

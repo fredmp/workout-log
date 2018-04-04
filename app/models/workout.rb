@@ -19,6 +19,8 @@ class Workout < ApplicationRecord
   belongs_to :user
   has_many :workout_exercises, dependent: :destroy
 
+  validates :date, presence: true
+
   def build_from_routine(routine)
     return unless routine
     routine.routine_exercises.each do |routine_exercise|
@@ -33,7 +35,6 @@ class Workout < ApplicationRecord
   end
 
   def to_s
-    # date.strftime('%F - %H:%M')
     date.strftime('%a - %b %d, %Y - %H:%M')
   end
 end

@@ -2,7 +2,7 @@ class WorkoutExercisesController < ApplicationController
 
   before_action :set_workout
   before_action :set_workout_exercise, only: [:edit, :update, :destroy]
-  before_action :set_exercises, only: [:new, :edit]
+  before_action :set_exercises, only: [:new, :edit, :create, :update]
 
   def new
     @workout_exercise = @workout.workout_exercises.build
