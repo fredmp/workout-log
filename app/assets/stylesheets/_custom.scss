@@ -1,9 +1,18 @@
-$primary: #30ADF2 !default;
-$secondary: #657580 !default;
-$success: #4EB26F !default;
-$info: #E7DFC6 !default;
-$warning: #F6BD60 !default;
-$danger: #EA3C53 !default;
-$light: #FCF9F8 !default;
-$dark: #2C4251 !default;
-$bg-dark: #0B4F6C !default;
+$color1: #26547c;
+$color2: #7A7978;
+$color3: #30ADF2;
+$color4: #06d6a0;
+$color5: #ef476f;
+$color6: #EF767A;
+$color7: #FFD275;
+$color8: #fcfcfc;
+
+$primary: $color3 !default;
+$secondary: $color1 !default;
+$success: $color4 !default;
+$info: $color7 !default;
+$warning: $color6 !default;
+$danger: $color5 !default;
+$light: $color8 !default;
+$dark: $color2 !default;
+$bg-dark: $color1 !default;

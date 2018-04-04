@@ -7,31 +7,31 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    section
-      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
-        div.container
-          a.navbar-brand href="/" Workout App
-          - if user_signed_in?
-            button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
-              span.navbar-toggler-icon
-            div.collapse.navbar-collapse id="navbarResponsive"
-              ul.navbar-nav.ml-auto
-                li class=('nav-item' + (controller_name == 'workouts' ? ' active' : ''))
-                  = link_to 'Workouts', workouts_path, class: 'nav-link'
-                li class=('nav-item' + (controller_name == 'routines' ? ' active' : ''))
-                  = link_to 'Routines', routines_path, class: 'nav-link'
-                li class=('nav-item' + (controller_name == 'exercises' ? ' active' : ''))
-                  = link_to 'Exercises', exercises_path, class: 'nav-link'
-                li.nav-item
-                  a.nav-link href="#" Stats
-                li.nav-item
-                  = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link'
-          - else
-              div
-                = link_to 'Log In', new_user_session_path, class: 'login-link'
-                = link_to 'Sign Up', new_user_registration_path, class: 'signup-link'
-      div.content
-        - is_index = controller_name == 'home' && action_name == 'index'
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+      div.container
+        a.navbar-brand href="/" Workout App
+        - if user_signed_in?
+          button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+            span.navbar-toggler-icon
+          div.collapse.navbar-collapse id="navbarResponsive"
+            ul.navbar-nav.ml-auto
+              li class=('nav-item' + (controller_name == 'workouts' ? ' active' : ''))
+                = link_to 'Workouts', workouts_path, class: 'nav-link'
+              li class=('nav-item' + (controller_name == 'routines' ? ' active' : ''))
+                = link_to 'Routines', routines_path, class: 'nav-link'
+              li class=('nav-item' + (controller_name == 'exercises' ? ' active' : ''))
+                = link_to 'Exercises', exercises_path, class: 'nav-link'
+              li.nav-item
+                a.nav-link href="#" Stats
+              li.nav-item
+                = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link'
+        - else
+            div
+              = link_to 'Log In', new_user_session_path, class: 'login-link'
+              = link_to 'Sign Up', new_user_registration_path, class: 'signup-link'
+    - is_index = controller_name == 'home' && action_name == 'index'
+    div#wrap class=(is_index ? 'index' : '')
+      div#main.container.clear-top
         div.row.feedback-message style=('display: none' if flash.empty? || is_index)
           div.col-md-auto
             - flash.each do |key, message|
@@ -39,4 +39,38 @@ html
         div class=('row container' + (is_index ? ' index' : ''))
           div class=('col-md-auto' + (is_index ? ' index' : ''))
             == yield
-      = render 'layouts/footer'
+    = render 'layouts/footer'
+
+    / section
+    /   nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+    /     div.container
+    /       a.navbar-brand href="/" Workout App
+    /       - if user_signed_in?
+    /         button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+    /           span.navbar-toggler-icon
+    /         div.collapse.navbar-collapse id="navbarResponsive"
+    /           ul.navbar-nav.ml-auto
+    /             li class=('nav-item' + (controller_name == 'workouts' ? ' active' : ''))
+    /               = link_to 'Workouts', workouts_path, class: 'nav-link'
+    /             li class=('nav-item' + (controller_name == 'routines' ? ' active' : ''))
+    /               = link_to 'Routines', routines_path, class: 'nav-link'
+    /             li class=('nav-item' + (controller_name == 'exercises' ? ' active' : ''))
+    /               = link_to 'Exercises', exercises_path, class: 'nav-link'
+    /             li.nav-item
+    /               a.nav-link href="#" Stats
+    /             li.nav-item
+    /               = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link'
+    /       - else
+    /           div
+    /             = link_to 'Log In', new_user_session_path, class: 'login-link'
+    /             = link_to 'Sign Up', new_user_registration_path, class: 'signup-link'
+    /   div.content
+    /     - is_index = controller_name == 'home' && action_name == 'index'
+    /     div.row.feedback-message style=('display: none' if flash.empty? || is_index)
+    /       div.col-md-auto
+    /         - flash.each do |key, message|
+    /           = content_tag(:div, message, class: key)
+    /     div class=('row container' + (is_index ? ' index' : ''))
+    /       div class=('col-md-auto' + (is_index ? ' index' : ''))
+    /         == yield
+    /   = render 'layouts/footer'
