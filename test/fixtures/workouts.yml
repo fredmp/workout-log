@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  date: 2018-03-22 00:40:06
+today:
+  date: 2018-04-05 20:40:06
   duration: 1
-  comments: MyText
+  comments: Exercises performed today
+  user: user
 
-two:
-  date: 2018-03-22 00:40:06
+yesterday:
+  date: 2018-04-04 20:40:06
   duration: 1
-  comments: MyText
+  comments: Exercises performed yesterday
+  user: user

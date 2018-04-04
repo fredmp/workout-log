@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyText
+monday:
+  name: Monday
+  description: Exercises for monday
+  user: user
 
-two:
-  name: MyString
-  description: MyText
+tuesday:
+  name: Tuesday
+  description: Exercises for tuesday
+  user: user

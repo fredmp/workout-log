@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyText
-  exercise_category: one
+jump:
+  name: Jump Rope
+  description: Good for legs
+  exercise_category: aerobic
+  user: user
 
-two:
-  name: MyString
-  description: MyText
-  exercise_category: two
+bench:
+  name: Bench press
+  description: Good for chest
+  exercise_category: strength
+  user: user
