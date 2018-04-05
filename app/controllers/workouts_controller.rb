@@ -35,7 +35,7 @@ class WorkoutsController < ApplicationController
   
   def destroy
     @workout.destroy
-    redirect_to workouts_path
+    redirect_to workouts_path, notice: 'Workout removed successfully'
   end
 
   private

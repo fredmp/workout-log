@@ -2,4 +2,5 @@
 
 user:
   email: user@domain.com
+  encrypted_password: $2a$11$6J3mxPWUIhg0fWt3TKawFugUF9IFN8Ca7ulHbK.YO0G4d13TRsrOu #123456
   name: User
