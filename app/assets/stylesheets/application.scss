@@ -182,6 +182,10 @@ td.main {
 .btn-remove-exercise {
   width: 144px;
 }
+.btn-cancel-account {
+  width: 180px;
+  margin-top: 0 !important;
+}
 .help-block {
   margin-left: 10px;
 }
@@ -233,8 +237,8 @@ td.main {
   h1, h2 {
     text-align: center;
   }
-  form.simple_form.new_user {
-    max-width: 50%;
+  form.simple_form {
+    max-width: 60%;
     margin: auto;
     input {
       max-width: 100%;
