@@ -2,7 +2,7 @@
 lock '~> 3.10.1'
 
 set :application, 'workout'
-set :repo_url, 'ssh://deployer@cosmostecnologia.com.br/home/deployer/applications/workout/repo.git'
+set :repo_url, 'file:///home/deployer/applications/workout/repo.git'
 set :branch, 'master'
 
 set :rbenv_path, '/home/deployer/.rbenv'

@@ -13,5 +13,6 @@ test:
 
 production:
   <<: *default
+  database: workout
   username: <%= ENV['WORKOUT_DATABASE_USER'] %>
   password: <%= ENV['WORKOUT_DATABASE_PASS'] %>
