@@ -40,6 +40,8 @@ class ExercisesTest < ApplicationSystemTestCase
   end
 
   test 'delete' do
+    RoutineExercise.delete_all
+    WorkoutExercise.delete_all
     accept_alert do
       find("a[href='/exercises/#{@bench.id}'][data-method='delete']").click
     end

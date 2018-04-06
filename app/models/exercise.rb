@@ -15,6 +15,11 @@
 #  index_exercises_on_exercise_category_id  (exercise_category_id)
 #  index_exercises_on_user_id               (user_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (exercise_category_id => exercise_categories.id)
+#  fk_rails_...  (user_id => users.id)
+#
 
 class Exercise < ApplicationRecord
   belongs_to :user
