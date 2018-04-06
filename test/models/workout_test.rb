@@ -22,4 +22,15 @@ class WorkoutTest < ActiveSupport::TestCase
   test 'has_many_exercises' do
     assert_respond_to @workout, :workout_exercises
   end
+
+  test '#to_s' do
+    assert_equal @workout.date.strftime('%a - %b %d, %Y - %H:%M'), @workout.to_s
+  end
+
+  test '#build_from_routine' do
+    workout = Workout.new
+    workout.build_from_routine(routines(:monday))
+    assert_equal 1, workout.workout_exercises.size
+    assert_equal 'Jump Rope', workout.workout_exercises.first.exercise.name
+  end
 end
