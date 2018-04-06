@@ -10,18 +10,18 @@ gem 'pg', '~> 0.21'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
-# gem 'capistrano-rails', group: :development
 gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails', '~> 4.3'
 gem 'slim', '~> 3.0'
 gem 'devise', '~> 4.4'
 gem 'simple_form', '~> 3.5'
+gem 'figaro'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -36,4 +36,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano-rails', '~> 1.3', require: false
+  gem 'capistrano-rbenv', '~> 2.1'
+  gem 'capistrano-bundler', '~> 1.3'
+  gem 'capistrano3-puma'
 end

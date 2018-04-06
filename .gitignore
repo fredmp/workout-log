@@ -23,3 +23,8 @@
 .byebug_history
 
 .DS_Store
+
+public/system/images
+
+config/application.yml
+config/nginx.conf
