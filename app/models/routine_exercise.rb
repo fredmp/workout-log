@@ -38,8 +38,4 @@ class RoutineExercise < ApplicationRecord
       total > 0 ? total / sets.size : 0
     end
   end
-
-  def formatted_sets
-    sets.join(' | ')
-  end
 end

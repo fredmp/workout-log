@@ -4,8 +4,9 @@
     br
     = f.collection_select :exercise_id, @exercises, :id, :name, { prompt: 'Choose an exercise' }, class: 'dropdown-toggle'
   = f.input :sets
-  = f.input :reps
-  = f.input :weight
-  = f.input :duration
+    div.links
+      = link_to_add_association 'Add Set', f, :exercise_sets, partial: 'exercise_sets/fields', class: 'btn btn-info'
+      = f.simple_fields_for :exercise_sets do |set|
+        = render 'exercise_sets/fields', f: set
   = f.button :submit, "#{@workout_exercise.persisted? ? 'Update' : 'Add'} Exercise", class: 'btn btn-primary btn-main-action'
   = link_to 'Remove', workout_workout_exercise_path(@workout, @workout_exercise), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-main-action btn-remove-exercise' if @workout_exercise.persisted?

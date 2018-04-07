@@ -24,10 +24,19 @@ table.table.table-hover.table-bordered
     - @workout.workout_exercises.each do |workout_exercise|
       tr
         td.main.left = link_to workout_exercise.exercise.name, edit_workout_workout_exercise_path(@workout, workout_exercise)
-        td.sets = workout_exercise.sets
-        td.reps = workout_exercise.reps
-        td.weight = workout_exercise.weight
-        td.duration = workout_exercise.duration
+        td.mobile-view.sets = workout_exercise.sets.size
+        td.web-view.sets
+          - if workout_exercise.sets.any?
+            - total = workout_exercise.sets.size
+            ol
+              - workout_exercise.sets.order(created_at: :asc).each do |set|
+                li = set
+                - total = total - 1
+                - if total > 0
+                  hr
+        td.reps = workout_exercise.reps > 0 ? workout_exercise.reps : ''
+        td.weight = workout_exercise.weight > 0 ? workout_exercise.weight : ''
+        td.duration = workout_exercise.duration > 0 ? workout_exercise.duration : ''
         td.action.web-view = link_to edit_workout_workout_exercise_path(@workout, workout_exercise) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
         td.action.web-view = link_to workout_workout_exercise_path(@workout, workout_exercise), method: :delete, data: { confirm: 'Are you sure?' } do
