@@ -209,11 +209,9 @@ td.sets > ol {
   margin-bottom: 0;
   padding-bottom: 0;
 }
-div.workout_exercise_sets,
-div.routine_exercise_sets {
-  label {
-    display: none;
-  }
+label[for=routine_exercise_sets],
+label[for=workout_exercise_sets] {
+  display: none;
 }
 div.routine_exercise_exercise_sets_duration,
 div.workout_exercise_exercise_sets_duration {
@@ -381,17 +379,19 @@ a.add_fields {
     display: block;
     margin-top: 20px;
   }
-  div.nested-fields > .routine_exercise_exercise_sets_reps,
-  div.nested-fields > .routine_exercise_exercise_sets_weight,
-  div.nested-fields > .routine_exercise_exercise_sets_duration
-  div.nested-fields > .workout_exercise_exercise_sets_reps,
-  div.nested-fields > .workout_exercise_exercise_sets_weight,
-  div.nested-fields > .workout_exercise_exercise_sets_duration {
-    margin-bottom: 5px !important;
-    input {
-      width: 80px !important;
-      margin-left: 0px;
-      margin-right: 10px;
+  div.nested-fields {
+    .routine_exercise_exercise_sets_reps,
+    .routine_exercise_exercise_sets_weight,
+    .routine_exercise_exercise_sets_duration,
+    .workout_exercise_exercise_sets_reps,
+    .workout_exercise_exercise_sets_weight,
+    .workout_exercise_exercise_sets_duration {
+      margin-bottom: 5px !important;
+      input {
+        width: 80px !important;
+        margin-left: 0px;
+        margin-right: 10px;
+      }
     }
   }
   a.remove_fields {
