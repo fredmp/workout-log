@@ -9,3 +9,4 @@
   = f.input :duration
   = f.input :comments
   = f.button :submit, class: 'btn btn-primary btn-main-action'
+  = link_to 'Edit Exercises', workout_path(@workout), class: 'btn btn-primary btn-main-action btn-edit-exercises' if @workout.persisted?

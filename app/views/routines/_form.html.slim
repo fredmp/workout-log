@@ -3,3 +3,4 @@
   = f.input :name
   = f.input :description
   = f.button :submit, class: 'btn btn-primary btn-main-action'
+  = link_to 'Edit Exercises', routine_path(@routine), class: 'btn btn-primary btn-main-action btn-edit-exercises' if @routine.persisted?
