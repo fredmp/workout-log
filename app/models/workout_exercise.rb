@@ -5,10 +5,6 @@
 #  id          :integer          not null, primary key
 #  exercise_id :integer
 #  workout_id  :integer
-#  sets        :integer
-#  reps        :integer
-#  weight      :decimal(, )
-#  duration    :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -26,4 +22,8 @@
 class WorkoutExercise < ApplicationRecord
   belongs_to :exercise
   belongs_to :workout
+
+  has_many :exercise_sets, as: :setable, dependent: :destroy
+
+  alias_attribute :sets, :exercise_sets
 end

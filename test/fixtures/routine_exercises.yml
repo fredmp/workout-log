@@ -2,13 +2,8 @@
 
 one:
   exercise: jump
-  sets: 5
-  reps: 20
   routine: monday
 
 two:
   exercise: bench
-  sets: 4
-  reps: 10
-  weight: 40
   routine: tuesday

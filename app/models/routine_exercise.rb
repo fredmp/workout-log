@@ -5,10 +5,6 @@
 #  id          :integer          not null, primary key
 #  exercise_id :integer
 #  routine_id  :integer
-#  sets        :integer
-#  reps        :integer
-#  weight      :decimal(, )
-#  duration    :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -26,4 +22,17 @@
 class RoutineExercise < ApplicationRecord
   belongs_to :routine
   belongs_to :exercise
+
+  has_many :exercise_sets, as: :setable, dependent: :destroy
+
+  alias_attribute :sets, :exercise_sets
+
+  %w(reps weight duration).each do |name|
+    define_method(name.to_sym) do
+      return 0 if sets.empty?
+      sets.reduce(0) do |accumulator, current|
+        accumulator + current.send(name.to_sym)
+      end / sets.size
+    end
+  end
 end

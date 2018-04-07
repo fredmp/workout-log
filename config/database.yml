@@ -9,7 +9,9 @@ development:
 
 test:
   <<: *default
-  database: workout_test
+  adapter: sqlite3
+  timeout: 5000
+  database: db/test.sqlite3
 
 production:
   <<: *default

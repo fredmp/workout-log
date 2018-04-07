@@ -28,4 +28,20 @@ class RoutineExerciseTest < ActiveSupport::TestCase
   test 'belongs_to_exercise' do
     assert_respond_to @routine_exercise, :exercise
   end
+
+  test 'has_many_sets' do
+    assert_respond_to @routine_exercise, :sets
+  end
+
+  test 'respond_to_reps' do
+    assert_respond_to @routine_exercise, :reps
+  end
+
+  test 'respond_to_weight' do
+    assert_respond_to @routine_exercise, :weight
+  end
+
+  test 'respond_to_duration' do
+    assert_respond_to @routine_exercise, :duration
+  end
 end

@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402195129) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20180407150448) do
 
   create_table "exercise_categories", force: :cascade do |t|
     t.string "name"
@@ -22,24 +19,31 @@ ActiveRecord::Schema.define(version: 20180402195129) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "exercise_sets", force: :cascade do |t|
+    t.string "setable_type"
+    t.integer "setable_id"
+    t.integer "reps"
+    t.decimal "weight"
+    t.integer "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["setable_type", "setable_id"], name: "index_exercise_sets_on_setable_type_and_setable_id"
+  end
+
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.bigint "exercise_category_id"
+    t.integer "exercise_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["exercise_category_id"], name: "index_exercises_on_exercise_category_id"
     t.index ["user_id"], name: "index_exercises_on_user_id"
   end
 
   create_table "routine_exercises", force: :cascade do |t|
-    t.bigint "exercise_id"
-    t.bigint "routine_id"
-    t.integer "sets"
-    t.integer "reps"
-    t.decimal "weight"
-    t.integer "duration"
+    t.integer "exercise_id"
+    t.integer "routine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exercise_id"], name: "index_routine_exercises_on_exercise_id"
@@ -51,7 +55,7 @@ ActiveRecord::Schema.define(version: 20180402195129) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
@@ -74,12 +78,8 @@ ActiveRecord::Schema.define(version: 20180402195129) do
   end
 
   create_table "workout_exercises", force: :cascade do |t|
-    t.bigint "exercise_id"
-    t.bigint "workout_id"
-    t.integer "sets"
-    t.integer "reps"
-    t.decimal "weight"
-    t.integer "duration"
+    t.integer "exercise_id"
+    t.integer "workout_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exercise_id"], name: "index_workout_exercises_on_exercise_id"
@@ -92,16 +92,8 @@ ActiveRecord::Schema.define(version: 20180402195129) do
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
-  add_foreign_key "exercises", "exercise_categories"
-  add_foreign_key "exercises", "users"
-  add_foreign_key "routine_exercises", "exercises"
-  add_foreign_key "routine_exercises", "routines"
-  add_foreign_key "routines", "users"
-  add_foreign_key "workout_exercises", "exercises"
-  add_foreign_key "workout_exercises", "workouts"
-  add_foreign_key "workouts", "users"
 end

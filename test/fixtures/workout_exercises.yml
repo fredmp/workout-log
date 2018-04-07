@@ -3,15 +3,7 @@
 one:
   exercise: jump
   workout: today
-  sets: 1
-  reps: 1
-  weight: 9.99
-  duration: 1
 
 two:
   exercise: bench
   workout: yesterday
-  sets: 1
-  reps: 1
-  weight: 9.99
-  duration: 1
