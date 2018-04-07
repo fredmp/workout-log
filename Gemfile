@@ -21,6 +21,7 @@ gem 'jquery-rails', '~> 4.3'
 gem 'slim', '~> 3.0'
 gem 'devise', '~> 4.4'
 gem 'simple_form', '~> 3.5'
+gem 'cocoon'
 gem 'figaro'
 
 group :development, :test do

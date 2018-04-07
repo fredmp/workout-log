@@ -32,5 +32,6 @@ class WorkoutTest < ActiveSupport::TestCase
     workout.build_from_routine(routines(:monday))
     assert_equal 1, workout.workout_exercises.size
     assert_equal 'Jump Rope', workout.workout_exercises.first.exercise.name
+    assert_equal 10, workout.workout_exercises.first.sets.first.duration
   end
 end

@@ -82,6 +82,18 @@ td.main {
     }
   }
 }
+td.sets > ol {
+  padding-left: 10px;
+  margin: 0;
+  li {
+    text-align: left;
+    margin-left: 5px;
+  }
+  hr {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+}
 .alert, .notice {
   margin-bottom: 0;
 }
@@ -193,7 +205,10 @@ td.main {
 .help-block {
   margin-left: 10px;
 }
-
+.feedback-message > div, .feedback-message > div > .alert {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 // Web view
 @media (min-width: 992px) {
   .web-view {
@@ -203,7 +218,7 @@ td.main {
     display: none !important;
   }
   .col-md-auto {
-    margin-top: 50px;
+    margin-top: 0;
     width: 90%;
   }
   .btn-main-action {
@@ -289,6 +304,9 @@ td.main {
     padding-bottom: 8px !important;
     margin: auto;
     vertical-align: middle;
+    a {
+      white-space: normal;
+    }
   }
   td, th {
     text-align: center;
@@ -320,6 +338,9 @@ td.main {
   tr.mobile-view {
     display: table-row !important;
   }
+  td.mobile-view {
+    display: table-cell !important;
+  }
   div.dashboard {
     display: block;
     margin-top: 20px;
@@ -338,10 +359,6 @@ td.main {
   }
   .title.date {
     font-size: 1.5rem;
-  }
-  .feedback-message > div, .feedback-message > div > .alert {
-    margin-bottom: 0;
-    padding-bottom: 0;
   }
   .content {
     margin-bottom: 100px;

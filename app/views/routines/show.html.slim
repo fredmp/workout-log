@@ -21,10 +21,19 @@ table.table.table-hover.table-bordered
     - @routine.routine_exercises.each do |routine_exercise|
       tr
         td.main = link_to routine_exercise.exercise.name, edit_routine_routine_exercise_path(@routine, routine_exercise)
-        td.sets = routine_exercise.sets
-        td.reps = routine_exercise.reps
-        td.weight = routine_exercise.weight
-        td.duration = routine_exercise.duration
+        td.mobile-view.sets = routine_exercise.sets.size
+        td.web-view.sets
+          - if routine_exercise.sets.any?
+            - total = routine_exercise.sets.size
+            ol
+              - routine_exercise.sets.each do |set|
+                li = set
+                - total = total - 1
+                - if total > 0
+                  hr
+        td.reps = routine_exercise.reps > 0 ? routine_exercise.reps : ''
+        td.weight = routine_exercise.weight > 0 ? routine_exercise.weight : ''
+        td.duration = routine_exercise.duration > 0 ? routine_exercise.duration : ''
         td.action.web-view = link_to edit_routine_routine_exercise_path(@routine, routine_exercise) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
         td.action.web-view = link_to routine_routine_exercise_path(@routine, routine_exercise), method: :delete, data: { confirm: 'Are you sure?' } do

@@ -1,12 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  setable: one
-  setable_type: Setable
+  setable: two
+  setable_type: RoutineExercise
   reps: 10
   weight: 20
 
 two:
+  setable: one
+  setable_type: RoutineExercise
+  duration: 10
+
+three:
   setable: two
-  setable_type: Setable
+  setable_type: WorkoutExercise
+  reps: 10
+  weight: 20
+
+four:
+  setable: one
+  setable_type: WorkoutExercise
   duration: 10

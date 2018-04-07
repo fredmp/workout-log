@@ -28,13 +28,10 @@ class Workout < ApplicationRecord
   def build_from_routine(routine)
     return unless routine
     routine.routine_exercises.each do |routine_exercise|
-      self.workout_exercises.build(
-        exercise: routine_exercise.exercise,
-        sets: routine_exercise.sets,
-        reps: routine_exercise.reps,
-        weight: routine_exercise.weight,
-        duration: routine_exercise.duration,
-      )
+      workout_exercise = self.workout_exercises.build(exercise: routine_exercise.exercise)
+      workout_exercise.sets = routine_exercise.sets.map do |set|
+        workout_exercise.sets.build(reps: set.reps, weight: set.weight, duration: set.duration)
+      end
     end
   end
 
