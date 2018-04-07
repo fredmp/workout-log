@@ -1,5 +1,6 @@
-= f.input :reps
-= f.input :weight
-= f.input :duration
-= link_to_remove_association f do
-  = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
+div.nested-fields.form-inline
+  = f.input :reps
+  = f.input :weight
+  = f.input :duration
+  = link_to_remove_association f do
+    = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

@@ -216,7 +216,11 @@ div.routine_exercise_exercise_sets_duration > input {
   margin-right: 10px;
 }
 a.add_fields {
-  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+.nested-fields.form-inline {
+  padding-left: 2px;
 }
 
 // Web view
@@ -368,9 +372,9 @@ a.add_fields {
     display: block;
     margin-top: 20px;
   }
-  div.routine_exercise_exercise_sets_reps,
-  div.routine_exercise_exercise_sets_weight,
-  div.routine_exercise_exercise_sets_duration {
+  div.nested-fields > .routine_exercise_exercise_sets_reps,
+  div.nested-fields > .routine_exercise_exercise_sets_weight,
+  div.nested-fields > .routine_exercise_exercise_sets_duration {
     margin-bottom: 5px !important;
     input {
       width: 80px !important;
