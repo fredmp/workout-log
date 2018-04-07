@@ -209,6 +209,16 @@ td.sets > ol {
   margin-bottom: 0;
   padding-bottom: 0;
 }
+div.routine_exercise_sets > label {
+  display: none;
+}
+div.routine_exercise_exercise_sets_duration > input {
+  margin-right: 10px;
+}
+a.add_fields {
+  margin-bottom: 15px;
+}
+
 // Web view
 @media (min-width: 992px) {
   .web-view {
@@ -269,6 +279,19 @@ td.sets > ol {
   }
   div.dashboard > a {
     padding: 20px;
+  }
+  div.routine_exercise_exercise_sets_reps,
+  div.routine_exercise_exercise_sets_weight,
+  div.routine_exercise_exercise_sets_duration {
+    margin-bottom: 5px !important;
+    input {
+      width: 80px !important;
+      margin-left: 10px;
+      margin-right: 20px;
+    }
+  }
+  a.remove_fields {
+    margin-bottom: 5px !important;
   }
 }
 
@@ -344,6 +367,20 @@ td.sets > ol {
   div.dashboard {
     display: block;
     margin-top: 20px;
+  }
+  div.routine_exercise_exercise_sets_reps,
+  div.routine_exercise_exercise_sets_weight,
+  div.routine_exercise_exercise_sets_duration {
+    margin-bottom: 5px !important;
+    input {
+      width: 80px !important;
+      margin-left: 0px;
+      margin-right: 10px;
+    }
+  }
+  a.remove_fields {
+    margin-bottom: 0 !important;
+    height: 2px;
   }
   .sets, .reps {
     width: 40px;

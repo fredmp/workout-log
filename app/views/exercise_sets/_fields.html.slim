@@ -1,4 +1,5 @@
-= f.input :reps, input_html: { class: 'form-input form-control' }
-= f.input :weight, input_html: { class: 'form-input form-control' }
-= f.input :duration, input_html: { class: 'form-input form-control' }
-= link_to_remove_association 'Remove Set', f, class: 'form-button btn btn-default'
+= f.input :reps
+= f.input :weight
+= f.input :duration
+= link_to_remove_association f do
+  = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
