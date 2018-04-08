@@ -7,9 +7,10 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-color: $light;
 }
 body {
-  font-family: Roboto, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-weight: normal;
   line-height: 20px;
@@ -160,6 +161,9 @@ td.sets > ol {
 }
 .navbar-brand {
   color: $light;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 25px;
 }
 .nav-item {
   a {
@@ -189,7 +193,6 @@ td.sets > ol {
 }
 .index {
   padding: 0 !important;
-  margin: 0 !important;
 }
 .btn-remove-exercise {
   width: 144px;
@@ -285,8 +288,18 @@ a.add_fields {
     height: 32px;
     max-width: 60%;
   }
-  div.dashboard > a {
-    padding: 20px;
+  div.dashboard {
+    text-align: center;
+    a {
+      display: inline-block;
+      margin: 10px 5px 30px 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      width: 150px;
+    }
+    .web-view > .carousel > .carousel-inner > .carousel-item {
+      margin-top: 0;
+    }
   }
   div.routine_exercise_exercise_sets_reps,
   div.routine_exercise_exercise_sets_weight,
@@ -303,6 +316,19 @@ a.add_fields {
   }
   a.remove_fields {
     margin-bottom: 5px !important;
+  }
+  .carousel-item {
+    margin: 80px auto 0 auto;
+  }
+}
+div.dashboard {
+  a.btn-main-action {
+    color: $color1;
+    background-color: $color9;
+  }
+  a.btn-main-action:hover {
+    color: $color9;
+    background-color: $color1;
   }
 }
 

@@ -1,5 +1,7 @@
 div.dashboard
-  = link_to 'Workouts', workouts_path, class: 'btn btn-outline-primary btn-main-action btn-lg'
-  = link_to 'Routines', routines_path, class: 'btn btn-outline-success btn-main-action btn-lg'
-  = link_to 'Exercises', exercises_path, class: 'btn btn-outline-info btn-main-action btn-lg'
-  = link_to 'Stats', '/', class: 'btn btn-outline-warning btn-main-action btn-lg'
+  = link_to 'Workouts', workouts_path, class: 'btn btn-main-action btn-lg'
+  = link_to 'Routines', routines_path, class: 'btn btn-main-action btn-lg'
+  = link_to 'Exercises', exercises_path, class: 'btn btn-main-action btn-lg'
+  = link_to 'Stats', '/', class: 'btn btn-main-action btn-lg'
+  div.web-view
+    = render 'carousel'
