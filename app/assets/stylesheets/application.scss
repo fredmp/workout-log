@@ -1,5 +1,6 @@
 @import 'custom';
 @import 'fonts';
+@import 'notifications';
 @import 'bootstrap';
 
 html, body {
@@ -117,6 +118,7 @@ td.sets > ol {
 }
 .action-links {
   text-align: center;
+  margin-bottom: 15px;
   a {
     margin: auto 20px;
   }

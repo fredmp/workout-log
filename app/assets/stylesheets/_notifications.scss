@@ -1,0 +1,73 @@
+.feedback-message {
+  h1 {
+    font-size: 1.5em;
+    line-height: 1em;
+    margin-top: 0.2px;
+    margin-bottom: 20px;
+    padding: .1em 0;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+  }
+  h1:before,
+  h1:after {
+    content: "";
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    height: 1px;
+    vertical-align: middle;
+    background: #f0f0f0;
+  }
+  h1:before {    
+    left: -.5em;
+    margin: 0 0 0 -50%;
+  }
+  h1:after {    
+    left: .5em;
+    margin: 0 -50% 0 0;
+  }
+  h1 > span {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+  }
+  
+  p {
+    display: block;
+    font-size: 1em;
+    line-height: 1em;
+    margin-bottom: 0.2px;
+  }
+  .notify {
+    display: block;
+    background: #fff;
+    padding: 12px 18px;
+    max-width: 80%;
+    min-width: 50%;
+    margin: 0 auto;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px;
+  }
+  
+  .notify h1 { margin-bottom: 6px; }
+  
+  .notice h1 { color: $success; }
+  .alert h1 { color: $danger; }
+  .info h1 { color: $info; }
+  
+  .notice h1:before, .notice h1:after { background: $success; }
+  .alert h1:before, .alert h1:after { background: $danger; }
+  .info h1:before, .info h1:after { background: $info; }
+  
+  .notify .alerticon { 
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 10px;
+  }
+}

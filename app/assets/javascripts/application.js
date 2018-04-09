@@ -46,5 +46,9 @@ $(document).on('turbolinks:load', function () {
 
       repsNew.focus();
       repsNew.select();
-    })
+    });
+    $('.notify').on('click', function () {
+      $(this).parent().hide();
+    });
+    $('.notify.notice').parent().delay(5000).fadeOut();
 });
