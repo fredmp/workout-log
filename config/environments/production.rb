@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "workout-app_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'workout.cosmostecnologia.com.br' }
+  config.action_mailer.default_url_options = { protocol: 'https', host: 'workout.cosmostecnologia.com.br' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -75,9 +75,10 @@ Rails.application.configure do
     domain:         ENV['APP_DOMAIN']
   }
 
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  # Devise SSL configurations
+  config.to_prepare { Devise::SessionsController.force_ssl }
+  config.to_prepare { Devise::RegistrationsController.force_ssl }
+  config.to_prepare { Devise::PasswordsController.force_ssl }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
