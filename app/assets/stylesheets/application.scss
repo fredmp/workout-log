@@ -64,6 +64,9 @@ footer {
     }
   }
 }
+input#user_remember_me {
+  margin-right: 5px;
+}
 #wrap {
   min-height: 100%;
   padding-top: 56px;
@@ -211,6 +214,10 @@ td.sets > ol {
 .feedback-message > div, .feedback-message > div > .alert {
   margin-bottom: 0;
   padding-bottom: 0;
+}
+.reset-password {
+  text-align: center;
+  margin-bottom: 5px;
 }
 label[for=routine_exercise_sets],
 label[for=workout_exercise_sets] {
