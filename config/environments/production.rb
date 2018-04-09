@@ -62,7 +62,6 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "workout-app_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  Rails.application.routes.default_url_options[:host] = 'workout.cosmostecnologia.com.br'
   config.action_mailer.default_url_options = { host: 'workout.cosmostecnologia.com.br' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
