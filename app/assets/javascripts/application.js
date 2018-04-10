@@ -51,4 +51,8 @@ $(document).on('turbolinks:load', function () {
       $(this).parent().hide();
     });
     $('.notify.notice').parent().delay(5000).fadeOut();
+    $('.exercise-index-main-actions > select').on('change', function () {
+      var categoryParam = $(this).val() ? '?exercise_category_id=' + $(this).val() : '';
+      Turbolinks.visit('/exercises' + categoryParam);
+    });
 });

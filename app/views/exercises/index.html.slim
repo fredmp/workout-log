@@ -1,6 +1,8 @@
 h1.title Exercises
 
-= link_to 'New Exercise', new_exercise_path, class: 'btn btn-primary btn-main-action new-resource'
+div.exercise-index-main-actions
+  = select_tag :category_exercise_id, options_from_collection_for_select(current_user.exercise_categories, :id, :name, @category_exercise_id), include_blank: 'All categories'
+  = link_to 'New Exercise', new_exercise_path, class: 'btn btn-primary btn-main-action new-resource'
 
 table.table.table-hover
   thead

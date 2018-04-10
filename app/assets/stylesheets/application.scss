@@ -23,9 +23,11 @@ table {
 tbody {
   background-color: $color10;
 }
+select {
+  border: 1px solid $color9;
+}
 form {
   select {
-    border: 1px solid $secondary;
     width: 100%;
     padding: 3px 0 3px 0;
   }
@@ -241,6 +243,18 @@ a.add_fields {
 .nested-fields.form-inline {
   padding-left: 2px;
 }
+.exercise-index-main-actions {
+  height: 40px;
+  margin-bottom: 25px;
+  select {
+    height: 30px;
+    width: 250px;
+    margin-top: 5px;
+  }
+  a {
+    margin: 0;
+  }
+}
 
 // Web view
 @media (min-width: 992px) {
@@ -341,6 +355,11 @@ div.dashboard {
   a.btn-main-action:hover {
     color: $color9;
     background-color: $color1;
+  }
+  .exercise-index-main-actions {
+    select {
+      width: 250px;
+    }
   }
 }
 
@@ -468,5 +487,15 @@ div.dashboard {
   }
   div#wrap.index {
     background-color: $bg-dark;
+  }
+  .exercise-index-main-actions {
+    select {
+      width: 150px;
+    }
+    a {
+      margin-left: auto;
+      margin-right: auto;
+      float: right;
+    }
   }
 }
