@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/dashboard'
 
+  get 'settings/index'
+  post 'settings/restore'
+
   resources :exercise_categories
 
   resources :exercises

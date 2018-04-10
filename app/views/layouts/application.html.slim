@@ -30,7 +30,7 @@ html
                   = link_to 'Categories', exercise_categories_path, class: 'nav-link'
                   a.nav-link href="#" Body Parts
                   div class="dropdown-divider"
-                  a.nav-link href="#" Settings
+                  = link_to 'Settings', settings_index_path, class: 'nav-link'
               li class=('nav-item' + (controller_name == 'registrations' ? ' active' : ''))
                 = link_to 'Account', edit_user_registration_path, class: 'nav-link'
               li.nav-item

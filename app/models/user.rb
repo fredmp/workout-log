@@ -16,19 +16,16 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  body_part_id           :integer
 #  exercise_category_id   :integer
 #
 # Indexes
 #
-#  index_users_on_body_part_id          (body_part_id)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_exercise_category_id  (exercise_category_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 # Foreign Keys
 #
-#  fk_rails_...  (body_part_id => body_parts.id)
 #  fk_rails_...  (exercise_category_id => exercise_categories.id)
 #
 
