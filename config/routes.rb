@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/dashboard'
 
+  resources :exercise_categories
+
   resources :exercises
 
   resources :routines do

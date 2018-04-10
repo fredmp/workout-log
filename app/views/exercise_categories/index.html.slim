@@ -1,0 +1,24 @@
+h1.title Exercise Categories
+
+= link_to 'New Category', new_exercise_category_path, class: 'btn btn-primary btn-main-action new-resource'
+
+table.table.table-hover
+  thead
+    tr.web-view
+      th Name
+      th.large Description
+      th.action Edit
+      th.action Delete
+    tr.mobile-view
+      th.main Name
+      th.action
+      th.action
+  tbody
+    - @exercise_categories.each do |exercise_category|
+      tr
+        td.main = link_to exercise_category.name, exercise_category_path(exercise_category)
+        td.large.web-view = exercise_category.description
+        td.action = link_to edit_exercise_category_path(exercise_category) do
+          = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
+        td.action = link_to exercise_category_path(exercise_category), method: :delete, data: { confirm: 'Are you sure?' } do
+          = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

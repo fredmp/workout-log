@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407150448) do
+ActiveRecord::Schema.define(version: 20180410195008) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "body_parts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "body_parts_exercises", id: false, force: :cascade do |t|
+    t.bigint "exercise_id", null: false
+    t.bigint "body_part_id", null: false
+    t.index ["body_part_id", "exercise_id"], name: "index_body_parts_exercises_on_body_part_id_and_exercise_id"
+    t.index ["exercise_id", "body_part_id"], name: "index_body_parts_exercises_on_exercise_id_and_body_part_id"
+  end
 
   create_table "exercise_categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_exercise_categories_on_user_id"
   end
 
   create_table "exercise_sets", force: :cascade do |t|
@@ -36,9 +54,7 @@ ActiveRecord::Schema.define(version: 20180407150448) do
     t.integer "exercise_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["exercise_category_id"], name: "index_exercises_on_exercise_category_id"
-    t.index ["user_id"], name: "index_exercises_on_user_id"
   end
 
   create_table "routine_exercises", force: :cascade do |t|
@@ -73,7 +89,11 @@ ActiveRecord::Schema.define(version: 20180407150448) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "body_part_id"
+    t.bigint "exercise_category_id"
+    t.index ["body_part_id"], name: "index_users_on_body_part_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["exercise_category_id"], name: "index_users_on_exercise_category_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -96,4 +116,7 @@ ActiveRecord::Schema.define(version: 20180407150448) do
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
+  add_foreign_key "exercise_categories", "users"
+  add_foreign_key "users", "body_parts"
+  add_foreign_key "users", "exercise_categories"
 end

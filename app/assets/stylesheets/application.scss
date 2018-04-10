@@ -20,6 +20,9 @@ body {
 table {
   width: 80%;
 }
+tbody {
+  background-color: $color10;
+}
 form {
   select {
     border: 1px solid $secondary;

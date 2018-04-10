@@ -1,0 +1,30 @@
+h1.title = @exercise_category.name
+p = @exercise_category.description
+= link_to 'Add Exercise', new_exercise_path(exercise_category_id: @exercise_category.id), class: 'btn btn-primary btn-main-action new-resource'
+table.table.table-hover.table-bordered
+  thead
+    tr.web-view
+      th.main Name
+      th Description
+      th.action Edit
+      th.action Delete
+    tr.mobile-view
+      th.main Name
+      th Description
+  tbody
+    - @exercise_category.exercises.each do |exercise|
+      tr
+        td.main = link_to exercise.name, edit_exercise_path(exercise)
+        td = exercise.description
+        td.action.web-view = link_to edit_exercise_path(exercise) do
+          = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
+        td.action.web-view = link_to exercise_path(exercise), method: :delete, data: { confirm: 'Are you sure?' } do
+          = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
+br
+div.action-links
+  = link_to :back do
+    = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))
+  = link_to edit_exercise_category_path(@exercise_category) do
+    = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
+  = link_to exercise_category_path(@exercise_category), method: :delete, data: { confirm: 'Are you sure?' } do
+    = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

@@ -14,10 +14,16 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    @exercise = current_user.exercises.build
+    @exercise = Exercise.new(exercise_category_id: params[:exercise_category_id])
   end
 
   def create
+    unless valid_category?
+      @exercise = Exercise.new(exercise_params)
+      flash[:alert] = 'You need to select a valid category'
+      render :new
+      return
+    end
     @exercise = current_user.exercises.build(exercise_params)
     if @exercise.save
       redirect_to exercises_path, notice: 'Exercise created successfully'
@@ -27,6 +33,11 @@ class ExercisesController < ApplicationController
   end
 
   def update
+    unless valid_category?
+      flash[:alert] = 'You need to select a valid category'
+      render :new
+      return
+    end
     if @exercise.update(exercise_params)
       redirect_to exercises_path, notice: 'Exercise updated successfully'
     else
@@ -48,5 +59,8 @@ class ExercisesController < ApplicationController
   def exercise_params
     params.require(:exercise).permit(:name, :description, :exercise_category_id)
   end
-  
+
+  def valid_category?
+    !!current_user.exercise_categories.detect { |c| c.id == exercise_params[:exercise_category_id].to_i }
+  end
 end
