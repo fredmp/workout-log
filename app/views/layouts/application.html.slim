@@ -22,10 +22,15 @@ html
                 = link_to 'Routines', routines_path, class: 'nav-link'
               li class=('nav-item' + (controller_name == 'exercises' ? ' active' : ''))
                 = link_to 'Exercises', exercises_path, class: 'nav-link'
-              li class=('nav-item' + (controller_name == 'exercise_categories' ? ' active' : ''))
-                = link_to 'Categories', exercise_categories_path, class: 'nav-link'
               li.nav-item
                 a.nav-link href="#" Stats
+              li class="nav-item dropdown"
+                a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" General
+                div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown"
+                  = link_to 'Categories', exercise_categories_path, class: 'nav-link'
+                  a.nav-link href="#" Body Parts
+                  div class="dropdown-divider"
+                  a.nav-link href="#" Settings
               li class=('nav-item' + (controller_name == 'registrations' ? ' active' : ''))
                 = link_to 'Account', edit_user_registration_path, class: 'nav-link'
               li.nav-item
