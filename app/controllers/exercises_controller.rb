@@ -58,7 +58,7 @@ class ExercisesController < ApplicationController
   end
 
   def exercise_params
-    params.require(:exercise).permit(:name, :description, :exercise_category_id)
+    params.require(:exercise).permit(:name, :description, :exercise_category_id, { body_part_ids: [] })
   end
 
   def valid_category?

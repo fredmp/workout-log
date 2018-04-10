@@ -2,15 +2,15 @@ h1.title = @body_part.name
 table.table.table-hover.table-bordered
   thead
     tr.web-view
-      th.main Name
+      th.main Exercises
       th.action Edit
       th.action Delete
     tr.mobile-view
-      th.main Name
+      th.main Exercises
   tbody
     - @body_part.exercises.each do |exercise|
       tr
-        td.main = link_to exercise.name, edit_exercise_path(exercise)
+        td.main = link_to exercise.name, exercise_path(exercise)
         td.action.web-view = link_to edit_exercise_path(exercise) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
         td.action.web-view = link_to exercise_path(exercise), method: :delete, data: { confirm: 'Are you sure?' } do

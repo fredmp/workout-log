@@ -1,5 +1,21 @@
 h1.title = @exercise.name
 p = @exercise.description
+table.table.table-hover.table-bordered
+  thead
+    tr.web-view
+      th.main Body Parts
+      th.action Edit
+      th.action Delete
+    tr.mobile-view
+      th.main Body Parts
+  tbody
+    - @exercise.body_parts.each do |body_part|
+      tr
+        td.main = link_to body_part.name, body_part_path(body_part)
+        td.action.web-view = link_to edit_body_part_path(body_part) do
+          = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
+        td.action.web-view = link_to body_part_path(body_part), method: :delete, data: { confirm: 'Are you sure?' } do
+          = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
 br
 div.action-links
   = link_to :back do

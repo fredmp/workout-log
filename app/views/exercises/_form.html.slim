@@ -3,4 +3,5 @@
   = f.association :exercise_category
   = f.input :name
   = f.input :description
+  = f.association :body_parts, as: :check_boxes
   = f.button :submit, class: 'btn btn-primary btn-main-action'

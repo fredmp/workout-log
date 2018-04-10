@@ -258,6 +258,17 @@ a.add_fields {
 .restore-exercise-structure {
   text-align: center;
 }
+.exercise_body_parts {
+  label {
+    display: block;
+  }
+  span.checkbox {
+    display: block;
+    label > input {
+      margin-right: 5px;
+    }
+  }
+}
 
 // Web view
 @media (min-width: 992px) {
