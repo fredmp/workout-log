@@ -28,7 +28,7 @@ html
                 a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" General
                 div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown"
                   = link_to 'Categories', exercise_categories_path, class: 'nav-link'
-                  a.nav-link href="#" Body Parts
+                  = link_to 'Body Parts', body_parts_path, class: 'nav-link'
                   div class="dropdown-divider"
                   = link_to 'Settings', settings_index_path, class: 'nav-link'
               li class=('nav-item' + (controller_name == 'registrations' ? ' active' : ''))

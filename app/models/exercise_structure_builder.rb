@@ -108,7 +108,7 @@ class ExerciseStructureBuilder
       # Chest
       { name: 'Bench press', body_parts: [:chest] },
       { name: 'Bench press 45', body_parts: [:chest] },
-      { name: 'Bench press 9O', body_parts: [:chest] },
+      { name: 'Bench press 90', body_parts: [:chest] },
       { name: 'Bench press decline', body_parts: [:chest] },
       { name: 'Push-up', body_parts: [:chest] },
       { name: 'Neck press', body_parts: [:chest] },

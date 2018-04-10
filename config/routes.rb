@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :exercises
 
+  resources :body_parts
+
   resources :routines do
     resources :routine_exercises
   end

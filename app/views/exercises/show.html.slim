@@ -2,7 +2,7 @@ h1.title = @exercise.name
 p = @exercise.description
 br
 div.action-links
-  = link_to exercises_path do
+  = link_to :back do
     = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))
   = link_to edit_exercise_path(@exercise) do
     = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))

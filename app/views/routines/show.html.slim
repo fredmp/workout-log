@@ -40,7 +40,7 @@ table.table.table-hover.table-bordered
           = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
 br
 div.action-links
-  = link_to routines_path do
+  = link_to :back do
     = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))
   = link_to edit_routine_path(@routine) do
     = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
