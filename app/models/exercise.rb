@@ -38,4 +38,9 @@ class Exercise < ApplicationRecord
   def available_field_ids=(field_ids)
     self.available_fields_definition = field_ids.select { |f| f.present? }.join('-')
   end
+
+  def has_field(name)
+    field = FIELDS.detect { |f| f[:name].downcase == (name || '').downcase } || {}
+    available_fields_definition.include?((field[:id] || '').to_s)
+  end
 end

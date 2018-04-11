@@ -34,9 +34,9 @@ table.table.table-hover.table-bordered
                 - total = total - 1
                 - if total > 0
                   hr
-        td.reps = workout_exercise.reps > 0 ? workout_exercise.reps : ''
-        td.weight = workout_exercise.weight > 0 ? workout_exercise.weight : ''
-        td.duration = workout_exercise.duration > 0 ? workout_exercise.duration : ''
+        td.reps = workout_exercise.exercise.has_field('reps') && workout_exercise.reps > 0 ? workout_exercise.reps : ''
+        td.weight = workout_exercise.exercise.has_field('weight') && workout_exercise.weight > 0 ? workout_exercise.weight : ''
+        td.duration = workout_exercise.exercise.has_field('duration') && workout_exercise.duration > 0 ? workout_exercise.duration : ''
         td.action.web-view = link_to edit_workout_workout_exercise_path(@workout, workout_exercise) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
         td.action.web-view = link_to workout_workout_exercise_path(@workout, workout_exercise), method: :delete, data: { confirm: 'Are you sure?' } do

@@ -29,6 +29,14 @@ $(document).on('turbolinks:load', function () {
     .data('association-insertion-method', 'after')
     .data('association-insertion-node', 'this');
   $('.links')
+    .on('cocoon:before-insert', function (e, added) {
+      configureNewExerciseSetFields(
+        $('#routine_exercise_exercise_id option:selected').data().fields + '',
+        added.find("div[class$='exercise_exercise_sets_reps']").first(),
+        added.find("div[class$='exercise_exercise_sets_weight']").first(),
+        added.find("div[class$='exercise_exercise_sets_duration']").first()
+      );
+    })
     .on('cocoon:after-insert', function (e, added) {
       var target = added.parents('form').attr('id').includes('workout') ? '.workout' : '.routine';
 
@@ -55,4 +63,23 @@ $(document).on('turbolinks:load', function () {
       var categoryParam = $(this).val() ? '?exercise_category_id=' + $(this).val() : '';
       Turbolinks.visit('/exercises' + categoryParam);
     });
+    $('#routine_exercise_exercise_id').on('change', function () {
+      updateExerciseSetFieldsVisibility();
+    });
+    if ($('#routine_exercise_exercise_id').length > 0) {
+      updateExerciseSetFieldsVisibility();
+    }
 });
+
+function configureNewExerciseSetFields(availableFields, repsDiv, weightDiv, durationDiv) {
+  repsDiv.css('display', availableFields.includes('1') ? 'flex' : 'none');
+  weightDiv.css('display', availableFields.includes('2') ? 'flex' : 'none');
+  durationDiv.css('display', availableFields.includes('3') ? 'flex' : 'none');
+}
+
+function updateExerciseSetFieldsVisibility() {
+  var fields = $('#routine_exercise_exercise_id option:selected').data().fields + '';
+  $('.routine_exercise_exercise_sets_reps').css('display', fields.includes('1') ? 'flex' : 'none');
+  $('.routine_exercise_exercise_sets_weight').css('display', fields.includes('2') ? 'flex' : 'none');
+  $('.routine_exercise_exercise_sets_duration').css('display', fields.includes('3') ? 'flex' : 'none');
+}

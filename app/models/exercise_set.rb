@@ -23,9 +23,9 @@ class ExerciseSet < ApplicationRecord
 
   def to_s
     result = []
-    result << "Reps: #{reps}" if reps
-    result << "Weight: #{weight}" if weight
-    result << "Duration: #{duration}" if duration
+    result << "Reps: #{reps}" if setable.exercise.has_field('reps') && reps
+    result << "Weight: #{weight}" if setable.exercise.has_field('weight') && weight
+    result << "Duration: #{duration}" if setable.exercise.has_field('duration') && duration
     return result.join(' - ')
   end
 
