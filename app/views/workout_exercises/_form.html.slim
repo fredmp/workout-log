@@ -1,8 +1,14 @@
 = simple_form_for [@workout, @workout_exercise], html: { class: 'form-horizontal' } do |f|
   = f.error_notification
+  = f.input :exercise_categories
+    br
+    = select_tag :exercise_category_id, options_from_collection_for_select(current_user.exercise_categories, :id, :name), include_blank: 'All categories', class: 'categories-add-set'
+  = f.input :body_parts
+    br
+    = select_tag :body_part_id, options_from_collection_for_select(current_user.body_parts, :id, :name), include_blank: 'All body parts', class: 'body-parts-add-set'
   = f.input :exercise
     br
-    = f.collection_select :exercise_id, @exercises, :id, :name, { prompt: 'Choose an exercise' }, class: 'dropdown-toggle'
+    = f.select :exercise_id, options_for_select(@exercises.map { |e| [e.name, e.id, { 'data-fields' => e.available_fields_definition, 'data-category' => e.exercise_category_id, 'data-body-parts' => e.body_part_ids }] }), { prompt: 'Choose an exercise' }, class: 'dropdown-toggle'
   = f.input :sets
     div.links
       = link_to_add_association 'Add Set', f, :exercise_sets, partial: 'exercise_sets/fields', class: 'btn btn-info'

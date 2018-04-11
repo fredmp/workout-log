@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function () {
   $('.links')
     .on('cocoon:before-insert', function (e, added) {
       configureNewExerciseSetFields(
-        $('#routine_exercise_exercise_id option:selected').data().fields + '',
+        $("select[id$='_exercise_exercise_id'] option:selected").data().fields + '',
         added.find("div[class$='exercise_exercise_sets_reps']").first(),
         added.find("div[class$='exercise_exercise_sets_weight']").first(),
         added.find("div[class$='exercise_exercise_sets_duration']").first()
@@ -65,13 +65,30 @@ $(document).on('turbolinks:load', function () {
       var bodyPartDropdown = $('select[id="body_part_id"][class="exercises-index"]');
       Turbolinks.visit('/exercises?exercise_category_id=' + categoryDropdown.val() + '&body_part_id=' + (isCategory ? '' : bodyPartDropdown.val()));
     });
-    $('#routine_exercise_exercise_id').on('change', function () {
+    $('select.categories-add-set,select.body-parts-add-set').on('change', function () {
+      filterAddExerciseSet($('select.categories-add-set').val(), $('select.body-parts-add-set').val(), $(this));
+    });
+    $('#routine_exercise_exercise_id,#workout_exercise_exercise_id').on('change', function () {
       updateExerciseSetFieldsVisibility();
     });
-    if ($('#routine_exercise_exercise_id').length > 0) {
+    if ($('#routine_exercise_exercise_id,#workout_exercise_exercise_id').length > 0) {
       updateExerciseSetFieldsVisibility();
     }
 });
+
+function filterAddExerciseSet(categoryId, bodyPartId, target) {
+  var exerciseDropdown = $("select[id$='_exercise_exercise_id'");
+  exerciseDropdown.children("option").show();
+  if (categoryId != '') {
+    exerciseDropdown.children("option[data-category!='" + categoryId + "']").hide();
+  }
+  if (bodyPartId != '') {
+    exerciseDropdown.children("option[data-body-parts!='" + bodyPartId + "']").hide();
+  }
+  if (target.attr('id') == 'exercise_category_id') {
+    $('select.body-parts-add-set').val('').change();
+  }
+}
 
 function configureNewExerciseSetFields(availableFields, repsDiv, weightDiv, durationDiv) {
   repsDiv.css('display', availableFields.includes('1') ? 'flex' : 'none');
@@ -80,8 +97,9 @@ function configureNewExerciseSetFields(availableFields, repsDiv, weightDiv, dura
 }
 
 function updateExerciseSetFieldsVisibility() {
-  var fields = $('#routine_exercise_exercise_id option:selected').data().fields + '';
-  $('.routine_exercise_exercise_sets_reps').css('display', fields.includes('1') ? 'flex' : 'none');
-  $('.routine_exercise_exercise_sets_weight').css('display', fields.includes('2') ? 'flex' : 'none');
-  $('.routine_exercise_exercise_sets_duration').css('display', fields.includes('3') ? 'flex' : 'none');
+  var exerciseType = $('#routine_exercise_exercise_id').length > 0 ? 'routine' : 'workout';
+  var fields = $('#' + exerciseType + '_exercise_exercise_id option:selected').data().fields + '';
+  $("div[class$='exercise_exercise_sets_reps']").css('display', fields.includes('1') ? 'flex' : 'none');
+  $("div[class$='exercise_exercise_sets_weight']").css('display', fields.includes('2') ? 'flex' : 'none');
+  $("div[class$='exercise_exercise_sets_duration']").css('display', fields.includes('3') ? 'flex' : 'none');
 }
