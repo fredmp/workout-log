@@ -245,7 +245,7 @@ a.add_fields {
 }
 .exercise-index-main-actions {
   height: 40px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   select {
     height: 30px;
     width: 250px;
@@ -254,6 +254,10 @@ a.add_fields {
   a {
     margin: 0;
   }
+}
+select[id="body_part_id"][class="exercises-index"] {
+  height: 30px;
+  margin-bottom: 20px;
 }
 .restore-exercise-structure {
   text-align: center;
@@ -283,6 +287,21 @@ a.add_fields {
       input {
         margin-right: 5px;
       }
+    }
+  }
+}
+div.dashboard {
+  a.btn-main-action {
+    color: $color1;
+    background-color: $color9;
+  }
+  a.btn-main-action:hover {
+    color: $color9;
+    background-color: $color1;
+  }
+  .exercise-index-main-actions {
+    select {
+      width: 250px;
     }
   }
 }
@@ -377,20 +396,8 @@ a.add_fields {
   .carousel-item {
     margin: 80px auto 0 auto;
   }
-}
-div.dashboard {
-  a.btn-main-action {
-    color: $color1;
-    background-color: $color9;
-  }
-  a.btn-main-action:hover {
-    color: $color9;
-    background-color: $color1;
-  }
-  .exercise-index-main-actions {
-    select {
-      width: 250px;
-    }
+  select[id="body_part_id"][class="exercises-index"] {
+    width: 250px;
   }
 }
 
@@ -528,5 +535,8 @@ div.dashboard {
       margin-right: auto;
       float: right;
     }
+  }
+  select[id="body_part_id"][class="exercises-index"] {
+    width: 150px;
   }
 }

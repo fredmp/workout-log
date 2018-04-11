@@ -59,9 +59,11 @@ $(document).on('turbolinks:load', function () {
       $(this).parent().hide();
     });
     $('.notify.notice').parent().delay(5000).fadeOut();
-    $('.exercise-index-main-actions > select').on('change', function () {
-      var categoryParam = $(this).val() ? '?exercise_category_id=' + $(this).val() : '';
-      Turbolinks.visit('/exercises' + categoryParam);
+    $('.exercise-index-main-actions > select,select[id="body_part_id"][class="exercises-index"]').on('change', function () {
+      var isCategory = $(this).attr('id') == 'exercise_category_id';
+      var categoryDropdown = $('.exercise-index-main-actions > select');
+      var bodyPartDropdown = $('select[id="body_part_id"][class="exercises-index"]');
+      Turbolinks.visit('/exercises?exercise_category_id=' + categoryDropdown.val() + '&body_part_id=' + (isCategory ? '' : bodyPartDropdown.val()));
     });
     $('#routine_exercise_exercise_id').on('change', function () {
       updateExerciseSetFieldsVisibility();

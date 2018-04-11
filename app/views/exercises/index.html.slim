@@ -1,8 +1,9 @@
 h1.title Exercises
 
 div.exercise-index-main-actions
-  = select_tag :category_exercise_id, options_from_collection_for_select(current_user.exercise_categories, :id, :name, @category_exercise_id), include_blank: 'All categories'
+  = select_tag :exercise_category_id, options_from_collection_for_select(current_user.exercise_categories, :id, :name, @exercise_category_id), include_blank: 'All categories'
   = link_to 'New Exercise', new_exercise_path, class: 'btn btn-primary btn-main-action new-resource'
+= select_tag :body_part_id, options_from_collection_for_select(current_user.body_parts, :id, :name, @body_part_id), include_blank: 'All body parts', class: 'exercises-index'
 
 table.table.table-hover
   thead

@@ -3,12 +3,13 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
   def index
-    @category_exercise_id = params[:exercise_category_id]
-    @exercises = if @category_exercise_id
-      current_user.exercises.where(exercise_category_id: @category_exercise_id )
-    else
-      current_user.exercises.all
-    end.order(:name)
+    @exercise_category_id = params[:exercise_category_id]
+    @body_part_id = params[:body_part_id]
+
+    @exercises = current_user.exercises
+    @exercises = @exercises.where(exercise_category_id: @exercise_category_id) if @exercise_category_id.present?
+    @exercises = @exercises.joins(:body_parts).where({ body_parts: { id: @body_part_id } }) if @body_part_id.present?
+    @exercises.order(:name)
   end
 
   def show
