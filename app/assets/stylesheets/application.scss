@@ -259,13 +259,30 @@ a.add_fields {
   text-align: center;
 }
 .exercise_body_parts {
-  label {
+  label.control-label {
     display: block;
   }
   span.checkbox {
     display: block;
-    label > input {
-      margin-right: 5px;
+    label {
+      display: inline;
+      input {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+.exercise_fields {
+  label[for=exercise_fields] {
+    display: block;
+  }
+  span {
+    display: block;
+    label {
+      display: inline;
+      input {
+        margin-right: 5px;
+      }
     }
   }
 }
