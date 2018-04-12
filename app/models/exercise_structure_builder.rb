@@ -65,12 +65,12 @@ class ExerciseStructureBuilder
   }
   INITIAL_EXERCISES_MAP = {
     aerobic: [
-      { name: 'Walking', fields: '3' },
-      { name: 'Running', fields: '3' },
-      { name: 'Swimming', fields: '3' },
+      { name: 'Walking', fields: '3-4' },
+      { name: 'Running', fields: '3-4' },
+      { name: 'Swimming', fields: '3-4' },
       { name: 'Aquarobics', fields: '3' },
-      { name: 'Cycling', fields: '3' },
-      { name: 'Rowing', fields: '3' },
+      { name: 'Cycling', fields: '3-4' },
+      { name: 'Rowing', fields: '3-4' },
       { name: 'Boxing', fields: '3' }
     ],
     balance: [

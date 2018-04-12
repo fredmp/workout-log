@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412183210) do
+ActiveRecord::Schema.define(version: 20180412191953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20180412183210) do
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "distance"
     t.index ["setable_type", "setable_id"], name: "index_exercise_sets_on_setable_type_and_setable_id"
   end
 

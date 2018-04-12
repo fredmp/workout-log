@@ -30,12 +30,12 @@ $(document).on('turbolinks:load', function () {
     .data('association-insertion-node', 'this');
   $('.links')
     .on('cocoon:before-insert', function (e, added) {
-      $('.nested-fields.form-inline').removeClass('highlight-add-set');
       configureNewExerciseSetFields(
         $("select[id$='_exercise_exercise_id'] option:selected").data().fields + '',
         added.find("div[class$='exercise_exercise_sets_reps']").first(),
         added.find("div[class$='exercise_exercise_sets_weight']").first(),
-        added.find("div[class$='exercise_exercise_sets_duration']").first()
+        added.find("div[class$='exercise_exercise_sets_duration']").first(),
+        added.find("div[class$='exercise_exercise_sets_distance']").first()
       );
     })
     .on('cocoon:after-insert', function (e, added) {
@@ -44,18 +44,25 @@ $(document).on('turbolinks:load', function () {
       var repsOld = $($(target + '_exercise_exercise_sets_reps')[1]);
       var weightOld = $($(target + '_exercise_exercise_sets_weight')[1]);
       var durationOld = $($(target + '_exercise_exercise_sets_duration')[1]);
+      var distanceOld = $($(target + '_exercise_exercise_sets_distance')[1]);
 
       var repsNew = added.find(target + '_exercise_exercise_sets_reps').first().find('input');
       var weightNew = added.find(target + '_exercise_exercise_sets_weight').first().find('input');
       var durationNew = added.find(target + '_exercise_exercise_sets_duration').first().find('input');
+      var distanceNew = added.find(target + '_exercise_exercise_sets_distance').first().find('input');
 
       if (repsOld.length > 0) repsNew.val(repsOld.first().find('input').val());
       if (weightOld.length > 0) weightNew.val(weightOld.first().find('input').val());
       if (durationOld.length > 0) durationNew.val(durationOld.first().find('input').val());
+      if (distanceOld.length > 0) distanceNew.val(distanceOld.first().find('input').val());
 
       repsNew.focus();
       repsNew.select();
-      $(this).find('.nested-fields.form-inline').first().addClass('highlight-add-set');
+      $('.nested-fields.form-inline').removeClass('highlight-add-set');
+      added.addClass('highlight-add-set');
+      added.find('div > input').on('focus', function () {
+        highlightSet(this);
+      });
     });
     $('.notify').on('click', function () {
       $(this).parent().hide();
@@ -70,9 +77,8 @@ $(document).on('turbolinks:load', function () {
     $('select.categories-add-set,select.body-parts-add-set').on('change', function () {
       filterAddExerciseSet($('select.categories-add-set').val(), $('select.body-parts-add-set').val(), $(this));
     });
-    $("input[id^='routine_exercise_exercise_sets_attributes_'").on('focus', function() {
-      $('.nested-fields.form-inline').removeClass('highlight-add-set');
-      $(this).parent().parent().addClass('highlight-add-set');
+    $("input[id*='_exercise_exercise_sets_attributes_'").on('focus', function() {
+      highlightSet(this);
     });
     $('#routine_exercise_exercise_id,#workout_exercise_exercise_id').on('change', function () {
       updateExerciseSetFieldsVisibility();
@@ -102,10 +108,11 @@ function filterAddExerciseSet(categoryId, bodyPartId, target) {
   }
 }
 
-function configureNewExerciseSetFields(availableFields, repsDiv, weightDiv, durationDiv) {
+function configureNewExerciseSetFields(availableFields, repsDiv, weightDiv, durationDiv, distanceDiv) {
   repsDiv.css('display', availableFields.includes('1') ? 'flex' : 'none');
   weightDiv.css('display', availableFields.includes('2') ? 'flex' : 'none');
   durationDiv.css('display', availableFields.includes('3') ? 'flex' : 'none');
+  distanceDiv.css('display', availableFields.includes('3') ? 'flex' : 'none');
 }
 
 function updateExerciseSetFieldsVisibility() {
@@ -114,6 +121,29 @@ function updateExerciseSetFieldsVisibility() {
   $("div[class$='exercise_exercise_sets_reps']").css('display', fields.includes('1') ? 'flex' : 'none');
   $("div[class$='exercise_exercise_sets_weight']").css('display', fields.includes('2') ? 'flex' : 'none');
   $("div[class$='exercise_exercise_sets_duration']").css('display', fields.includes('3') ? 'flex' : 'none');
+  $("div[class$='exercise_exercise_sets_distance']").css('display', fields.includes('3') ? 'flex' : 'none');
+
+  fields.includes('2') ? $('div.weight-unit').show() : $('div.weight-unit').hide();
+  fields.includes('4') ? $('div.length-unit').show() : $('div.length-unit').hide();
+
+  updateActionButtonsVisibility();
+}
+
+function highlightSet(target) {
+  $('.nested-fields.form-inline').removeClass('highlight-add-set');
+  $(target).parent().parent().addClass('highlight-add-set');
+}
+
+function updateActionButtonsVisibility() {
+  if ($("select[id$=_exercise_exercise_id]").val() === '') {
+    $('a.add_fields').hide();
+    $('div.nested-fields').hide();
+    $("input[type='submit'").hide();
+  } else {
+    $('a.add_fields').show();
+    $('div.nested-fields').show()
+    $("input[type='submit'").show();
+  }
 }
 
 function changeSettings(attribute, data) {

@@ -52,7 +52,7 @@ class WorkoutExercisesController < ApplicationController
       :exercise_id,
       :weight_unit,
       :length_unit,
-      exercise_sets_attributes: [:id, :reps, :weight, :duration, :_destroy]
+      exercise_sets_attributes: [:id, :reps, :weight, :duration, :distance, :_destroy]
     )
   end
 end

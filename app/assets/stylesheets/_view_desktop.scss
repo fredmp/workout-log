@@ -10,14 +10,14 @@
     width: 90%;
   }
   .btn-main-action {
-    margin-top: 30px;
+    margin-top: 15px;
     float: none;
   }
   .btn-main-action.new-resource {
     float: right;
   }
-  .btn-remove-exercise {
-    margin-top: 15px;
+  .highlight-add-set {
+    background-color: $color9;
   }
   nav {
     height: 56px;
@@ -48,7 +48,7 @@
     text-align: center;
   }
   form.simple_form {
-    max-width: 60%;
+    max-width: 80%;
     margin: auto;
     input {
       max-width: 100%;
@@ -71,12 +71,24 @@
       margin-top: 0;
     }
   }
+  div.nested-fields.form-inline {
+    border: 1px solid;
+    border-color: $color9;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+  }
   div.routine_exercise_exercise_sets_reps,
   div.routine_exercise_exercise_sets_weight,
   div.routine_exercise_exercise_sets_duration,
+  div.routine_exercise_exercise_sets_distance,
   div.workout_exercise_exercise_sets_reps,
   div.workout_exercise_exercise_sets_weight,
-  div.workout_exercise_exercise_sets_duration {
+  div.workout_exercise_exercise_sets_duration,
+  div.workout_exercise_exercise_sets_distance {
     margin-bottom: 5px !important;
     input {
       width: 80px !important;
@@ -92,5 +104,12 @@
   }
   select[id="body_part_id"][class="exercises-index"] {
     width: 250px;
+  }
+  form > div.input-fields {
+    display: table;
+    margin: auto;
+    select {
+      max-width: initial;
+    }
   }
 }

@@ -24,7 +24,8 @@ class Exercise < ApplicationRecord
   FIELDS = [
     { id: 1, name: 'Reps' },
     { id: 2, name: 'Weight' },
-    { id: 3, name: 'Duration' }
+    { id: 3, name: 'Duration' },
+    { id: 4, name: 'Distance' }
   ]
 
   def self.available_fields

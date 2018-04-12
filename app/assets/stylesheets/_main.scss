@@ -12,6 +12,9 @@ body {
   line-height: 20px;
   text-rendering: optimizeLegibility;
 }
+h1 {
+  font-size: 2rem;
+}
 table {
   width: 80%;
 }
@@ -193,7 +196,7 @@ td.sets > ol {
     display: inline-block;
   }
 }
-.sets, .reps, .weight, .duration {
+.sets, .reps, .weight, .duration, .distance {
   text-align: center;
 }
 .index {
@@ -224,12 +227,6 @@ td.sets > ol {
 label[for=routine_exercise_sets],
 label[for=workout_exercise_sets] {
   display: none;
-}
-div.routine_exercise_exercise_sets_duration,
-div.workout_exercise_exercise_sets_duration {
-  input {
-    margin-right: 10px;
-  }
 }
 a.add_fields {
   margin-top: 5px;
@@ -323,7 +320,7 @@ div.dashboard {
 .settings-feedback, .settings-alert, .settings-notice {
   display: none;
 }
-form > .units {
+.units {
   margin-bottom: 10px;
   div {
     select {
