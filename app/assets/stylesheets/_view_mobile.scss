@@ -100,8 +100,7 @@
   div.workout_exercise_exercise_sets_weight,
   div.workout_exercise_exercise_sets_duration,
   div.workout_exercise_exercise_sets_distance {
-    margin-bottom: 5px;
-    font-size: 0.9em;
+    margin-bottom: 5px !important;
     display: inline-flex;
     label {
       display: flex;
@@ -112,8 +111,10 @@
     input {
       font-size: 0.95em;
       width: 60px;
+      max-width: 80px;
       margin-left: 4px;
       margin-right: 6px;
+      text-align: center;
     }
   }
   a.remove_fields {

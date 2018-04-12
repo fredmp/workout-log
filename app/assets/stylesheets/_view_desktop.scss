@@ -91,9 +91,10 @@
   div.workout_exercise_exercise_sets_distance {
     margin-bottom: 5px !important;
     input {
-      width: 80px !important;
+      max-width: 80px;
       margin-left: 10px;
       margin-right: 20px;
+      text-align: center;
     }
   }
   a.remove_fields {
