@@ -77,6 +77,9 @@ $(document).on('turbolinks:load', function () {
     $('#routine_exercise_exercise_id,#workout_exercise_exercise_id').on('change', function () {
       updateExerciseSetFieldsVisibility();
     });
+    $('.weight-measure-unit > select').on('change', function () {
+      changeSettings('weight-unit', { unit: $(this).val() });
+    });
     if ($('#routine_exercise_exercise_id,#workout_exercise_exercise_id').length > 0) {
       updateExerciseSetFieldsVisibility();
     }
@@ -108,4 +111,30 @@ function updateExerciseSetFieldsVisibility() {
   $("div[class$='exercise_exercise_sets_reps']").css('display', fields.includes('1') ? 'flex' : 'none');
   $("div[class$='exercise_exercise_sets_weight']").css('display', fields.includes('2') ? 'flex' : 'none');
   $("div[class$='exercise_exercise_sets_duration']").css('display', fields.includes('3') ? 'flex' : 'none');
+}
+
+function changeSettings(attribute, data) {
+  var params = encodeURIComponent($('meta[name=csrf-token]').attr('content'));
+  $.post('/settings/' + attribute + '?authenticity_token=' + params, data)
+    .done(function (data) {
+      showSettingsFeedbackMessage(true);
+      $('.notify.notice').parent().delay(5000).fadeOut();
+    })
+    .fail(function (jqXHR, textStatus) {
+      showSettingsFeedbackMessage(false);
+    });
+}
+
+function showSettingsFeedbackMessage(success) {
+  var settingsFeedback = $('.settings-feedback');
+  settingsFeedback.find('h1').first().text(success ? 'Success' : 'Error');
+  settingsFeedback.find('span').first().addClass('alerticon');
+  settingsFeedback.find('span > img').first().attr('alt', success ? 'Notice' : 'Alert');
+  settingsFeedback.find('span > img').first().attr('src', success ? $('.settings-notice').attr('src') : $('.settings-notice').attr('src'));
+  settingsFeedback.find('span > img').first().attr('data-svg-fallback', success ? $('.settings-notice').attr('src') : $('.settings-notice').attr('src'));
+  settingsFeedback.find('p').first().text(success ? 'Updated successfully' : 'There was an error during the update');
+  settingsFeedback.appendTo('.row.feedback-message');
+  settingsFeedback.removeClass('settings-feedback');
+  settingsFeedback.addClass(success ? 'notify notice' : 'notify alert');
+  $('.row.feedback-message').show();
 }
