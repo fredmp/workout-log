@@ -50,6 +50,8 @@ class WorkoutExercisesController < ApplicationController
   def workout_exercise_params
     params.require(:workout_exercise).permit(
       :exercise_id,
+      :weight_unit,
+      :length_unit,
       exercise_sets_attributes: [:id, :reps, :weight, :duration, :_destroy]
     )
   end

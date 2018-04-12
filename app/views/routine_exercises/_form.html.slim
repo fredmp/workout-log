@@ -9,6 +9,13 @@
   = f.input :exercise
     br
     = f.select :exercise_id, options_for_select(@exercises.map { |e| [e.name, e.id, { 'data-fields' => e.available_fields_definition, 'data-category' => e.exercise_category_id, 'data-body-parts' => e.body_part_ids }] }, @routine_exercise.exercise_id), { prompt: 'Choose an exercise' }, class: 'dropdown-toggle'
+  div.units
+    div
+      = label_tag :weight_unit, 'Unit of weight'
+      = f.select :weight_unit, options_for_select(Settings::WEIGHT_MEASURE_UNITS.map { |unit_key, unit_value| [unit_value[:abbrev], unit_key] }, (@routine_exercise.weight_unit || current_user.weight_unit))
+    div
+      = label_tag :length_unit, 'Unit of length'
+      = f.select :length_unit, options_for_select(Settings::LENGTH_MEASURE_UNITS.map { |unit_key, unit_value| [unit_value[:abbrev], unit_key] }, (@routine_exercise.length_unit || current_user.length_unit))
   = f.input :sets
     div.links
       = link_to_add_association 'Add Set', f, :exercise_sets, partial: 'exercise_sets/fields', class: 'btn btn-info'

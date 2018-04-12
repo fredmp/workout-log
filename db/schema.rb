@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412145340) do
+ActiveRecord::Schema.define(version: 20180412183210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 20180412145340) do
     t.integer "routine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "length_unit"
+    t.string "weight_unit"
     t.index ["exercise_id"], name: "index_routine_exercises_on_exercise_id"
     t.index ["routine_id"], name: "index_routine_exercises_on_routine_id"
   end
@@ -94,6 +96,7 @@ ActiveRecord::Schema.define(version: 20180412145340) do
     t.datetime "updated_at", null: false
     t.bigint "exercise_category_id"
     t.string "weight_unit"
+    t.string "length_unit"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["exercise_category_id"], name: "index_users_on_exercise_category_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -104,6 +107,8 @@ ActiveRecord::Schema.define(version: 20180412145340) do
     t.integer "workout_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "weight_unit"
+    t.string "length_unit"
     t.index ["exercise_id"], name: "index_workout_exercises_on_exercise_id"
     t.index ["workout_id"], name: "index_workout_exercises_on_workout_id"
   end

@@ -11,6 +11,15 @@ class SettingsController < ApplicationController
     end
   end
 
+  def set_length_unit
+    begin
+      current_user.update(length_unit: params[:unit]) if Settings::LENGTH_MEASURE_UNITS.keys.map { |u| u.to_s }.include?(params[:unit])
+      head :ok
+    rescue
+      head :internal_server_error
+    end
+  end
+
   def restore
     result = if ExerciseStructureBuilder.new(current_user).build
       { message: 'Exercises restored successfully', notification: :notice }

@@ -7,6 +7,8 @@
 #  workout_id  :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  weight_unit :string
+#  length_unit :string
 #
 # Indexes
 #

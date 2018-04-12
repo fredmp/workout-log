@@ -7,6 +7,8 @@
 #  routine_id  :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  length_unit :string
+#  weight_unit :string
 #
 # Indexes
 #

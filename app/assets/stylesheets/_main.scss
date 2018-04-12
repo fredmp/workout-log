@@ -255,7 +255,8 @@ select[id="body_part_id"][class="exercises-index"] {
   margin-bottom: 20px;
 }
 .restore-exercise-structure,
-.weight-measure-unit {
+.weight-measure-unit,
+.length-measure-unit {
   text-align: center;
   margin-bottom: 20px;
   border: 1px solid;
@@ -266,13 +267,14 @@ select[id="body_part_id"][class="exercises-index"] {
   padding-top: 15px;
   padding-bottom: 14px;
 }
-.weight-measure-unit {
+.weight-measure-unit,
+.length-measure-unit {
   padding-top: 15px;
   padding-bottom: 8px;
   select {
     margin-left: 10px;
     border-color: $dark;
-    width: 100px;
+    width: 160px;
   }
 }
 .exercise_body_parts {
@@ -320,4 +322,17 @@ div.dashboard {
 }
 .settings-feedback, .settings-alert, .settings-notice {
   display: none;
+}
+form > .units {
+  margin-bottom: 10px;
+  div {
+    select {
+      margin-left: 9px;
+      width: 55px;
+    }
+    select#routine_exercise_length_unit,
+    select#workout_exercise_length_unit {
+      margin-left: 12px;
+    }
+  }
 }

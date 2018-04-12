@@ -80,6 +80,9 @@ $(document).on('turbolinks:load', function () {
     $('.weight-measure-unit > select').on('change', function () {
       changeSettings('weight-unit', { unit: $(this).val() });
     });
+    $('.length-measure-unit > select').on('change', function () {
+      changeSettings('length-unit', { unit: $(this).val() });
+    });
     if ($('#routine_exercise_exercise_id,#workout_exercise_exercise_id').length > 0) {
       updateExerciseSetFieldsVisibility();
     }

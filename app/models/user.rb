@@ -18,6 +18,7 @@
 #  updated_at             :datetime         not null
 #  exercise_category_id   :integer
 #  weight_unit            :string
+#  length_unit            :string
 #
 # Indexes
 #

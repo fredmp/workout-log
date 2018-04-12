@@ -9,6 +9,9 @@ div class="settings-feedback"
 br
 div.weight-measure-unit
   = label_tag :weight_unit, 'Preferred weight measure unit'
-  = select_tag :weight_unit, options_for_select(Settings::WEIGHT_MEASURE_UNITS.map { |unit_key, unit_value| [unit_value[:name], unit_key] }, current_user.weight_unit)
+  = select_tag :weight_unit, options_for_select(Settings::WEIGHT_MEASURE_UNITS.map { |unit_key, unit_value| ["#{unit_value[:name]} (#{unit_value[:abbrev]})", unit_key] }, current_user.weight_unit)
+div.length-measure-unit
+  = label_tag :length_unit, 'Preferred length measure unit'
+  = select_tag :length_unit, options_for_select(Settings::LENGTH_MEASURE_UNITS.map { |unit_key, unit_value| ["#{unit_value[:name]} (#{unit_value[:abbrev]})", unit_key] }, current_user.length_unit)
 div.restore-exercise-structure
   = link_to 'Restore exercise structure', settings_restore_path, method: :post, class: 'btn btn-info btn-restore'

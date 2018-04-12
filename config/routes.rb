@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'settings/index'
   post 'settings/restore'
   post 'settings/weight-unit', to: 'settings#set_weight_unit'
+  post 'settings/length-unit', to: 'settings#set_length_unit'
 
   resources :exercise_categories
 
