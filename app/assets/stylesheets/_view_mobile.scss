@@ -1,0 +1,154 @@
+@media (max-width: 992px) {
+  .web-view {
+    display: none !important;
+  }
+  .mobile-view {
+    display: inherit !important;
+  }
+  nav {
+    min-height: 56px;
+  }
+  table {
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+    font-size: 0.85rem;
+  }
+  th.large, td.large {
+    display: none;
+  }
+  th.action, td.action {
+    text-align: center;
+    width: 35px;
+    min-width: 35px;
+    max-width: 40px;
+  }
+  td {
+    display: table-cell;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    margin: auto;
+    vertical-align: middle;
+    a {
+      white-space: normal;
+    }
+  }
+  td, th {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  div.home-images > img {
+    width: 100%;
+  }
+  td.main.center {
+    text-align: center;
+  }
+  td.date, th.date {
+    width: 175px;
+    min-width: 175px;
+  }
+  th.main, td.main {
+    text-align: left;
+    padding-left: 4px !important;
+  }
+  footer {
+    div {
+      font-size: 0.7rem;
+    }
+  }
+  tr.mobile-view {
+    display: table-row !important;
+  }
+  td.mobile-view {
+    display: table-cell !important;
+  }
+  div.dashboard {
+    display: block;
+    margin-top: 20px;
+  }
+  div.nested-fields.form-inline {
+    border: 1px solid;
+    border-color: $color9;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-left: 8px;
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+  }
+  div.routine_exercise_exercise_sets_reps,
+  div.routine_exercise_exercise_sets_weight,
+  div.routine_exercise_exercise_sets_duration,
+  div.workout_exercise_exercise_sets_reps,
+  div.workout_exercise_exercise_sets_weight,
+  div.workout_exercise_exercise_sets_duration {
+    margin-bottom: 5px;
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+    input {
+      width: 70px;
+      margin-left: 4px;
+      margin-right: 10px;
+    }
+  }
+  a.remove_fields {
+    margin-bottom: 0;
+    padding-bottom: 5px;
+  }
+  .highlight-add-set {
+    background-color: $color9;
+  }
+  .sets, .reps {
+    width: 40px;
+    min-width: 40px;
+  }
+  .weight, .duration {
+    width: 60px;
+    min-width: 60px;
+  }
+  .comments {
+    padding-left: 8px !important;
+    text-align: left;
+  }
+  .title.date {
+    font-size: 1.5rem;
+  }
+  .content {
+    margin-bottom: 100px;
+  }
+  .row {
+    margin-top: 5px;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+  }
+  .row.index {
+    margin-top: 60px !important;
+  }
+  .btn-main-action {
+    float: none;
+  }
+  div#wrap.index {
+    background-color: $bg-dark;
+  }
+  .exercise-index-main-actions {
+    select {
+      width: 150px;
+    }
+    a {
+      margin-left: auto;
+      margin-right: auto;
+      float: right;
+    }
+  }
+  select[id="body_part_id"][class="exercises-index"] {
+    width: 150px;
+  }
+}

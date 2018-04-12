@@ -1,0 +1,93 @@
+@media (min-width: 992px) {
+  .web-view {
+    display: inherit !important;
+  }
+  .mobile-view {
+    display: none !important;
+  }
+  .col-md-auto {
+    margin-top: 0;
+    width: 90%;
+  }
+  .btn-main-action {
+    margin-top: 30px;
+    float: none;
+  }
+  .btn-main-action.new-resource {
+    float: right;
+  }
+  nav {
+    height: 56px;
+  }
+  tr.web-view {
+    display: table-row !important;
+  }
+  td.web-view {
+    display: table-cell !important;
+  }
+  th.action, td.action {
+    text-align: center;
+    width: 70px;
+    min-width: 70px;
+    max-width: 70px;
+  }
+  table {
+    min-width: 60%;
+    max-width: 80%;
+  }
+  input.numeric {
+    max-width: 100px;
+  }
+  input.string, input.password, select {
+    max-width: 50%;
+  }
+  h1, h2 {
+    text-align: center;
+  }
+  form.simple_form {
+    max-width: 60%;
+    margin: auto;
+    input {
+      max-width: 100%;
+    }
+  }
+  select#routine_id {
+    height: 32px;
+    max-width: 60%;
+  }
+  div.dashboard {
+    text-align: center;
+    a {
+      display: inline-block;
+      margin: 10px 5px 30px 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      width: 150px;
+    }
+    .web-view > .carousel > .carousel-inner > .carousel-item {
+      margin-top: 0;
+    }
+  }
+  div.routine_exercise_exercise_sets_reps,
+  div.routine_exercise_exercise_sets_weight,
+  div.routine_exercise_exercise_sets_duration,
+  div.workout_exercise_exercise_sets_reps,
+  div.workout_exercise_exercise_sets_weight,
+  div.workout_exercise_exercise_sets_duration {
+    margin-bottom: 5px !important;
+    input {
+      width: 80px !important;
+      margin-left: 10px;
+      margin-right: 20px;
+    }
+  }
+  a.remove_fields {
+    margin-bottom: 5px !important;
+  }
+  .carousel-item {
+    margin: 80px auto 0 auto;
+  }
+  select[id="body_part_id"][class="exercises-index"] {
+    width: 250px;
+  }
+}

@@ -30,6 +30,7 @@ $(document).on('turbolinks:load', function () {
     .data('association-insertion-node', 'this');
   $('.links')
     .on('cocoon:before-insert', function (e, added) {
+      $('.nested-fields.form-inline').removeClass('highlight-add-set');
       configureNewExerciseSetFields(
         $("select[id$='_exercise_exercise_id'] option:selected").data().fields + '',
         added.find("div[class$='exercise_exercise_sets_reps']").first(),
@@ -54,6 +55,7 @@ $(document).on('turbolinks:load', function () {
 
       repsNew.focus();
       repsNew.select();
+      $(this).find('.nested-fields.form-inline').first().addClass('highlight-add-set');
     });
     $('.notify').on('click', function () {
       $(this).parent().hide();
@@ -67,6 +69,10 @@ $(document).on('turbolinks:load', function () {
     });
     $('select.categories-add-set,select.body-parts-add-set').on('change', function () {
       filterAddExerciseSet($('select.categories-add-set').val(), $('select.body-parts-add-set').val(), $(this));
+    });
+    $("input[id^='routine_exercise_exercise_sets_attributes_'").on('focus', function() {
+      $('.nested-fields.form-inline').removeClass('highlight-add-set');
+      $(this).parent().parent().addClass('highlight-add-set');
     });
     $('#routine_exercise_exercise_id,#workout_exercise_exercise_id').on('change', function () {
       updateExerciseSetFieldsVisibility();
