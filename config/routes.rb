@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get 'home/dashboard'
-
+  get 'stats/index'
   get 'settings/index'
+
   post 'settings/restore'
   post 'settings/weight-unit', to: 'settings#set_weight_unit'
   post 'settings/length-unit', to: 'settings#set_length_unit'

@@ -1,0 +1,25 @@
+h1.title Stats
+
+- if @stats.last_workout
+  p Last
+  = @stats.last_workout.date
+
+p Summary X weeks
+p = @stats.summary.number_of_workouts
+p = @stats.summary.number_of_exercises
+p = @stats.summary.sets
+p = @stats.summary.reps
+p = @stats.summary.categories
+p = @stats.summary.body_parts
+p = @stats.summary.intervals[:avg]
+p = @stats.summary.intervals[:min]
+p = @stats.summary.intervals[:max]
+p = @stats.summary.exercises
+p top
+p = @stats.top_exercises
+
+p Graphs (summary div)
+
+div.action-links
+  = link_to home_dashboard_path do
+    = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))
