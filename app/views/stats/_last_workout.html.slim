@@ -1,0 +1,8 @@
+= link_to workout_path(@stats.last_workout.id)
+  h2 Last Workout
+= link_to workout_path(@stats.last_workout.id)
+  p.last-workout-date = time_ago_in_words(@stats.last_workout.date) + ' ago'
+div
+  p.last-workout-item = ('- ' + @stats.last_workout.categories.join(', ')).truncate(35) if @stats.last_workout.categories.any?
+  p.last-workout-item = ('- ' + @stats.last_workout.body_parts.join(', ')).truncate(35) if @stats.last_workout.body_parts.any?
+  p.last-workout-item = ('- ' + @stats.last_workout.exercises.join(', ')).truncate(65) if @stats.last_workout.exercises.any?

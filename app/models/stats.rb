@@ -1,7 +1,5 @@
 class Stats
-  include ActionView::Helpers::DateHelper
-
-  def initialize(from: 6.months, to: Date.current, top: 10)
+  def initialize(from = 6.months, to = Date.current, top = 6)
     @from = from
     @to = to
     @top = top
@@ -28,10 +26,11 @@ class Stats
       body_parts = body_parts + workout_exercise.exercise.body_parts
     end
     @last_workout = OpenStruct.new({
-      date: time_ago_in_words(workout.date),
-      exercises: exercises.uniq.map { |e| e.name }.take(3),
-      categories: categories.uniq.map { |c| c.name }.take(3),
-      body_parts: body_parts.uniq.map { |bp| bp.name }.take(3)
+      id: workout.id,
+      date: workout.date,
+      exercises: exercises.uniq.map { |e| e.name }.take(5),
+      categories: categories.uniq.map { |c| c.name }.take(5),
+      body_parts: body_parts.uniq.map { |bp| bp.name }.take(10)
     })
   end
 

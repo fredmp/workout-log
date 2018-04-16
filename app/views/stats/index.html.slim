@@ -1,60 +1,33 @@
+- content_for :javascript_includes_before do
+  = javascript_include_tag 'https://www.gstatic.com/charts/loader.js'
+- graph_properties = { is3D: true, backgroundColor: '#F8FBFB', paddingTop: '0px', marginTop: '0px', chartArea: { left: 0, top: 10, 'width': '100%', 'height': '95%'} }
+
 h1.title Stats
-
-/ Split into partials
-h1 Work in Progress
-
 
 div.stats-period
   = label_tag 'period'
-  = select_tag :period
+  = select_tag :period, options_from_collection_for_select(@period_options, :id, :name, @selected_period)
 
 dv.row
   div.stats.col-md-4
     div.stats-section.last-workout.col-md-12
-      h2 Last Workout
-      p.last-workout-date = @stats.last_workout.date + ' ago'
-      p.last-workout-item = '- ' + @stats.last_workout.categories.join(', ') if @stats.last_workout.categories.any?
-      p.last-workout-item = '- ' + @stats.last_workout.body_parts.join(', ') if @stats.last_workout.body_parts.any?
-      p.last-workout-item = '- ' + @stats.last_workout.exercises.join(', ') if @stats.last_workout.exercises.any?
+      = render 'last_workout'
 
   div.stats.col-md-4
     div.stats-section.summary.col-md-12
-      h2 Summary
-      ul
-        li
-          div.summary-item-number = @stats.summary.number_of_workouts || 0
-          div.summary-item-description = 'workout'.pluralize(@stats.summary.number_of_workouts)
-        li
-          div.summary-item-number = @stats.summary.number_of_exercises || 0
-          div.summary-item-description = 'exercise'.pluralize(@stats.summary.number_of_exercises)
-        li
-          div.summary-item-number = @stats.summary.sets || 0
-          div.summary-item-description = 'set'.pluralize(@stats.summary.sets)
-        li
-          div.summary-item-number = @stats.summary.reps || 0
-          div.summary-item-description = 'rep'.pluralize(@stats.summary.reps)
-      - if @stats.summary.intervals[:any]
-        p.stats.interval-title Intervals between workouts
-        p.stats.interval-item = "Avg: #{@stats.summary.intervals[:avg]} - Min: #{@stats.summary.intervals[:min]} - Max: #{@stats.summary.intervals[:max]}"
+      = render 'summary'
 
   div.stats.col-md-4
     div.stats-section.top-exercises.col-md-12
-      h2 Top Exercises
-      ul
-        - @stats.top_exercises.each do |exercise|
-          li = exercise
+      = render 'top_exercises'
 
 div.row
   div.stats.col-md-6
     div.stats-section.categories.col-md-12
-      h2 Categories
-      p = @stats.summary.categories
-      p graph
+      = render 'categories', locals: { graph_properties: graph_properties }
   div.stats.col-md-6
     div.stats-section.body-parts.col-md-12
-      h2 Body Parts
-      p = @stats.summary.body_parts
-      p graph
+      = render 'body_parts', locals: { graph_properties: graph_properties }
 
 div.stats-page.action-links
   = link_to home_dashboard_path do

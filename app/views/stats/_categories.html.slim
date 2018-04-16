@@ -1,0 +1,3 @@
+h2 Categories
+- category_data = @stats.summary.categories.each_value.reduce({}) { |acc, current| acc.merge({ current[:name] => current[:number] }) }
+= pie_chart(category_data, height: '250px', legend: 'right', library: locals[:graph_properties], messages: { empty: 'No data' })

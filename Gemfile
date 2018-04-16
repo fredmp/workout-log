@@ -23,6 +23,7 @@ gem 'devise', '~> 4.4'
 gem 'simple_form', '~> 3.5'
 gem 'cocoon'
 gem 'figaro'
+gem 'chartkick'
 
 group :development, :test do
   gem 'pry-byebug'

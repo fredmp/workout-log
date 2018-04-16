@@ -14,11 +14,15 @@
 //= require jquery3
 //= require popper
 //= require cocoon
+//= require chartkick
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {
+  Chartkick.eachChart(function (chart) {
+    chart.redraw();
+  });
   $('td').click(function (e) {
     var target = $(e.target);
     if ($('tr.mobile-view:visible').length > 0) {
@@ -88,6 +92,9 @@ $(document).on('turbolinks:load', function () {
     });
     $('.length-measure-unit > select').on('change', function () {
       changeSettings('length-unit', { unit: $(this).val() });
+    });
+    $('.stats-period > select').on('change', function () {
+      Turbolinks.visit('/stats/index?period=' + $(this).val());
     });
     if ($('#routine_exercise_exercise_id,#workout_exercise_exercise_id').length > 0) {
       updateExerciseSetFieldsVisibility();
