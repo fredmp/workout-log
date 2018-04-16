@@ -2,7 +2,7 @@ class StatsController < ApplicationController
   def index
     @period_options = period_options
     @selected_period = params[:period] || 1
-    @stats = Stats.new(@selected_period.to_i.weeks)
+    @stats = Stats.new(current_user, @selected_period.to_i.weeks)
   end
 
   private

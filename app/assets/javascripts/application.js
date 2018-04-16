@@ -94,7 +94,7 @@ $(document).on('turbolinks:load', function () {
       changeSettings('length-unit', { unit: $(this).val() });
     });
     $('.stats-period > select').on('change', function () {
-      Turbolinks.visit('/stats/index?period=' + $(this).val());
+      Turbolinks.visit('/stats?period=' + $(this).val());
     });
     if ($('#routine_exercise_exercise_id,#workout_exercise_exercise_id').length > 0) {
       updateExerciseSetFieldsVisibility();

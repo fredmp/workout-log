@@ -1,5 +1,6 @@
 class Stats
-  def initialize(from = 6.months, to = Date.current, top = 6)
+  def initialize(user, from = 6.months, to = Date.current, top = 6)
+    @user = user
     @from = from
     @to = to
     @top = top
@@ -16,7 +17,7 @@ class Stats
 
   def last_workout
     return @last_workout if @last_workout
-    workout = @workouts.first || Workout.order(date: :desc).first
+    workout = @workouts.first || @user.workouts.order(date: :desc).first
     exercises = []
     categories = []
     body_parts = []
@@ -49,7 +50,7 @@ class Stats
   private
 
   def build_workouts
-    @workouts = Workout.where('date > ?', @to - @from).order(date: :desc)
+    @workouts = @user.workouts.where('date > ?', @to - @from).order(date: :desc)
   end
 
   def build_initial_summary
