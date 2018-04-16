@@ -357,6 +357,14 @@ div.dashboard {
     }
   }
 }
+.account {
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+  form {
+    text-align: initial;
+  }
+}
 .stats-period {
   text-align: right;
   margin: auto 10px;
