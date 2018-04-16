@@ -15,6 +15,9 @@ body {
 h1 {
   font-size: 2rem;
 }
+h2 {
+  font-size: 1.4rem;
+}
 table {
   width: 80%;
 }
@@ -22,7 +25,13 @@ tbody {
   background-color: $color10;
 }
 select {
-  border: 1px solid $color9;
+  height: 32px;
+  padding-top: 5px;
+  padding-left: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 form {
   select {
@@ -347,4 +356,62 @@ div.dashboard {
       margin-left: 12px;
     }
   }
+}
+.stats-period {
+  text-align: right;
+  margin: auto 10px;
+  select {
+    margin-left: 5px;
+    min-width: 150px;
+  }
+}
+.stats-section {
+  margin: 5px;
+  padding: 15px;
+  height: 190px;
+  display: inline-block;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    li {
+      text-align: center;
+    }
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+.stats.col-md-4, .stats.col-md-6 {
+  padding-left: 5px;
+}
+.summary-item-number, .summary-item-description {
+  display: inline-block;
+}
+.summary-item-number {
+  width: 40%;
+  text-align: right;
+}
+.summary-item-description {
+  width: 60%;
+  text-align: left;
+  padding-left: 5px;
+}
+.stats.interval-title {
+  margin-top: 5px;
+}
+.stats.last-workout {
+  p.last-workout-date {
+    text-align: center;
+  }
+  p.last-workout-item {
+    text-align: left;
+    margin-bottom: 0.2rem;
+  }
+}
+.stats-page.action-links {
+  margin-top: 15px;
 }

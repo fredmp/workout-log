@@ -1,7 +1,7 @@
 class Stats
-  attr_reader :last_workout, :summary
+  include ActionView::Helpers::DateHelper
 
-  def initialize(from: 6.months, to: Date.current, top: 20)
+  def initialize(from: 6.months, to: Date.current, top: 10)
     @from = from
     @to = to
     @top = top
@@ -9,7 +9,6 @@ class Stats
     @total_categories = 0
     @total_body_parts = 0
     build_workouts
-    build_last_workout
     build_initial_summary
     populate_summary
     calculate_percentages(:exercises)
@@ -17,18 +16,41 @@ class Stats
     calculate_percentages(:body_parts)
   end
 
+  def last_workout
+    return @last_workout if @last_workout
+    workout = @workouts.first || Workout.order(date: :desc).first
+    exercises = []
+    categories = []
+    body_parts = []
+    workout.workout_exercises.each do |workout_exercise|
+      exercises << workout_exercise.exercise
+      categories << workout_exercise.exercise.exercise_category
+      body_parts = body_parts + workout_exercise.exercise.body_parts
+    end
+    @last_workout = OpenStruct.new({
+      date: time_ago_in_words(workout.date),
+      exercises: exercises.uniq.map { |e| e.name }.take(3),
+      categories: categories.uniq.map { |c| c.name }.take(3),
+      body_parts: body_parts.uniq.map { |bp| bp.name }.take(3)
+    })
+  end
+
+  def summary
+    @summary
+  end
+
   def top_exercises
-    @summary.exercises.values.sort { |a, b| a[:number] <=> b[:number] }.reverse.take(@top)
+    @top_exercises ||= @summary.exercises.values.sort do |a, b|
+      a[:number] <=> b[:number]
+    end.reverse.take(@top).map do |t|
+      t[:name]
+    end
   end
 
   private
 
   def build_workouts
     @workouts = Workout.where('date > ?', @to - @from).order(date: :desc)
-  end
-
-  def build_last_workout
-    @last_workout = @workouts.first || Workout.order(date: :desc).first
   end
 
   def build_initial_summary
@@ -106,9 +128,14 @@ class Stats
 
   def add_intervals(dates)
     intervals = build_intervals(dates)
-    @summary.intervals[:avg] = {
-      avg: intervals.sum / intervals.size, min: intervals.min, max: intervals.max
-    }
+    if intervals.any?
+      @summary.intervals = {
+        avg: intervals.sum / intervals.size,
+        min: intervals.min,
+        max: intervals.max
+      }
+    end
+    @summary.intervals[:any] = true
   end
 
   def build_intervals(dates)
