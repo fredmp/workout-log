@@ -67,7 +67,7 @@
       padding-bottom: 5px;
       width: 150px;
     }
-    .web-view > .carousel > .carousel-inner > .carousel-item {
+    .web-view > .carousel > .carousel-item {
       margin-top: 0;
     }
   }
@@ -100,7 +100,7 @@
   a.remove_fields {
     margin-bottom: 5px !important;
   }
-  .carousel-item {
+  div.col-md-auto.index > .carousel {
     margin: 80px auto 0 auto;
   }
   select[id="body_part_id"][class="exercises-index"] {
