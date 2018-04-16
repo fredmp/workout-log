@@ -1,9 +1,9 @@
 = simple_form_for @exercise, html: { class: 'form-horizontal' } do |f|
   = f.error_notification
-  = f.association :exercise_category
+  = f.association :exercise_category, collection: current_user.exercise_categories
   = f.input :name
   = f.input :description
   = f.input :fields
     = f.collection_check_boxes :available_field_ids, Exercise.available_fields, :id, :name
-  = f.association :body_parts, as: :check_boxes
+  = f.association :body_parts, collection: current_user.body_parts, as: :check_boxes
   = f.button :submit, class: 'btn btn-primary btn-main-action'
