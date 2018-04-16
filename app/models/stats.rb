@@ -18,6 +18,7 @@ class Stats
   def last_workout
     return @last_workout if @last_workout
     workout = @workouts.first || @user.workouts.order(date: :desc).first
+    return nil unless workout
     exercises = []
     categories = []
     body_parts = []
