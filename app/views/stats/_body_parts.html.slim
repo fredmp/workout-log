@@ -1,3 +1,3 @@
-h2 Body Parts
+h2 = t(:plural_capitalized, scope: [:body_parts])
 - body_parts_data = @stats.summary.body_parts.each_value.reduce({}) { |acc, current| acc.merge({ current[:name] => current[:number] }) }
-= pie_chart(body_parts_data, height: '250px', legend: 'right', library: locals[:graph_properties], messages: { empty: 'No data' })
+= pie_chart(body_parts_data, height: '250px', legend: 'right', library: locals[:graph_properties], messages: { empty: t(:no_data, scope: [:stats]) })

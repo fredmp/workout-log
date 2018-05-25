@@ -2,10 +2,10 @@
   = javascript_include_tag 'https://www.gstatic.com/charts/loader.js', 'data-turbolinks-track' => true
 - graph_properties = { is3D: true, backgroundColor: '#F8FBFB', paddingTop: '0px', marginTop: '0px', chartArea: { left: 0, top: 10, 'width': '100%', 'height': '95%'} }
 
-h1.title Stats
+h1.title = t(:plural_capitalized, scope: [:stats])
 
 div.stats-period
-  = label_tag 'period'
+  = label_tag t(:period, scope: [:common])
   = select_tag :period, options_from_collection_for_select(@period_options, :id, :name, @selected_period)
 
 dv.row

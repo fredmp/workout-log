@@ -1,4 +1,4 @@
-h2 Top 6 Exercises
+h2 = t(:top_exercises, scope: [:stats], count: 6)
 ul
   - @stats.top_exercises.each do |exercise|
     li = exercise.truncate(30)

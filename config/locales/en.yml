@@ -33,3 +33,8 @@ en:
   time:
     formats:
       workout: "%a - %b %d, %Y - %H:%M"
+  datetime:
+    distance_in_words:
+      x_weeks:
+        one: 1 week
+        other: "%{count} weeks"

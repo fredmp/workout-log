@@ -5,6 +5,7 @@ pt:
     description: Descrição
     set: Série
     sets: Séries
+    rep: Repetição
     reps: Repetições
     weight: Peso
     date: Data
@@ -16,6 +17,7 @@ pt:
     duration_short: D
     comments: Comentários
     general: Geral
+    period: Período
     are_you_sure: Tem certeza?
     edit_exercises: Editar Exercícios
     unit_of_weight: Unidade de peso
@@ -24,12 +26,15 @@ pt:
     preferred_length_measure_unit: Unidade de distância preferida
     restore_exercises: Restaurar estrutura de exercícios
     settings: Configurações
+    success: Sucesso
     error: Erro
+    info: Informação
     add: Adicionar
     edit: Editar
     update: Atualizar
     delete: Remover
     fields: Campos
+    ago: '%{time_lapse} atrás'
   workouts:
     singular: treino
     singular_capitalized: Treino
@@ -38,6 +43,7 @@ pt:
     new: Novo Treino
     edit: Editar Treino
     save: Salvar Treino
+    last: Último Treino
   routines:
     singular: rotina
     singular_capitalized: Rotina
@@ -77,6 +83,13 @@ pt:
     all: Todas as partes do corpo
   stats:
     plural_capitalized: Estatísticas
+    summary: Resumo
+    top_exercises: 'Top %{count} Exercícios'
+    intervals_between_workouts: Intervalos entre treinos
+    avg: Média
+    min: Mín
+    max: Máx
+    no_data: Sem dados
   attributes:
     created_at: criado em
     updated_at: atualizado em
@@ -176,6 +189,9 @@ pt:
       x_years:
         one: 1 ano
         other: "%{count} anos"
+      x_weeks:
+        one: 1 semana
+        other: "%{count} semanas"
       x_seconds:
         one: 1 segundo
         other: "%{count} segundos"

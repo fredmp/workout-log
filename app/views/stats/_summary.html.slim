@@ -1,18 +1,18 @@
-h2 Summary
+h2 = t(:summary, scope: [:stats])
 - if @stats.summary.number_of_workouts > 0
   ul
     li
       div.summary-item-number = @stats.summary.number_of_workouts || 0
-      div.summary-item-description = 'workout'.pluralize(@stats.summary.number_of_workouts)
+      div.summary-item-description = t(:singular, scope: [:workouts]).pluralize(@stats.summary.number_of_workouts)
     li
       div.summary-item-number = @stats.summary.number_of_exercises || 0
-      div.summary-item-description = 'exercise'.pluralize(@stats.summary.number_of_exercises)
+      div.summary-item-description = t(:singular, scope: [:exercises]).pluralize(@stats.summary.number_of_exercises)
     li
       div.summary-item-number = @stats.summary.sets || 0
-      div.summary-item-description = 'set'.pluralize(@stats.summary.sets)
+      div.summary-item-description = (t(:set, scope: [:common]).pluralize(@stats.summary.sets)).downcase
     li
       div.summary-item-number = @stats.summary.reps || 0
-      div.summary-item-description = 'rep'.pluralize(@stats.summary.reps)
+      div.summary-item-description = (@stats.summary.reps == 1 ? t(:rep, scope: [:common]) : t(:reps, scope: [:common])).downcase
   - if @stats.summary.intervals[:any]
-    p.stats.interval-title Intervals between workouts
-    p.stats.interval-item = "Avg: #{@stats.summary.intervals[:avg]} - Min: #{@stats.summary.intervals[:min]} - Max: #{@stats.summary.intervals[:max]}"
+    p.stats.interval-title = t(:intervals_between_workouts, scope: [:stats])
+    p.stats.interval-item = "#{t(:avg, scope: [:stats])}: #{@stats.summary.intervals[:avg]} - #{t(:min, scope: [:stats])}: #{@stats.summary.intervals[:min]} - #{t(:max, scope: [:stats])}: #{@stats.summary.intervals[:max]}"

@@ -9,11 +9,11 @@ class StatsController < ApplicationController
 
   def period_options
     [
-      { id: 1, name: '1 Week' },
-      { id: 2, name: '2 Weeks' },
-      { id: 4, name: '1 Month' },
-      { id: 12, name: '3 Months' },
-      { id: 24, name: '6 Months' }
+      { id: 1, name: I18n.t(:x_weeks, scope: [:datetime, :distance_in_words], count: 1) },
+      { id: 2, name: I18n.t(:x_weeks, scope: [:datetime, :distance_in_words], count: 2) },
+      { id: 4, name: I18n.t(:x_months, scope: [:datetime, :distance_in_words], count: 1) },
+      { id: 12, name: I18n.t(:x_months, scope: [:datetime, :distance_in_words], count: 3) },
+      { id: 24, name: I18n.t(:x_months, scope: [:datetime, :distance_in_words], count: 6) }
     ].map do |option|
       OpenStruct.new(option)
     end
