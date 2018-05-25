@@ -27,6 +27,8 @@ pt:
     preferred_length_measure_unit: Unidade de distância preferida
     locale_initial_exercises: Seus exercícios iniciais serão criados em português
     restore_exercises: Restaurar estrutura de exercícios
+    restore_error: Ocorreu um erro ao restaurar os exercícios
+    restored_successfully: Exercícios restaurados com sucesso
     settings: Configurações
     success: Sucesso
     error: Erro
@@ -46,6 +48,9 @@ pt:
     edit: Editar Treino
     save: Salvar Treino
     last: Último Treino
+    created: Treino criado com sucesso
+    updated: Treino atualizado com sucesso
+    removed: Treino removido com sucesso
   routines:
     singular: rotina
     singular_capitalized: Rotina
@@ -55,6 +60,9 @@ pt:
     edit: Editar Rotina
     save: Salvar Rotina
     exercises_from_routine: Você pode usar exercícios de uma rotina...
+    created: Rotina criada com sucesso
+    updated: Rotina atualizada com sucesso
+    removed: Rotina removida com sucesso
   exercises:
     singular: exercício
     singular_capitalized: Exercício
@@ -65,6 +73,9 @@ pt:
     save: Salvar Exercício
     categories: Categorias de exercícios
     choose: Escolha um exercício
+    created: Exercício criado com sucesso
+    updated: Exercício atualizado com sucesso
+    removed: Exercício removido com sucesso
   categories:
     singular: categoria
     singular_capitalized: Categoria
@@ -74,6 +85,10 @@ pt:
     edit: Editar Categoria
     save: Salvar Categoria
     all: Todas as categorias
+    created: Categoria criada com sucesso
+    updated: Categoria atualizada com sucesso
+    removed: Categoria removida com sucesso
+    required: Você precisa selecionar uma categoria
   body_parts:
     singular: parte do corpo
     singular_capitalized: Parte do corpo
@@ -83,6 +98,9 @@ pt:
     edit: Editar parte do corpo
     save: Salvar parte do corpo
     all: Todas as partes do corpo
+    created: Parte do corpo criada com sucesso
+    updated: Parte do corpo atualizada com sucesso
+    removed: Parte do corpo removida com sucesso
   stats:
     plural_capitalized: Estatísticas
     summary: Resumo

@@ -14,7 +14,7 @@ class WorkoutExercisesController < ApplicationController
   def create
     @workout_exercise = @workout.workout_exercises.build(workout_exercise_params)
     if @workout_exercise.save
-      redirect_to @workout, notice: 'Exercise created successfully'
+      redirect_to @workout, notice: I18n.t(:created, scope: [:exercises])
     else
       render :new
     end
@@ -22,7 +22,7 @@ class WorkoutExercisesController < ApplicationController
 
   def update
     if @workout_exercise.update(workout_exercise_params)
-      redirect_to @workout, notice: 'Exercise updated successfully'
+      redirect_to @workout, notice: I18n.t(:updated, scope: [:exercises])
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class WorkoutExercisesController < ApplicationController
 
   def destroy
     @workout_exercise.destroy
-    redirect_to @workout, notice: 'Exercise removed successfully'
+    redirect_to @workout, notice: I18n.t(:removed, scope: [:exercises])
   end
 
   private

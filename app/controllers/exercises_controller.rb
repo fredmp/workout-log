@@ -22,13 +22,13 @@ class ExercisesController < ApplicationController
   def create
     unless valid_category?
       @exercise = Exercise.new(exercise_params)
-      flash[:alert] = 'You need to select a valid category'
+      flash[:alert] = I18n.t(:required, scope: [:categories])
       render :new
       return
     end
     @exercise = current_user.exercises.build(exercise_params)
     if @exercise.save
-      redirect_to exercises_path, notice: 'Exercise created successfully'
+      redirect_to exercises_path, notice: I18n.t(:created, scope: [:exercises])
     else
       render :new
     end
@@ -36,12 +36,12 @@ class ExercisesController < ApplicationController
 
   def update
     unless valid_category?
-      flash[:alert] = 'You need to select a valid category'
+      flash[:alert] = I18n.t(:required, scope: [:categories])
       render :new
       return
     end
     if @exercise.update(exercise_params)
-      redirect_to exercises_path, notice: 'Exercise updated successfully'
+      redirect_to exercises_path, notice: I18n.t(:updated, scope: [:exercises])
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class ExercisesController < ApplicationController
   
   def destroy
     @exercise.destroy
-    redirect_to exercises_path, notice: 'Exercise removed successfully'
+    redirect_to exercises_path, notice: I18n.t(:removed, scope: [:exercises])
   end
 
   private

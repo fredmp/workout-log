@@ -15,7 +15,7 @@ class ExerciseCategoriesController < ApplicationController
   def create
     @exercise_category = current_user.exercise_categories.build(exercise_category_params)
     if @exercise_category.save
-      redirect_to exercise_categories_path, notice: 'Category created successfully'
+      redirect_to exercise_categories_path, notice: I18n.t(:created, scope: [:categories])
     else
       render :new
     end
@@ -23,7 +23,7 @@ class ExerciseCategoriesController < ApplicationController
 
   def update
     if @exercise_category.update(exercise_category_params)
-      redirect_to exercise_categories_path, notice: 'Category updated successfully'
+      redirect_to exercise_categories_path, notice: I18n.t(:updated, scope: [:categories])
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class ExerciseCategoriesController < ApplicationController
   
   def destroy
     @exercise_category.destroy
-    redirect_to exercise_categories_path, notice: 'Category removed successfully'
+    redirect_to exercise_categories_path, notice: I18n.t(:removed, scope: [:categories])
   end
 
   private

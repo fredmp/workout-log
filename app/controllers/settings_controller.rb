@@ -22,9 +22,9 @@ class SettingsController < ApplicationController
 
   def restore
     result = if ExerciseStructureBuilder.new(current_user).build
-      { message: 'Exercises restored successfully', notification: :notice }
+      { message: t(:restored_successfully, scope: [:common]), notification: :notice }
     else
-      { message: 'There was an error when restoring the exercises', notification: :alert }
+      { message: t(:restore_error, scope: [:common]), notification: :alert }
     end
     flash[result[:notification]] = result[:message]
     redirect_to settings_index_url

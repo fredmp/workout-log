@@ -14,7 +14,7 @@ class RoutineExercisesController < ApplicationController
   def create
     @routine_exercise = @routine.routine_exercises.build(routine_exercise_params)
     if @routine_exercise.save
-      redirect_to @routine, notice: 'Exercise created successfully'
+      redirect_to @routine, notice: I18n.t(:created, scope: [:exercises])
     else
       render :new
     end
@@ -22,7 +22,7 @@ class RoutineExercisesController < ApplicationController
 
   def update
     if @routine_exercise.update(routine_exercise_params)
-      redirect_to @routine, notice: 'Exercise updated successfully'
+      redirect_to @routine, notice: I18n.t(:updated, scope: [:exercises])
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class RoutineExercisesController < ApplicationController
 
   def destroy
     @routine_exercise.destroy
-    redirect_to @routine, notice: 'Exercise removed successfully'
+    redirect_to @routine, notice: I18n.t(:removed, scope: [:exercises])
   end
 
   private

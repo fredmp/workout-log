@@ -1,0 +1,20 @@
+pt:
+  builders:
+    category_names:
+      aerobic: Aeróbicos
+      strength: Força
+      balance: Equilíbrio
+      flexibility: Flexibilidade
+    category_descriptions:
+      aerobic: 'Aeróbicos, ou resistência, são atividades que aumentam nossa ritmo respiratório e batimentos cardíacos. Mantém nosso coração, pulmões e sistema circulatório saudáveis e melhoram nosso condicionamento geral. Aumentar a resistência facilita nosso desempenho em muitas das atividades diárias'
+      strength: 'Exercícios de força desenvolvem nossos músculos. Eles nos ajudam a melhorar o desempenho nas atividades diárias, como por exemplo subir escadas e carregar objetos pesados. São também conhecidos como treinos de resistência.'
+      balance: 'Exercícios de equilíbrio previnem quedas, um problema comum em adultos idosos. Muito exercícios de força para membros inferiores também melhorar o equilíbrio.'
+      flexibility: 'Exercícios de flexibilidade esticam seus músculos e podem ajudar o corpo a ficar flexível. Ser flexível lhe dá mais liberdade de movimento para outros exercícios, bem como para suas atividades diárias.'
+    body_parts:
+      chest: Peitoral
+      back: Costas
+      shoulders: Ombros
+      triceps: Tríceps
+      biceps: Bíceps
+      abdomen: Abdomen
+      legs: Pernas

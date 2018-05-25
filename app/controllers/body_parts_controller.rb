@@ -15,7 +15,7 @@ class BodyPartsController < ApplicationController
   def create
     @body_part = current_user.body_parts.build(body_part_params)
     if @body_part.save
-      redirect_to body_parts_path, notice: 'Body part created successfully'
+      redirect_to body_parts_path, notice: I18n.t(:created, scope: [:body_parts])
     else
       render :new
     end
@@ -23,7 +23,7 @@ class BodyPartsController < ApplicationController
 
   def update
     if @body_part.update(body_part_params)
-      redirect_to body_parts_path, notice: 'Body part updated successfully'
+      redirect_to body_parts_path, notice: I18n.t(:updated, scope: [:body_parts])
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class BodyPartsController < ApplicationController
   
   def destroy
     @body_part.destroy
-    redirect_to body_parts_path, notice: 'Body part removed successfully'
+    redirect_to body_parts_path, notice: I18n.t(:removed, scope: [:body_parts])
   end
 
   private

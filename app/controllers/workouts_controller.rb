@@ -19,7 +19,7 @@ class WorkoutsController < ApplicationController
     @workout = current_user.workouts.build(workout_params)
     @workout.build_from_routine(current_user.routines.find_by_id(params[:routine][:id])) if params[:routine]
     if @workout.save
-      redirect_to workouts_path, notice: 'Workout created successfully'
+      redirect_to workouts_path, notice: I18n.t(:created, scope: [:workouts])
     else
       render :new
     end
@@ -27,7 +27,7 @@ class WorkoutsController < ApplicationController
 
   def update
     if @workout.update(workout_params)
-      redirect_to workouts_path, notice: 'Workout updated successfully'
+      redirect_to workouts_path, notice: I18n.t(:updated, scope: [:workouts])
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class WorkoutsController < ApplicationController
   
   def destroy
     @workout.destroy
-    redirect_to workouts_path, notice: 'Workout removed successfully'
+    redirect_to workouts_path, notice: I18n.t(:removed, scope: [:workouts])
   end
 
   private

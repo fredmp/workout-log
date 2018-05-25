@@ -1,34 +1,4 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
+---
 en:
   common:
     name: Name
@@ -57,6 +27,8 @@ en:
     preferred_length_measure_unit: Preferred length measure unit
     locale_initial_exercises: Your initial exercises will be generated in English
     restore_exercises: Restore exercise structure
+    restore_error: There was an error when restoring the exercises
+    restored_successfully: Exercises restored successfully
     settings: Settings
     success: Success
     error: Error
@@ -76,6 +48,9 @@ en:
     edit: Edit Workout
     save: Save Workout
     last: Last Workout
+    created: Workout created successfully
+    updated: Workout updated successfully
+    removed: Workout removed successfully
   routines:
     singular: routine
     singular_capitalized: Routine
@@ -85,6 +60,9 @@ en:
     edit: Edit Routine
     save: Save Routine
     exercises_from_routine: You can use exercises from a routine...
+    created: Routine created successfully
+    updated: Routine updated successfully
+    removed: Routine removed successfully
   exercises:
     singular: exercise
     singular_capitalized: Exercise
@@ -95,6 +73,9 @@ en:
     save: Save Exercise
     categories: Exercise categories
     choose: Choose an exercise
+    created: Exercise created successfully
+    updated: Exercise updated successfully
+    removed: Exercise removed successfully
   categories:
     singular: category
     singular_capitalized: Category
@@ -104,6 +85,10 @@ en:
     edit: Edit Category
     save: Save Category
     all: All categories
+    created: Category created successfully
+    updated: Category updated successfully
+    removed: Category removed successfully
+    required: You need to select a valid category
   body_parts:
     singular: body part
     singular_capitalized: Body part
@@ -113,6 +98,9 @@ en:
     edit: Edit body part
     save: Save body part
     all: All body parts
+    created: Body part created successfully
+    updated: Body part updated successfully
+    removed: Body part removed successfully
   stats:
     plural_capitalized: Stats
     summary: Summary

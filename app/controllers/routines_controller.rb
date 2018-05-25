@@ -17,7 +17,7 @@ class RoutinesController < ApplicationController
   def create
     @routine = current_user.routines.build(routine_params)
     if @routine.save
-      redirect_to routines_path, notice: 'Routine created successfully'
+      redirect_to routines_path, notice: I18n.t(:created, scope: [:routines])
     else
       render :new
     end
@@ -25,7 +25,7 @@ class RoutinesController < ApplicationController
 
   def update
     if @routine.update(routine_params)
-      redirect_to routines_path, notice: 'Routine updated successfully'
+      redirect_to routines_path, notice: I18n.t(:updated, scope: [:routines])
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class RoutinesController < ApplicationController
   
   def destroy
     @routine.destroy
-    redirect_to routines_path, notice: 'Routine removed successfully'
+    redirect_to routines_path, notice: I18n.t(:removed, scope: [:routines])
   end
 
   private
