@@ -17,6 +17,8 @@ module WorkoutApp
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
+    config.active_job.queue_adapter = :sidekiq
+
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:en, :pt]
   end

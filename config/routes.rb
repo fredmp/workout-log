@@ -1,9 +1,11 @@
-Rails.application.routes.draw do
-  devise_for :users
+require 'sidekiq/web'
 
+Rails.application.routes.draw do
   authenticated :user do
     root 'home#dashboard', as: :authenticated_root
   end
+
+  devise_for :users
 
   root 'home#index'
 
@@ -29,4 +31,6 @@ Rails.application.routes.draw do
   resources :workouts do
     resources :workout_exercises
   end
+
+  # mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
 end

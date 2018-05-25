@@ -43,4 +43,10 @@ class User < ApplicationRecord
   has_many :body_parts, dependent: :destroy
   has_many :routines, dependent: :destroy
   has_many :workouts, dependent: :destroy
+
+  after_create :build_initial_exercise_structure
+
+  def build_initial_exercise_structure
+    BuildInitialExerciseStructureJob.perform_later(self.id)
+  end
 end
