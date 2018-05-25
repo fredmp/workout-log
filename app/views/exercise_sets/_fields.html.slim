@@ -1,7 +1,7 @@
 div.nested-fields.form-inline
-  = f.input :reps
-  = f.input :weight
-  = f.input :duration
-  = f.input :distance
+  = f.input :reps, label: t(:reps, scope: [:common])
+  = f.input :weight, label: t(:weight, scope: [:common])
+  = f.input :duration, label: t(:duration, scope: [:common])
+  = f.input :distance, label: t(:distance, scope: [:common])
   = link_to_remove_association f do
     = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

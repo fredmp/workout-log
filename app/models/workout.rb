@@ -36,6 +36,6 @@ class Workout < ApplicationRecord
   end
 
   def to_s
-    date.strftime('%a - %b %d, %Y - %H:%M')
+    I18n.l(date, format: :workout)
   end
 end

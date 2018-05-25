@@ -4,4 +4,4 @@
   p = workout_exercise.reps
   p = workout_exercise.weight
   p = workout_exercise.duration
-  = link_to 'Delete', workout_workout_exercise_path(workout_exercise.workout, workout_exercise), method: :delete, data: { confirm: 'Are you sure?' }
+  = link_to t(:delete, scope: [:common]), workout_workout_exercise_path(workout_exercise.workout, workout_exercise), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) }

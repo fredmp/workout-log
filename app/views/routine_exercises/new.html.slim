@@ -1,4 +1,4 @@
-h1.title New Exercise - Routine
+h1.title = "#{t(:new, scope: [:exercises])} - #{t(:singular_capitalized, scope: [:routines])}"
 = render 'form'
 div.action-links
   = link_to :back do

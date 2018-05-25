@@ -1,19 +1,19 @@
-h1.title Exercises
+h1.title = t(:plural_capitalized, scope: [:exercises])
 
 div.exercise-index-main-actions
-  = select_tag :exercise_category_id, options_from_collection_for_select(current_user.exercise_categories, :id, :name, @exercise_category_id), include_blank: 'All categories'
-  = link_to 'New Exercise', new_exercise_path, class: 'btn btn-primary btn-main-action new-resource'
-= select_tag :body_part_id, options_from_collection_for_select(current_user.body_parts, :id, :name, @body_part_id), include_blank: 'All body parts', class: 'exercises-index'
+  = select_tag :exercise_category_id, options_from_collection_for_select(current_user.exercise_categories, :id, :name, @exercise_category_id), include_blank: t(:all, scope: [:categories])
+  = link_to t(:new, scope: [:exercises]), new_exercise_path, class: 'btn btn-primary btn-main-action new-resource'
+= select_tag :body_part_id, options_from_collection_for_select(current_user.body_parts, :id, :name, @body_part_id), include_blank: t(:all, scope: [:body_parts]), class: 'exercises-index'
 
 table.table.table-hover
   thead
     tr.web-view
-      th Name
-      th.large Description
-      th.action Edit
-      th.action Delete
+      th = t(:name, scope: [:common])
+      th.large = t(:description, scope: [:common])
+      th.action = t(:edit, scope: [:common])
+      th.action = t(:delete, scope: [:common])
     tr.mobile-view
-      th.main Name
+      th.main = t(:name, scope: [:common])
       th.action
       th.action
   tbody
@@ -23,5 +23,5 @@ table.table.table-hover
         td.large.web-view = exercise.description
         td.action = link_to edit_exercise_path(exercise) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-        td.action = link_to exercise_path(exercise), method: :delete, data: { confirm: 'Are you sure?' } do
+        td.action = link_to exercise_path(exercise), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) } do
           = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

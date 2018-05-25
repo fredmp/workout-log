@@ -3,18 +3,18 @@ p = @exercise.description
 table.table.table-hover.table-bordered
   thead
     tr.web-view
-      th.main Body Parts
-      th.action Edit
-      th.action Delete
+      th.main = t(:plural_capitalized, scope: [:body_parts])
+      th.action = t(:edit, scope: [:common])
+      th.action = t(:delete, scope: [:common])
     tr.mobile-view
-      th.main Body Parts
+      th.main = t(:plural_capitalized, scope: [:body_parts])
   tbody
     - @exercise.body_parts.each do |body_part|
       tr
         td.main = link_to body_part.name, body_part_path(body_part)
         td.action.web-view = link_to edit_body_part_path(body_part) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-        td.action.web-view = link_to body_part_path(body_part), method: :delete, data: { confirm: 'Are you sure?' } do
+        td.action.web-view = link_to body_part_path(body_part), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) } do
           = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
 br
 div.action-links
@@ -22,5 +22,5 @@ div.action-links
     = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))
   = link_to edit_exercise_path(@exercise) do
     = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-  = link_to exercise_path(@exercise), method: :delete, data: { confirm: 'Are you sure?' } do
+  = link_to exercise_path(@exercise), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) } do
     = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

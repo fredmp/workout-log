@@ -1,16 +1,16 @@
-h1.title Routines
+h1.title = t(:plural_capitalized, scope: [:routines])
 
-= link_to 'New Routine', new_routine_path, class: 'btn btn-primary btn-main-action new-resource'
+= link_to t(:new, scope: [:routines]), new_routine_path, class: 'btn btn-primary btn-main-action new-resource'
 
 table.table.table-hover
   thead
     tr.web-view
-      th Name
-      th.large Description
-      th.action Edit
-      th.action Delete
+      th = t(:name, scope: [:common])
+      th.large = t(:description, scope: [:common])
+      th.action = t(:edit, scope: [:common])
+      th.action = t(:delete, scope: [:common])
     tr.mobile-view
-      th.main Name
+      th.main = t(:name, scope: [:common])
       th.action
       th.action
   tbody
@@ -20,5 +20,5 @@ table.table.table-hover
         td.large.web-view = routine.description
         td.action = link_to edit_routine_path(routine) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-        td.action = link_to routine_path(routine), method: :delete, data: { confirm: 'Are you sure?' } do
+        td.action = link_to routine_path(routine), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) } do
           = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

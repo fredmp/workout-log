@@ -2,11 +2,11 @@
   = f.error_notification
   - unless @workout.persisted?
     = simple_fields_for :routine do |r|
-      = f.input :routine
+      = f.input :routine, label: t(:singular_capitalized, scope: [:routines])
         br
-        = r.collection_select :id, @routines, :id, :name, { prompt: 'You can use exercises from a routine...' }, include_blank: true, class: 'dropdown-toggle'
-  = f.input :date, as: :datetime, html5: true
-  = f.input :duration
-  = f.input :comments
-  = f.button :submit, class: 'btn btn-primary btn-main-action'
-  = link_to 'Edit Exercises', workout_path(@workout), class: 'btn btn-primary btn-main-action btn-edit-exercises' if @workout.persisted?
+        = r.collection_select :id, @routines, :id, :name, { prompt: t(:exercises_from_routine, scope: [:routines]) }, include_blank: true, class: 'dropdown-toggle'
+  = f.input :date, label: t(:date, scope: [:common]), as: :datetime, html5: true
+  = f.input :duration, label: t(:duration, scope: [:common])
+  = f.input :comments, label: t(:comments, scope: [:common])
+  = f.button :submit, value: t(:save, scope: [:workouts]), class: 'btn btn-primary btn-main-action'
+  = link_to t(:edit_exercises, scope: [:common]), workout_path(@workout), class: 'btn btn-primary btn-main-action btn-edit-exercises' if @workout.persisted?

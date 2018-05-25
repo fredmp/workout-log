@@ -18,28 +18,28 @@ html
           div.collapse.navbar-collapse id="navbarResponsive"
             ul.navbar-nav.ml-auto
               li class=('nav-item' + (controller_name == 'workouts' ? ' active' : ''))
-                = link_to 'Workouts', workouts_path, class: 'nav-link'
+                = link_to t(:plural_capitalized, scope: [:workouts]), workouts_path, class: 'nav-link'
               li class=('nav-item' + (controller_name == 'routines' ? ' active' : ''))
-                = link_to 'Routines', routines_path, class: 'nav-link'
+                = link_to t(:plural_capitalized, scope: [:routines]), routines_path, class: 'nav-link'
               li class=('nav-item' + (controller_name == 'exercises' ? ' active' : ''))
-                = link_to 'Exercises', exercises_path, class: 'nav-link'
+                = link_to t(:plural_capitalized, scope: [:exercises]), exercises_path, class: 'nav-link'
               li.nav-item
-                = link_to 'Stats', stats_path, class: 'nav-link'
+                = link_to t(:plural_capitalized, scope: [:stats]), stats_path, class: 'nav-link'
               li class="nav-item dropdown"
-                a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" General
+                a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" = t(:general, scope: [:common])
                 div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown"
-                  = link_to 'Categories', exercise_categories_path, class: 'nav-link'
-                  = link_to 'Body Parts', body_parts_path, class: 'nav-link'
+                  = link_to t(:plural_capitalized, scope: [:categories]), exercise_categories_path, class: 'nav-link'
+                  = link_to t(:plural_capitalized, scope: [:body_parts]), body_parts_path, class: 'nav-link'
                   div class="dropdown-divider"
-                  = link_to 'Settings', settings_index_path, class: 'nav-link'
+                  = link_to t(:settings, scope: [:common]), settings_index_path, class: 'nav-link'
               li class=('nav-item' + (controller_name == 'registrations' ? ' active' : ''))
-                = link_to 'Account', edit_user_registration_path, class: 'nav-link'
+                = link_to t(:account, scope: [:devise, :shared, :links]), edit_user_registration_path, class: 'nav-link'
               li.nav-item
-                = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link'
+                = link_to t(:sign_out, scope: [:devise, :shared, :links]), destroy_user_session_path, method: :delete, class: 'nav-link'
         - else
           div
-            = link_to 'Log In', new_user_session_path, class: 'login-link'
-            = link_to 'Sign Up', new_user_registration_path, class: 'signup-link'
+            = link_to t(:sign_in, scope: [:devise, :sessions, :new]), new_user_session_path, class: 'login-link'
+            = link_to t(:sign_up, scope: [:devise, :shared, :links]), new_user_registration_path, class: 'signup-link'
     - is_index = controller_name == 'home' && action_name == 'index'
     div#wrap class=(is_index ? 'index' : '')
       div#main.container.clear-top

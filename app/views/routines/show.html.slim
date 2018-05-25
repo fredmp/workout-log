@@ -1,22 +1,22 @@
 h1.title = @routine.name
 p = @routine.description
-= link_to 'Add Exercise', new_routine_routine_exercise_path(@routine), class: 'btn btn-primary btn-main-action new-resource'
+= link_to t(:new, scope: [:exercises]), new_routine_routine_exercise_path(@routine), class: 'btn btn-primary btn-main-action new-resource'
 table.table.table-hover.table-bordered
   thead
     tr.web-view
-      th.main Name
-      th.sets Sets
-      th.reps Reps
-      th.weight Weight
-      th.duration Duration
-      th.action Edit
-      th.action Delete
+      th.main = t(:name, scope: [:common])
+      th.sets = t(:sets, scope: [:common])
+      th.reps = t(:reps, scope: [:common])
+      th.weight = t(:weight, scope: [:common])
+      th.duration = t(:duration, scope: [:common])
+      th.action = t(:edit, scope: [:common])
+      th.action = t(:delete, scope: [:common])
     tr.mobile-view
-      th.main Name
-      th.sets S
-      th.reps R
-      th.weight W
-      th.duration D
+      th.main = t(:name, scope: [:common])
+      th.sets = t(:sets_short, scope: [:common])
+      th.reps = t(:reps_short, scope: [:common])
+      th.weight = t(:weight_short, scope: [:common])
+      th.duration = t(:duration_short, scope: [:common])
   tbody
     - @routine.routine_exercises.each do |routine_exercise|
       tr
@@ -36,7 +36,7 @@ table.table.table-hover.table-bordered
         td.duration = routine_exercise.exercise.has_field('duration') && routine_exercise.duration > 0 ? routine_exercise.duration : ''
         td.action.web-view = link_to edit_routine_routine_exercise_path(@routine, routine_exercise) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-        td.action.web-view = link_to routine_routine_exercise_path(@routine, routine_exercise), method: :delete, data: { confirm: 'Are you sure?' } do
+        td.action.web-view = link_to routine_routine_exercise_path(@routine, routine_exercise), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) } do
           = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
 br
 div.action-links
@@ -44,5 +44,5 @@ div.action-links
     = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))
   = link_to edit_routine_path(@routine) do
     = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-  = link_to routine_path(@routine), method: :delete, data: { confirm: 'Are you sure?' } do
+  = link_to routine_path(@routine), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) } do
     = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

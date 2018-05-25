@@ -1,17 +1,17 @@
-h1.title Settings
+h1.title = t(:settings, scope: [:common])
 = image_tag('alert.svg', class: 'settings-alert')
 = image_tag('notice.svg', class: 'settings-notice')
 div class="settings-feedback"
-  h1 Error
+  h1 = t(:error, scope: [:common])
   span
     img
   p
 br
 div.weight-measure-unit
-  = label_tag :weight_unit, 'Preferred weight measure unit'
+  = label_tag :weight_unit, t(:preferred_weight_measure_unit, scope: [:common])
   = select_tag :weight_unit, options_for_select(Settings::WEIGHT_MEASURE_UNITS.map { |unit_key, unit_value| ["#{unit_value[:name]} (#{unit_value[:abbrev]})", unit_key] }, current_user.weight_unit)
 div.length-measure-unit
-  = label_tag :length_unit, 'Preferred length measure unit'
+  = label_tag :length_unit, t(:preferred_length_measure_unit, scope: [:common])
   = select_tag :length_unit, options_for_select(Settings::LENGTH_MEASURE_UNITS.map { |unit_key, unit_value| ["#{unit_value[:name]} (#{unit_value[:abbrev]})", unit_key] }, current_user.length_unit)
 div.restore-exercise-structure
-  = link_to 'Restore exercise structure', settings_restore_path, method: :post, class: 'btn btn-info btn-restore'
+  = link_to t(:restore_exercises, scope: [:common]), settings_restore_path, method: :post, class: 'btn btn-info btn-restore'

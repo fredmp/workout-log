@@ -1,25 +1,25 @@
 h1.title.date = @workout
 p
-  ' Duration:
+  = "#{t(:duration, scope: [:common])}: "
   = @workout.duration
 p = @workout.comments
-= link_to 'Add Exercise', new_workout_workout_exercise_path(@workout), class: 'btn btn-primary btn-main-action new-resource'
+= link_to t(:new, scope: [:exercises]), new_workout_workout_exercise_path(@workout), class: 'btn btn-primary btn-main-action new-resource'
 table.table.table-hover.table-bordered
   thead
     tr.web-view
-      th.main.left Name
-      th.sets Sets
-      th.reps Reps
-      th.weight Weight
-      th.duration Duration
-      th.action Edit
-      th.action Delete
+      th.main.left = t(:name, scope: [:common])
+      th.sets = t(:sets, scope: [:common])
+      th.reps = t(:reps, scope: [:common])
+      th.weight = t(:weight, scope: [:common])
+      th.duration = t(:duration, scope: [:common])
+      th.action = t(:edit, scope: [:common])
+      th.action = t(:delete, scope: [:common])
     tr.mobile-view
-      th.main Name
-      th.sets S
-      th.reps R
-      th.weight W
-      th.duration D
+      th.main = t(:name, scope: [:common])
+      th.sets = t(:sets_short, scope: [:common])
+      th.reps = t(:reps_short, scope: [:common])
+      th.weight = t(:weight_short, scope: [:common])
+      th.duration = t(:duration_short, scope: [:common])
   tbody
     - @workout.workout_exercises.each do |workout_exercise|
       tr
@@ -39,7 +39,7 @@ table.table.table-hover.table-bordered
         td.duration = workout_exercise.exercise.has_field('duration') && workout_exercise.duration > 0 ? workout_exercise.duration : ''
         td.action.web-view = link_to edit_workout_workout_exercise_path(@workout, workout_exercise) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-        td.action.web-view = link_to workout_workout_exercise_path(@workout, workout_exercise), method: :delete, data: { confirm: 'Are you sure?' } do
+        td.action.web-view = link_to workout_workout_exercise_path(@workout, workout_exercise), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) } do
           = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))
 br
 div.action-links
@@ -47,5 +47,5 @@ div.action-links
     = image_tag('back.svg', 'data-svg-fallback' => image_path('back.svg'))
   = link_to edit_workout_path(@workout) do
     = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-  = link_to workout_path(@workout), method: :delete, data: { confirm: 'Are you sure?' } do
+  = link_to workout_path(@workout), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) } do
     = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

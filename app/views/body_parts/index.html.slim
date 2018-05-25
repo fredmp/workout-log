@@ -1,15 +1,15 @@
-h1.title Body Parts
+h1.title = t(:plural_capitalized, scope: [:body_parts])
 
-= link_to 'New Body Part', new_body_part_path, class: 'btn btn-primary btn-main-action new-resource'
+= link_to t(:new, scope: [:body_parts]), new_body_part_path, class: 'btn btn-primary btn-main-action new-resource'
 
 table.table.table-hover
   thead
     tr.web-view
-      th Name
-      th.action Edit
-      th.action Delete
+      th = t(:name, scope: [:common])
+      th.action = t(:edit, scope: [:common])
+      th.action = t(:delete, scope: [:common])
     tr.mobile-view
-      th.main Name
+      th.main = t(:name, scope: [:common])
       th.action
       th.action
   tbody
@@ -18,5 +18,5 @@ table.table.table-hover
         td.main = link_to body_part.name, body_part_path(body_part)
         td.action = link_to edit_body_part_path(body_part) do
           = image_tag('edit.svg', 'data-svg-fallback' => image_path('edit.svg'))
-        td.action = link_to body_part_path(body_part), method: :delete, data: { confirm: 'Are you sure?' } do
+        td.action = link_to body_part_path(body_part), method: :delete, data: { confirm: t(:are_you_sure, scope: [:common]) } do
           = image_tag('delete.svg', 'data-svg-fallback' => image_path('delete.svg'))

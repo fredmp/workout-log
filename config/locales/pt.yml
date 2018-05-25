@@ -1,5 +1,82 @@
 ---
 pt:
+  common:
+    name: Nome
+    description: Descrição
+    set: Série
+    sets: Séries
+    reps: Repetições
+    weight: Peso
+    date: Data
+    duration: Duração
+    distance: Distância
+    sets_short: S
+    reps_short: R
+    weight_short: P
+    duration_short: D
+    comments: Comentários
+    general: Geral
+    are_you_sure: Tem certeza?
+    edit_exercises: Editar Exercícios
+    unit_of_weight: Unidade de peso
+    unit_of_length: Unidade de distância
+    preferred_weight_measure_unit: Unidade de peso preferida
+    preferred_length_measure_unit: Unidade de distância preferida
+    restore_exercises: Restaurar estrutura de exercícios
+    settings: Configurações
+    error: Erro
+    add: Adicionar
+    edit: Editar
+    update: Atualizar
+    delete: Remover
+    fields: Campos
+  workouts:
+    singular: treino
+    singular_capitalized: Treino
+    plural: treinos
+    plural_capitalized: Treinos
+    new: Novo Treino
+    edit: Editar Treino
+    save: Salvar Treino
+  routines:
+    singular: rotina
+    singular_capitalized: Rotina
+    plural: rotinas
+    plural_capitalized: Rotinas
+    new: Nova Rotina
+    edit: Editar Rotina
+    save: Salvar Rotina
+    exercises_from_routine: Você pode usar exercícios de uma rotina...
+  exercises:
+    singular: exercício
+    singular_capitalized: Exercício
+    plural: exercícios
+    plural_capitalized: Exercícios
+    new: Novo Exercício
+    edit: Editar Exercício
+    save: Salvar Exercício
+    categories: Categorias de exercícios
+    choose: Escolha um exercício
+  categories:
+    singular: categoria
+    singular_capitalized: Categoria
+    plural: categorias
+    plural_capitalized: Categorias de Exercícios
+    new: Nova Categoria
+    edit: Editar Categoria
+    save: Salvar Categoria
+    all: Todas as categorias
+  body_parts:
+    singular: parte do corpo
+    singular_capitalized: Parte do corpo
+    plural: partes do corpo
+    plural_capitalized: Partes do corpo
+    new: Nova parte do corpo
+    edit: Editar parte do corpo
+    save: Salvar parte do corpo
+    all: Todas as partes do corpo
+  stats:
+    plural_capitalized: Estatísticas
   attributes:
     created_at: criado em
     updated_at: atualizado em
@@ -221,4 +298,5 @@ pt:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
+      workout: "%a - %H:%M - %d/%m/%y"
     pm: ''
