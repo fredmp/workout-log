@@ -30,6 +30,96 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  common:
+    name: Name
+    description: Description
+    set: Set
+    sets: Sets
+    rep: Rep
+    reps: Reps
+    weight: Weight
+    date: Date
+    duration: Duration
+    distance: Distance
+    sets_short: S
+    reps_short: R
+    weight_short: W
+    duration_short: D
+    comments: Comments
+    general: General
+    period: Period
+    are_you_sure: Are you sure?
+    edit_exercises: Edit Exercises
+    unit_of_weight: Unit of weight
+    unit_of_length: Unit of length
+    preferred_weight_measure_unit: Preferred weight measure unit
+    preferred_length_measure_unit: Preferred length measure unit
+    restore_exercises: Restore exercise structure
+    settings: Settings
+    success: Success
+    error: Error
+    info: Info
+    add: Add
+    edit: Edit
+    update: Update
+    delete: Remove
+    fields: Fields
+    ago: '%{time_lapse} ago'
+  workouts:
+    singular: workout
+    singular_capitalized: Workout
+    plural: workouts
+    plural_capitalized: Workouts
+    new: Add Workout
+    edit: Edit Workout
+    save: Save Workout
+    last: Last Workout
+  routines:
+    singular: routine
+    singular_capitalized: Routine
+    plural: routines
+    plural_capitalized: Routines
+    new: Add Routine
+    edit: Edit Routine
+    save: Save Routine
+    exercises_from_routine: You can use exercises from a routine...
+  exercises:
+    singular: exercise
+    singular_capitalized: Exercise
+    plural: exercises
+    plural_capitalized: Exercises
+    new: Add Exercise
+    edit: Edit Exercise
+    save: Save Exercise
+    categories: Exercise categories
+    choose: Choose an exercise
+  categories:
+    singular: category
+    singular_capitalized: Category
+    plural: categories
+    plural_capitalized: Exercise categories
+    new: Add Category
+    edit: Edit Category
+    save: Save Category
+    all: All categories
+  body_parts:
+    singular: body part
+    singular_capitalized: Body part
+    plural: partes do corpo
+    plural_capitalized: Body parts
+    new: Add body part
+    edit: Edit body part
+    save: Save body part
+    all: All body parts
+  stats:
+    plural_capitalized: Stats
+    summary: Summary
+    top_exercises: 'Top %{count} Exercises'
+    intervals_between_workouts: Intervals between workouts
+    avg: Avg
+    min: Min
+    max: Max
+    no_data: No data
   time:
     formats:
       workout: "%a - %b %d, %Y - %H:%M"

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     # request.env['HTTP_ACCEPT_LANGUAGE'].match(/(pt|pt-BR)/)
     
     # I18n.locale = params[:locale] || I18n.default_locale
-    I18n.locale = :pt
+    I18n.locale = :en
 
     # user_locale = current_user.locale if current_user
     # I18n.locale = user_locale || I18n.default_locale
