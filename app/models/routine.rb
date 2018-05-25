@@ -13,10 +13,6 @@
 #
 #  index_routines_on_user_id  (user_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (user_id => users.id)
-#
 
 class Routine < ApplicationRecord
   belongs_to :user

@@ -96,6 +96,9 @@ $(document).on('turbolinks:load', function () {
     $('.stats-period > select').on('change', function () {
       Turbolinks.visit('/stats?period=' + $(this).val());
     });
+    $('form#new_user > div > #user_locale').on('change', function (e) {
+      Turbolinks.visit('/users/sign_up?locale=' + $(this).val());
+    });
     if ($('#routine_exercise_exercise_id,#workout_exercise_exercise_id').length > 0) {
       updateExerciseSetFieldsVisibility();
     }

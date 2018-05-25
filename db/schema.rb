@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412191953) do
+ActiveRecord::Schema.define(version: 20180525185953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20180412191953) do
 
   create_table "exercise_sets", force: :cascade do |t|
     t.string "setable_type"
-    t.bigint "setable_id"
+    t.integer "setable_id"
     t.integer "reps"
     t.decimal "weight"
     t.integer "duration"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180412191953) do
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.bigint "exercise_category_id"
+    t.integer "exercise_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "available_fields_definition", default: ""
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20180412191953) do
   end
 
   create_table "routine_exercises", force: :cascade do |t|
-    t.bigint "exercise_id"
-    t.bigint "routine_id"
+    t.integer "exercise_id"
+    t.integer "routine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "length_unit"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20180412191953) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
@@ -98,14 +98,15 @@ ActiveRecord::Schema.define(version: 20180412191953) do
     t.bigint "exercise_category_id"
     t.string "weight_unit"
     t.string "length_unit"
+    t.string "locale"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["exercise_category_id"], name: "index_users_on_exercise_category_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "workout_exercises", force: :cascade do |t|
-    t.bigint "exercise_id"
-    t.bigint "workout_id"
+    t.integer "exercise_id"
+    t.integer "workout_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "weight_unit"
@@ -120,18 +121,11 @@ ActiveRecord::Schema.define(version: 20180412191953) do
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
   add_foreign_key "body_parts", "users"
   add_foreign_key "exercise_categories", "users"
-  add_foreign_key "exercises", "exercise_categories"
-  add_foreign_key "routine_exercises", "exercises"
-  add_foreign_key "routine_exercises", "routines"
-  add_foreign_key "routines", "users"
   add_foreign_key "users", "exercise_categories"
-  add_foreign_key "workout_exercises", "exercises"
-  add_foreign_key "workout_exercises", "workouts"
-  add_foreign_key "workouts", "users"
 end

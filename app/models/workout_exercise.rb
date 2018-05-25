@@ -15,11 +15,6 @@
 #  index_workout_exercises_on_exercise_id  (exercise_id)
 #  index_workout_exercises_on_workout_id   (workout_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (exercise_id => exercises.id)
-#  fk_rails_...  (workout_id => workouts.id)
-#
 
 class WorkoutExercise < ApplicationRecord
   belongs_to :exercise

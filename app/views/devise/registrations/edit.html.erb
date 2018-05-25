@@ -7,6 +7,11 @@
     <div class='form-inputs'>
       <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: 'email' } %>
       <%= f.input :name %>
+      <%= label_tag :locale, t(:locale, scope: [:common]) %>
+      <br>
+      <%= f.select :locale, options_from_collection_for_select([OpenStruct.new({ name: 'English', id: 'en'}), OpenStruct.new({ name: 'Português', id: 'pt'})], :id, :name, I18n.locale) %>
+      <br>
+      <br>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p><%= t(:currently_waiting_confirmation_for_email, scope: [:devise, :registrations, :edit], email: resource.unconfirmed_email) %></p>

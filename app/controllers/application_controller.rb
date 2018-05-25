@@ -8,17 +8,14 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :locale])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :locale])
   end
 
   def set_locale
-    # request.env['HTTP_ACCEPT_LANGUAGE'].match(/(pt|pt-BR)/)
-    
-    # I18n.locale = params[:locale] || I18n.default_locale
-    I18n.locale = :en
-
-    # user_locale = current_user.locale if current_user
-    # I18n.locale = user_locale || I18n.default_locale
+    params_locale = params[:locale]
+    header_locale = request.env['HTTP_ACCEPT_LANGUAGE'].match(/(pt|pt-BR)/) ? 'pt' : nil
+    user_locale = current_user.locale if current_user
+    I18n.locale = params_locale || user_locale || header_locale || I18n.default_locale
   end
 end

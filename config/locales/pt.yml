@@ -18,12 +18,14 @@ pt:
     comments: Comentários
     general: Geral
     period: Período
+    locale: Idioma
     are_you_sure: Tem certeza?
     edit_exercises: Editar Exercícios
     unit_of_weight: Unidade de peso
     unit_of_length: Unidade de distância
     preferred_weight_measure_unit: Unidade de peso preferida
     preferred_length_measure_unit: Unidade de distância preferida
+    locale_initial_exercises: Seus exercícios iniciais serão criados em português
     restore_exercises: Restaurar estrutura de exercícios
     settings: Configurações
     success: Sucesso

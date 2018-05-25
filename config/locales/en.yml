@@ -48,12 +48,14 @@ en:
     comments: Comments
     general: General
     period: Period
+    locale: Language
     are_you_sure: Are you sure?
     edit_exercises: Edit Exercises
     unit_of_weight: Unit of weight
     unit_of_length: Unit of length
     preferred_weight_measure_unit: Preferred weight measure unit
     preferred_length_measure_unit: Preferred length measure unit
+    locale_initial_exercises: Your initial exercises will be generated in English
     restore_exercises: Restore exercise structure
     settings: Settings
     success: Success

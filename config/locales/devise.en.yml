@@ -5,6 +5,7 @@ en:
     attributes:
       user:
         name: Name
+        locale: Language
         confirmation_sent_at: Confirmation sent at
         confirmation_token: Confirmation token
         confirmed_at: Confirmed at

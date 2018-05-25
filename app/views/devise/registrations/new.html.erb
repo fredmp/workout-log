@@ -5,6 +5,12 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
+      <%= label_tag :locale, t(:locale, scope: [:common]) %>
+      <br>
+      <%= f.select :locale, options_from_collection_for_select([OpenStruct.new({ name: 'English', id: 'en'}), OpenStruct.new({ name: 'Português', id: 'pt'})], :id, :name, I18n.locale) %>
+      <br>
+      <br>
+      <p class="help-block"><%= t(:locale_initial_exercises, scope: [:common]) %></p>
       <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: 'email' } %>
       <%= f.input :name, input_html: { autocomplete: 'name' } %>
       <%= f.input :password, required: true, hint: (I18n.t(:minimum_password_length, count: @minimum_password_length, scope: [:devise, :shared]) if @minimum_password_length), input_html: { autocomplete: 'password' } %>
