@@ -22,8 +22,10 @@ class ExerciseStructureBuilder
     @user.reload
     categories = @user.exercise_categories
     body_parts = @user.body_parts
+    exercise_map = @user.locale == 'pt' ? INITIAL_EXERCISES_MAP_PT : INITIAL_EXERCISES_MAP_EN
+    I18n.locale = @user.locale || I18n.default_locale
 
-    INITIAL_EXERCISES_MAP.each do |category_key, exercises|
+    exercise_map.each do |category_key, exercises|
       category = categories.detect { |c| c.name == category_key.to_s.capitalize }
       exercises.each do |exercise_entry|
         unless @existing_exercises_names.include?(exercise_entry[:name])
@@ -45,7 +47,7 @@ class ExerciseStructureBuilder
   end
 
   def create_body_parts
-    INITIAL_BODY_PARTS.each do |name|
+    INITIAL_BODY_PARTS.each_value do |name|
       @user.body_parts.create(name: name) unless @existing_body_part_names.include?(name)
     end
   end
@@ -56,14 +58,130 @@ class ExerciseStructureBuilder
     @existing_exercises_names = @user.exercises.pluck(:name)
   end
 
-  INITIAL_BODY_PARTS = %w(Chest Back Shoulders Triceps Biceps Abdomen Legs)
-  INITIAL_EXERCISE_CATEGORIES = {
-    'Aerobic' => 'Aerobic, or endurance, are activities that increase your breathing and heart rate. They keep your heart, lungs, and circulatory system healthy and improve your overall fitness. Building your endurance makes it easier to carry out many of your everyday activities.',
-    'Strength' => 'Strength exercises make your muscles stronger. They may help you stay independent and carry out everyday activities, such as climbing stairs and carrying groceries. These exercises also are called strength training or resistance training.',
-    'Balance' => 'Balance exercises help prevent falls, a common problem in older adults. Many lower-body strength exercises also will improve your balance.',
-    'Flexibility' => 'Flexibility exercises stretch your muscles and can help your body stay limber. Being flexible gives you more freedom of movement for other exercises as well as for your everyday activities.'
+  INITIAL_BODY_PARTS = {
+    chest: I18n.t(:chest, scope: [:builders, :body_parts]),
+    back: I18n.t(:back, scope: [:builders, :body_parts]),
+    shoulders: I18n.t(:shoulders, scope: [:builders, :body_parts]),
+    triceps: I18n.t(:triceps, scope: [:builders, :body_parts]),
+    biceps: I18n.t(:biceps, scope: [:builders, :body_parts]),
+    abdomen: I18n.t(:abdomen, scope: [:builders, :body_parts]),
+    legs: I18n.t(:legs, scope: [:builders, :body_parts])
   }
-  INITIAL_EXERCISES_MAP = {
+  INITIAL_EXERCISE_CATEGORIES = {
+    I18n.t(:aerobic, scope: [:builders, :category_names]) => I18n.t(:aerobic, scope: [:builders, :category_descriptions]),
+    I18n.t(:strength, scope: [:builders, :category_names]) => I18n.t(:strength, scope: [:builders, :category_descriptions]),
+    I18n.t(:balance, scope: [:builders, :category_names]) => I18n.t(:balance, scope: [:builders, :category_descriptions]),
+    I18n.t(:flexibility, scope: [:builders, :category_names]) => I18n.t(:flexibility, scope: [:builders, :category_descriptions])
+  }
+  INITIAL_EXERCISES_MAP_PT = {
+    aerobic: [
+      { name: 'Caminhada', fields: '3-4' },
+      { name: 'Corrida', fields: '3-4' },
+      { name: 'Natação', fields: '3-4' },
+      { name: 'Hidroginástica', fields: '3' },
+      { name: 'Ciclismo', fields: '3-4' },
+      { name: 'Remo', fields: '3-4' },
+      { name: 'Boxe', fields: '3' }
+    ],
+    balance: [
+      { name: 'Equilíbrio em um pé só', fields: '1' },
+      { name: 'Balanço de perna', fields: '1' },
+      { name: 'Movimento de relógio com os braços', fields: '1' },
+      { name: 'Movimento de relógio com as pernas', fields: '1' },
+      { name: 'Agachamento na bola bosu', fields: '1' },
+      { name: 'Agachamento com peso na bola bosu', fields: '1-2' }
+    ],
+    flexibility: [
+      { name: 'Alongamento de pescoço', fields: '1' },
+      { name: 'Alongamento do flexor do quadril', fields: '1' },
+      { name: 'Alongamento de tríceps', fields: '1' },
+      { name: 'Alongamento de peito', fields: '1' },
+      { name: 'Alongamento de glúteos', fields: '1' },
+      { name: 'Alongamento de ombros puxando para frente', fields: '1' },
+      { name: 'Alongamento de ombros puxando para trás', fields: '1' },
+      { name: 'Alongamento de isquiotibiais passivo', fields: '1' },
+      { name: 'Alongamento do quadríceps', fields: '1' },
+      { name: 'Alongamento do trapézio', fields: '1' },
+      { name: 'Abertura de pernas com flexão lateral', fields: '1' },
+      { name: 'Agachamento frontal com puxada de pé', fields: '1' },
+      { name: 'Flexão coxo-femural', fields: '1' },
+      { name: 'Postura de alongamento em ângulo lateral', fields: '1' },
+      { name: 'Postura do peixe com apoio', fields: '1' }
+    ],
+    strength: [
+      # Chest
+      { name: 'Supino reto', body_parts: [:chest], fields: '1-2' },
+      { name: 'Supino 45', body_parts: [:chest], fields: '1-2' },
+      { name: 'Supino 90', body_parts: [:chest], fields: '1-2' },
+      { name: 'Supino declinado', body_parts: [:chest], fields: '1-2' },
+      { name: 'Flexões', body_parts: [:chest], fields: '1-2' },
+      { name: 'Supino com halteres', body_parts: [:chest], fields: '1-2' },
+      { name: 'Supino reto máquina', body_parts: [:chest], fields: '1-2' },
+      { name: 'Voador', body_parts: [:chest], fields: '1-2' },
+      { name: 'Voador com halteres', body_parts: [:chest], fields: '1-2' },
+      { name: 'Voador com halteres inclinado', body_parts: [:chest], fields: '1-2' },
+      { name: 'Voador com halteres declinado', body_parts: [:chest], fields: '1-2' },
+      { name: 'Crucifixo', body_parts: [:chest], fields: '1-2' },
+      { name: 'Cabo crossover', body_parts: [:chest], fields: '1-2' },
+      # Back
+      { name: 'Puxada frontal aberta', body_parts: [:back], fields: '1-2' },
+      { name: 'Puxada frontal fechada', body_parts: [:back], fields: '1-2' },
+      { name: 'Puxada costas', body_parts: [:back], fields: '1-2' },
+      { name: 'Remada sentado aberta', body_parts: [:back], fields: '1-2' },
+      { name: 'Remada sentado fechada', body_parts: [:back], fields: '1-2' },
+      { name: 'Remada cavalinho aberta', body_parts: [:back], fields: '1-2' },
+      { name: 'Remada cavalinho fechada', body_parts: [:back], fields: '1-2' },
+      # Shoulders
+      { name: 'Ombro cabo elevação unilateral', body_parts: [:shoulders], fields: '1-2' },
+      { name: 'Ombro halter elevação unilateral', body_parts: [:shoulders], fields: '1-2' },
+      { name: 'Ombros halteres elevação bilateral', body_parts: [:shoulders], fields: '1-2' },
+      { name: 'Ombros halteres elevação frontal', body_parts: [:shoulders], fields: '1-2' },
+      { name: 'Desenvolvimento ombros barra', body_parts: [:shoulders], fields: '1-2' },
+      { name: 'Desenvolvimento ombros halteres', body_parts: [:shoulders], fields: '1-2' },
+      { name: 'Elevação de ombros', body_parts: [:shoulders], fields: '1-2' },
+      # Triceps
+      { name: 'Tríceps máquina barra reta', body_parts: [:triceps], fields: '1-2' },
+      { name: 'Tríceps máquina barra v', body_parts: [:triceps], fields: '1-2' },
+      { name: 'Tríceps corda', body_parts: [:triceps], fields: '1-2' },
+      { name: 'Tríceps mergulho', body_parts: [:triceps], fields: '1-2' },
+      { name: 'Tríceps halteres sobre os ombros', body_parts: [:triceps], fields: '1-2' },
+      { name: 'Tríceps barra w sentado', body_parts: [:triceps], fields: '1-2' },
+      { name: 'Tríceps barra w deitado', body_parts: [:triceps], fields: '1-2' },
+      # Biceps:
+      { name: 'Bíceps barra reta', body_parts: [:biceps], fields: '1-2' },
+      { name: 'Bíceps barra w', body_parts: [:biceps], fields: '1-2' },
+      { name: 'Bíceps halteres', body_parts: [:biceps], fields: '1-2' },
+      { name: 'Bíceps halteres alternado', body_parts: [:biceps], fields: '1-2' },
+      { name: 'Bíceps halteres martelo', body_parts: [:biceps], fields: '1-2' },
+      { name: 'Bíceps halteres rotacionado', body_parts: [:biceps], fields: '1-2' },
+      { name: 'Bíceps barra w banco scott', body_parts: [:biceps], fields: '1-2' },
+      { name: 'Bíceps halteres banco scott', body_parts: [:biceps], fields: '1-2' },
+      { name: 'Bíceps halteres martelo banco scott', body_parts: [:biceps], fields: '1-2' },
+      # Abdomen:
+      { name: 'Abdominais', body_parts: [:abdomen], fields: '1' },
+      { name: 'Abdominais com peso', body_parts: [:abdomen], fields: '1-2' },
+      { name: 'Abdominais máquina', body_parts: [:abdomen], fields: '1-2' },
+      { name: 'Abdominais reversos', body_parts: [:abdomen], fields: '1' },
+      { name: 'Abdominais girando', body_parts: [:abdomen], fields: '1' },
+      { name: 'Abdominais banco', body_parts: [:abdomen], fields: '1' },
+      { name: 'Abdominais levantamento de pernas frontal', body_parts: [:abdomen], fields: '1' },
+      { name: 'Abdominais levantamento de pernas lateral', body_parts: [:abdomen], fields: '1' },
+      { name: 'Abdominais joelhos no peito', body_parts: [:abdomen], fields: '1' },
+      # Legs:
+      { name: 'Agachamento com barra', body_parts: [:legs], fields: '1-2' },
+      { name: 'Agachamento com barra frontal', body_parts: [:legs], fields: '1-2' },
+      { name: 'Agachamento máquina', body_parts: [:legs], fields: '1-2' },
+      { name: 'Leg press 45', body_parts: [:legs], fields: '1-2' },
+      { name: 'Cadeira extensora', body_parts: [:legs], fields: '1-2' },
+      { name: 'Cadeira adutora', body_parts: [:legs], fields: '1-2' },
+      { name: 'Cadeira abdutora', body_parts: [:legs], fields: '1-2' },
+      { name: 'Mesa flexora', body_parts: [:legs], fields: '1-2' },
+      { name: 'Máquina de glúteos', body_parts: [:legs], fields: '1-2' },
+      { name: 'Máquina de panturrilhas', body_parts: [:legs], fields: '1-2' },
+      { name: 'Levantamento de barra', body_parts: [:legs], fields: '1-2' }
+    ]
+  }
+  INITIAL_EXERCISES_MAP_EN = {
     aerobic: [
       { name: 'Walking', fields: '3-4' },
       { name: 'Running', fields: '3-4' },
