@@ -24,7 +24,7 @@ class SettingsController < ApplicationController
     begin
       BuildInitialExerciseStructureJob.perform_later(current_user.id)
       result = { message: t(:restored_successfully, scope: [:common]), notification: :notice }
-    rescue => exception
+    rescue
       result = { message: t(:restore_error, scope: [:common]), notification: :alert }
     end
     flash[result[:notification]] = result[:message]

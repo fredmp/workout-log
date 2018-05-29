@@ -11,7 +11,7 @@ class ExerciseStructureBuilder
       create_categories
       create_body_parts
       create_exercises
-    rescue => exception
+    rescue
       false
     end
     true
@@ -58,7 +58,7 @@ class ExerciseStructureBuilder
   end
 
   def initial_body_parts
-    {
+    @initial_body_parts ||= {
       chest: I18n.t(:chest, scope: [:builders, :body_parts], locale: @locale),
       back: I18n.t(:back, scope: [:builders, :body_parts], locale: @locale),
       shoulders: I18n.t(:shoulders, scope: [:builders, :body_parts], locale: @locale),
@@ -70,7 +70,7 @@ class ExerciseStructureBuilder
   end
 
   def initial_exercise_categories
-    {
+    @initial_exercise_categories ||= {
       aerobic: {
         name: I18n.t(:aerobic, scope: [:builders, :category_names], locale: @locale),
         description: I18n.t(:aerobic, scope: [:builders, :category_descriptions], locale: @locale)
@@ -89,8 +89,9 @@ class ExerciseStructureBuilder
       }
     }
   end
+
   def initial_exercise_map_pt
-    {
+    @initial_exercise_map_pt ||= {
       aerobic: [
         { name: 'Caminhada', fields: '3-4' },
         { name: 'Corrida', fields: '3-4' },
@@ -201,7 +202,7 @@ class ExerciseStructureBuilder
   end
 
   def initial_exercise_map_en
-    {
+    @initial_exercise_map_en ||= {
       aerobic: [
         { name: 'Walking', fields: '3-4' },
         { name: 'Running', fields: '3-4' },

@@ -44,9 +44,9 @@ class User < ApplicationRecord
   has_many :routines, dependent: :destroy
   has_many :workouts, dependent: :destroy
 
-  after_create :build_initial_exercise_structure
+  after_commit :build_initial_exercise_structure, on: :create
 
   def build_initial_exercise_structure
-    BuildInitialExerciseStructureJob.perform_later(self.id)
+    BuildInitialExerciseStructureJob.perform_now(self.id)
   end
 end
