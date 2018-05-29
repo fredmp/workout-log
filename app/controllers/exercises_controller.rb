@@ -9,7 +9,7 @@ class ExercisesController < ApplicationController
     @exercises = current_user.exercises
     @exercises = @exercises.where(exercise_category_id: @exercise_category_id) if @exercise_category_id.present?
     @exercises = @exercises.joins(:body_parts).where({ body_parts: { id: @body_part_id } }) if @body_part_id.present?
-    @exercises.order(:name)
+    @exercises = @exercises.order(:name)
   end
 
   def show
