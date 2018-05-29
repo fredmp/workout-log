@@ -42,7 +42,9 @@ class User < ApplicationRecord
   has_many :exercises, through: :exercise_categories
   has_many :body_parts, dependent: :destroy
   has_many :routines, dependent: :destroy
+  has_many :routine_exercises, through: :routines
   has_many :workouts, dependent: :destroy
+  has_many :workout_exercises, through: :workouts
 
   after_commit :build_initial_exercise_structure, on: :create
 

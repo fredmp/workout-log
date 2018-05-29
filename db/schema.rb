@@ -10,22 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525185953) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20180529185703) do
 
   create_table "body_parts", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_body_parts_on_user_id"
   end
 
   create_table "body_parts_exercises", id: false, force: :cascade do |t|
-    t.bigint "exercise_id", null: false
-    t.bigint "body_part_id", null: false
+    t.integer "exercise_id", null: false
+    t.integer "body_part_id", null: false
     t.index ["body_part_id", "exercise_id"], name: "index_body_parts_exercises_on_body_part_id_and_exercise_id"
     t.index ["exercise_id", "body_part_id"], name: "index_body_parts_exercises_on_exercise_id_and_body_part_id"
   end
@@ -35,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180525185953) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_exercise_categories_on_user_id"
   end
 
@@ -58,6 +55,8 @@ ActiveRecord::Schema.define(version: 20180525185953) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "available_fields_definition", default: ""
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_exercises_on_deleted_at"
     t.index ["exercise_category_id"], name: "index_exercises_on_exercise_category_id"
   end
 
@@ -95,7 +94,7 @@ ActiveRecord::Schema.define(version: 20180525185953) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "exercise_category_id"
+    t.integer "exercise_category_id"
     t.string "weight_unit"
     t.string "length_unit"
     t.string "locale"
@@ -125,7 +124,4 @@ ActiveRecord::Schema.define(version: 20180525185953) do
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
-  add_foreign_key "body_parts", "users"
-  add_foreign_key "exercise_categories", "users"
-  add_foreign_key "users", "exercise_categories"
 end

@@ -17,8 +17,8 @@
 #
 
 class WorkoutExercise < ApplicationRecord
-  belongs_to :exercise
   belongs_to :workout
+  belongs_to :exercise, -> { with_deleted }
 
   has_many :exercise_sets, as: :setable, dependent: :destroy, inverse_of: :setable
 

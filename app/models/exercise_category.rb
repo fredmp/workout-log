@@ -19,6 +19,7 @@
 #
 
 class ExerciseCategory < ApplicationRecord
-  has_many :exercises
+  belongs_to :user
+  has_many :exercises, dependent: :destroy
   validates :name, presence: true
 end

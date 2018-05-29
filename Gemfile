@@ -24,6 +24,7 @@ gem 'cocoon'
 gem 'figaro'
 gem 'redis'
 gem 'sidekiq'
+gem 'paranoia'
 gem 'chartkick'
 
 group :development, :test do

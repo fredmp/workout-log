@@ -4,10 +4,8 @@ jump:
   name: Jump Rope
   description: Good for legs
   exercise_category: aerobic
-  user: user
 
 bench:
   name: Bench press
   description: Good for chest
   exercise_category: strength
-  user: user

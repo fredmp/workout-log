@@ -9,13 +9,18 @@
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
 #  available_fields_definition :string           default("")
+#  deleted_at                  :datetime
 #
 # Indexes
 #
+#  index_exercises_on_deleted_at            (deleted_at)
 #  index_exercises_on_exercise_category_id  (exercise_category_id)
 #
 
 class Exercise < ApplicationRecord
+
+  acts_as_paranoid
+
   belongs_to :exercise_category
   has_and_belongs_to_many :body_parts
 
@@ -43,5 +48,18 @@ class Exercise < ApplicationRecord
   def has_field(name)
     field = FIELDS.detect { |f| f[:name].downcase == (name || '').downcase } || {}
     available_fields_definition.include?((field[:id] || '').to_s)
+  end
+
+  def in_use_by?(user)
+    user.routine_exercises.where(exercise_id: self.id).count > 0 ||
+    user.workout_exercises.where(exercise_id: self.id).count > 0
+  end
+
+  def destroy
+    if exercise_category && in_use_by?(exercise_category.user)
+      super
+    else
+      self.really_destroy!
+    end
   end
 end
