@@ -30,7 +30,7 @@ class ExerciseStructureBuilder
         unless @existing_exercises_names.include?(exercise_entry[:name])
           exercise = category.exercises.build(name: exercise_entry[:name])
           if exercise_entry[:body_parts]
-            exercise.body_parts = body_parts.select { |bp| exercise_entry[:body_parts].include?(bp.name.downcase.to_sym) }
+            exercise.body_parts = body_parts.select { |bp| exercise_entry[:body_parts].include?(initial_body_parts.key(bp.name)) }
           end
           exercise.available_fields_definition = exercise_entry[:fields]
           exercise.save
