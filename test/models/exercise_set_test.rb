@@ -14,8 +14,4 @@ class ExerciseSetTest < ActiveSupport::TestCase
     refute @set.valid?
     assert_equal ['At least one field must be present'], @set.errors[:base]
   end
-
-  test '#to_s' do
-    assert_equal '%a - %b %d, %Y - %H:%M', @set.to_s
-  end
 end

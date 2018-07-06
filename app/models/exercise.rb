@@ -55,6 +55,10 @@ class Exercise < ApplicationRecord
     user.workout_exercises.where(exercise_id: self.id).count > 0
   end
 
+  def user
+    exercise_category.try(:user)
+  end
+
   def destroy
     if exercise_category && in_use_by?(exercise_category.user)
       super

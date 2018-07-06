@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     params_locale = params[:locale]
-    header_locale = request.env['HTTP_ACCEPT_LANGUAGE'].match(/(pt|pt-BR)/) ? 'pt' : nil
+    header_locale = (request.env['HTTP_ACCEPT_LANGUAGE'] || '').match(/(pt|pt-BR)/) ? 'pt' : nil
     user_locale = current_user.locale if current_user
     I18n.locale = params_locale || user_locale || header_locale || I18n.default_locale
   end

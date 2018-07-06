@@ -3,7 +3,9 @@
 aerobic:
   name: Aerobic
   description: Cardio exercises
+  user: user
 
 strength:
   name: Strength
   description: Exercises using weight
+  user: user
